@@ -1,0 +1,5 @@
+-neko ../build_output.n
+-main Main
+-cp ./
+-lib mlib
+-lib thx

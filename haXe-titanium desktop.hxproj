@@ -4,18 +4,18 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="example\haxe-titanium test\Resources\haXetitaniumdesktop.js" />
+    <movie path=".\bin\apidoc_builder.n" />
     <movie fps="0" />
     <movie width="0" />
     <movie height="0" />
-    <movie version="0" />
+    <movie version="1" />
     <movie minorVersion="0" />
-    <movie platform="JavaScript" />
+    <movie platform="Neko" />
     <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="com" />
+    <class path="src" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -27,7 +27,9 @@
   </build>
   <!-- haxelib libraries -->
   <haxelib>
-    <!-- example: <library name="..." /> -->
+    <library name="nYAML" />
+    <library name="mlib" />
+    <library name="thx" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
