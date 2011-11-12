@@ -1,24 +1,28 @@
 package titanium.ui;
+titanium.ui.UserWindow;
+titanium.ui.Menu;
 @:native("Titanium.UI.UserWindow")
 extern class UserWindow {
 	public var isDialog:Bool;
 	public function new():Void;
 	public function close():String;
-	public function createWindow(options:String|Object):ui.UserWindow;
+	@:overload(public function createWindow(options:String):UserWindow{})
+	public function createWindow(options:Dynamic):UserWindow;
 	public function focus():String;
 	public function getBounds():Dynamic;
-	public function getChildren():Array<ui.UserWindow>;
-	public function getContextMenu():ui.Menu|null;
-	public function getDOMWindow():DOMWindow|null;
+	public function getChildren():Array<UserWindow>;
+	public function getContextMenu():Menu;
+	public function getDOMWindow():DOMWindow;
 	public function getHeight():Float;
-	public function getIcon():String|Null;
+	@:overload(public function getIcon():String{})
+	public function getIcon():Void;
 	public function getID():String;
 	public function getMaxHeight():Float;
 	public function getMaxWidth():Float;
-	public function getMenu():ui.Menu|null;
+	public function getMenu():Menu;
 	public function getMinHeight():Float;
 	public function getMinWidth():Float;
-	public function getParent():ui.UserWindow|null;
+	public function getParent():UserWindow;
 	public function getTitle():String;
 	public function getTransparency():Float;
 	public function getURL():String;
@@ -43,13 +47,13 @@ extern class UserWindow {
 	public function minimize():String;
 	public function moveTo(x:Float, y:Float):Void;
 	public function open():String;
-	public function openFileChooserDialog(callback:Dynamic, options:Dynamic):String;
-	public function openFolderChooserDialog(callback:Dynamic, options:Dynamic):String;
-	public function openSaveAsDialog(callback:Dynamic, options:Dynamic):Void;
+	public var openFileChooserDialog:Dynamic->Dynamic->String;
+	public var openFolderChooserDialog:Dynamic->Dynamic->String;
+	public var openSaveAsDialog:Dynamic->Dynamic->Void;
 	public function setBounds(bounds:Dynamic):String;
 	public function setCloseable(closeable:Bool):String;
 	public function setContents(contents:String, baseURL:String):String;
-	public function setContextMenu(menu:ui.Menu|null):String;
+	public function setContextMenu(menu:Menu):String;
 	public function setDocumentEdited(edited:Bool):Void;
 	public function setFullscreen(fullscreen:Bool):String;
 	public function setHeight(height:Float):String;
@@ -57,7 +61,7 @@ extern class UserWindow {
 	public function setMaxHeight(height:Float):String;
 	public function setMaximizable(maximizable:Bool):String;
 	public function setMaxWidth(width:Float):String;
-	public function setMenu(menu:ui.Menu|null):String;
+	public function setMenu(menu:Menu):String;
 	public function setMinHeight(height:Float):String;
 	public function setMinimizable(minimizable:Bool):String;
 	public function setMinWidth(width:Float):String;

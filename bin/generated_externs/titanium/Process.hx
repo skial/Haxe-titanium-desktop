@@ -1,4 +1,6 @@
 package titanium;
+titanium.process.Process;
+titanium.process.Pipe;
 @:native("Titanium.Process")
 extern class Process {
 	public var SIGABRT:String;
@@ -32,7 +34,7 @@ extern class Process {
 	public var SIGXCPU:String;
 	public var SIGXFSZ:String;
 	public function new():Void;
-	public function createPipe():process.Pipe;
-	public function createProcess(args:Array<String>|Object, envionment:Dynamic, pipeIn:process.Pipe, pipeOut:process.Pipe, pipeErr:process.Pipe):process.Process;
+	public function createPipe():Pipe;
+	public function createProcess(args:Array<String>, envionment:Dynamic, pipeIn:Pipe, pipeOut:Pipe, pipeErr:Pipe):Process;
 	public function launch(command:String, arguments:Array<String>):String;
 }

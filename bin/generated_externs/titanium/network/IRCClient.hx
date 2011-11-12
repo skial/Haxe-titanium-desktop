@@ -3,7 +3,7 @@ package titanium.network;
 extern class IRCClient {
 	public var connected:String;
 	public function new():Void;
-	public function connect(hostname:String, port:Float, nick:String, name:String, user:String, pass:String, callback:Dynamic):String;
+	public var connect:String->Float->String->String->String->String->Dynamic->String;
 	public function disconnect():String;
 	public function getNick():String;
 	public function getUsers():Array<String>;

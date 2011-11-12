@@ -1,4 +1,8 @@
 package titanium;
+titanium.api.Environment;
+titanium.api.Component;
+titanium.api.Dependency;
+titanium.api.Application;
 @:native("Titanium.API")
 extern class API {
 	public static var APP_UPDATE:Float;
@@ -21,9 +25,9 @@ extern class API {
 	public static var UNKNOWN:Float;
 	public static var WARN:Float;
 	public function new():Void;
-	public function addEventListener(eventName:String, callback:Dynamic):Float;
+	public var addEventListener:String->Dynamic->Float;
 	public function createBytes(contents:String):Bytes;
-	public function createDependency(type:Float, name:String, version:String, requirement:Float):api.Dependency;
+	public function createDependency(type:Float, name:String, version:String, requirement:Float):Dependency;
 	public function createKList(toWrap:Array):Array;
 	public function createKMethod(toWrap:Dynamic):Dynamic;
 	public function createKObject(toWrap:Dynamic):Dynamic;
@@ -31,26 +35,28 @@ extern class API {
 	public function debug(statement:String):Void;
 	public function error(statement:String):Void;
 	public function fatal(statement:String):Void;
-	public function fireEvent(event:String|Object):Void;
+	@:overload(public function fireEvent(event:String):Void{})
+	public function fireEvent(event:Dynamic):Void;
 	public function get(key:String):Dynamic;
-	public function getApplication():api.Application;
-	public function getComponentSearchPaths():Array<api.Component>;
-	public function getEnvironment():api.Environment;
-	public function getInstalledComponents():Array<api.Component>;
-	public function getInstalledMobileSDKs():Array<api.Component>;
-	public function getInstalledModules():Array<api.Component>;
-	public function getInstalledRuntimes():Array<api.Component>;
-	public function getInstalledSDKs():Array<api.Component>;
+	public function getApplication():Application;
+	public function getComponentSearchPaths():Array<Component>;
+	public function getEnvironment():Environment;
+	public function getInstalledComponents():Array<Component>;
+	public function getInstalledMobileSDKs():Array<Component>;
+	public function getInstalledModules():Array<Component>;
+	public function getInstalledRuntimes():Array<Component>;
+	public function getInstalledSDKs():Array<Component>;
 	public function getLogLevel():Float;
 	public function info(statement:String):Void;
-	public function installDependencies(dependencies:Array<api.Dependency>, callback:Dynamic):Void;
+	public var installDependencies:Array<Dependency>->Dynamic->Void;
 	public function log(type:Float, statement:String):Void;
 	public function notice(statement:String):Void;
 	public function print(data:Dynamic):Void;
-	public function readApplicationManifest(manifestPath:String, applicationPath:String):api.Application;
-	public function removeEventListener(id:Number|Function):Void;
-	public function runOnMainThread(method:Dynamic, ...:Dynamic):Dynamic;
-	public function runOnMainThreadAsync(method:Dynamic, ...:Dynamic):Void;
+	public function readApplicationManifest(manifestPath:String, applicationPath:String):Application;
+	@:overload(public function removeEventListener(id:Float):Void{})
+	public function removeEventListener(id:Dynamic):Void;
+	public function runOnMainThread(method:Dynamic, arg:Dynamic):Dynamic;
+	public function runOnMainThreadAsync(method:Dynamic, arg:Dynamic):Void;
 	public function set(key:String, value:String):Void;
 	public function setLogLevel(level:Float):Void;
 	public function trace(statement:String):Void;

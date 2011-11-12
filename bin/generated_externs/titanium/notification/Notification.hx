@@ -3,7 +3,7 @@ package titanium.notification;
 extern class Notification {
 	public function new():Void;
 	public function hide():Bool;
-	public function setCallback(callback:Dynamic):String;
+	public var setCallback:Dynamic->String;
 	public function setIcon(icon:String):String;
 	public function SetMessage(message:String):String;
 	public function setTimeout(timeout:Integer):String;

@@ -5,5 +5,5 @@ extern class UpdateManager {
 	public function new():Void;
 	public function cancelMonitor(id:Float):String;
 	public function installAppUpdate(updateSpec:Dynamic):String;
-	public function startMonitor(component:String, callback:Dynamic, interval:Float):Float;
+	public var startMonitor:String->Dynamic->Float->Float;
 }

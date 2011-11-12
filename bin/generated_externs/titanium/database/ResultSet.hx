@@ -3,8 +3,8 @@ package titanium.database;
 extern class ResultSet {
 	public function new():Void;
 	public function close():Void;
-	public function field(fieldIndex:Float):Boolean|String|Number|Bytes;
-	public function fieldByName(name:String):Boolean|String|Number|Bytes;
+	public function field(fieldIndex:Float):Bytes;
+	public function fieldByName(name:String):Bytes;
 	public function fieldCount():Float;
 	public function fieldName(fieldIndex:Float):String;
 	public function isValidRow():Bool;

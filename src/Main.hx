@@ -10,6 +10,7 @@ import nYAML.NYAMLDecoder;
 
 using StringTools;
 using Strings;
+using Arrays;
 
 /**
  * ...
@@ -44,6 +45,7 @@ typedef HXClass = {
 	var functions:Array<HXFunction>;
 	var properties:Array<HXProperty>;
 	var description:String;
+	var imports:Hash<String>;
 }
 
 typedef HXFunction = {
@@ -78,6 +80,7 @@ class Main {
 	public static var externs:Hash<HXClass> = new Hash<HXClass>();
 	public static var badUpperCase:Array<String> = [];
 	public static var keywords:Array<String> = [];
+	public static var currentImports:Hash<String>;
 	
 	public static function main():Void {
 		
@@ -93,6 +96,9 @@ class Main {
 		returnTypes.set('null', 'Null');
 		returnTypes.set('void', 'Void');
 		returnTypes.set('', 'Void');
+		returnTypes.set('null', 'Void');
+		/* list is an assocative array */
+		returnTypes.set('list', 'Dynamic');
 		
 		badUpperCase = cast NYAML.decode(File.getContent('./badUpperCaseWords.yml'))[0].bad;
 		keywords = cast NYAML.decode(File.getContent('./haxeKeywords.yml'))[0].keywords;
@@ -193,11 +199,21 @@ class Main {
 					returnString += this.parsePackage(returnArray[r]);
 					continue;
 				}
-				returnString += returnArray[r];
+				returnString += this.parseReturnType(returnArray[r]);
 				
 			}
-			returnString += '>'.repeat(a);
+			if (returnString.endsWith('>') == false) {
+				returnString += '>';
+			}
 			return returnString;
+		}
+		if (type.indexOf('|') != -1) {
+			var options:Array<String> = type.split('|');
+			for (o in options) {
+				if (returnTypes.exists(o.toLowerCase()) == false) {
+					return this.parseReturnType(o);
+				}
+			}
 		}
 		if (type.indexOf('.') != -1) {
 			return this.parsePackage(type);
@@ -217,20 +233,28 @@ class Main {
 			}
 			ns[i] = ns[i].lcfirst();
 		}
-		return ns.join('.') + '.' + name;
+		var val:String = ns.join('.') + '.' + name;
+		val = val.replace('>', '');
+		if (!currentImports.exists(val) && val.indexOf('|') == -1) {
+			currentImports.set(val, val);
+		}
+		return name;
 	}
 	
 	public function parseFunction(method:Func):Void {
 		var ns:Array<String> = method.namespace.split('.');
 		var name:String = ns.pop();
 		var parameters:Array<Array<String>> = method.parameters;
+		
+		currentImports = externs.get(ns.join('.')).imports;
+		
 		var func:HXFunction = { name:name, params:[], description:method.description, returns:this.parseReturnType(method.returns), stat:false };
 		
 		if (parameters != null) {
 			if (parameters.length != 0) {
 				for (param in parameters) {
 					
-					var p:HXParams = { name:param[1], type:this.parseReturnType(param[0]), optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
+					var p:HXParams = { name:param[1] == '...' ? 'arg' : param[1], type:this.parseReturnType(param[0]), optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
 					func.params.push(p);
 					
 				}
@@ -244,6 +268,9 @@ class Main {
 	public function parseProperty(property:Property):Void {
 		var ns:Array<String> = property.namespace.split('.');
 		var name:String = ns.pop();
+		
+		currentImports = externs.get(ns.join('.')).imports;
+		
 		var prop:HXProperty = { description:property.description, name:name, type:this.parseReturnType(property.returns), stat:property.description.indexOf('constant') == -1 ? false : true };
 		
 		externs.get(ns.join('.')).properties.push(prop);
@@ -253,6 +280,9 @@ class Main {
 	public function parseObject(object:Base):Void {
 		var ns:Array<String> = object.namespace.split('.');
 		var name:String = ns.pop();
+		var imports:Hash<String> = new Hash<String>();
+		
+		currentImports = imports;
 		
 		for (i in 0...ns.length) {
 			for (n in badUpperCase) {
@@ -264,7 +294,7 @@ class Main {
 			ns[i] = ns[i].lcfirst();
 		}
 		
-		var cls:HXClass = { ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:object.description + '\nsince: ' + object.since };
+		var cls:HXClass = { imports:imports, ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:object.description + '\nsince: ' + object.since };
 		
 		externs.set(object.namespace, cls);
 		
@@ -282,8 +312,6 @@ class Main {
 		}
 	}
 	
-	public static var tabs:Int = 0;
-	
 	public function generateOutput():Void {
 		for (n in externs) {
 			this.generateHaxeClass(n);
@@ -296,6 +324,9 @@ class Main {
 		var pck:String = cls.pck.join('.');
 		
 		content += 'package ' + pck + ';\n';
+		for (i in cls.imports.keys()) {
+			content += i.startsWith('titanium') ? i + ';\n' : 'titanium.' + i + ';\n';
+		}
 		content += '@:native("' + cls.ns + '")\n';
 		content += 'extern class ' + cls.name + ' {\n';
 		
@@ -318,13 +349,199 @@ class Main {
 	}
 	
 	public function generateHaxeFunction(method:HXFunction):String {
-		var output:String = '\tpublic ' + (method.stat ? 'static ' : '') + 'function ' + method.name + '(';
-		for (p in method.params) {
-			output += (output.endsWith('(') == false ? ', ' : '');
-			output += this.generateHaxeParameter(p);
+		var output:String = '';
+		var val:String = '';
+		var alt:Bool = false;
+		var methodOverload:Bool = false;
+		var methodOverloadArray:Array<String> = [];
+		var paramOverload:Bool = false;
+		var paramOverloadArray:Array<Array<String>> = [];
+		
+		if (method.returns.indexOf('|') != -1) {
+			methodOverload = true;
+			methodOverloadArray = method.returns.split('|');
 		}
-		output += '):' + method.returns + ';\n';
+		
+		for (p in method.params) {
+			if (p.type.indexOf('|') != -1) {
+				paramOverload = true;
+				paramOverloadArray.push(p.type.split('|'));
+			} else {
+				paramOverloadArray.push([p.type]);
+			}
+		}
+		
+		for (p in method.params) {
+			for (n in keywords) {
+				if (p.name == n) {
+					alt = true;
+					break;
+				}
+			}
+		}
+		
+		if (alt == false) {
+			
+			val = 'public ' + (method.stat ? 'static ' : '') + 'function ' + method.name + '(';
+			
+			for (p in 0...method.params.length) {
+				val += (val.endsWith('(') == false ? ', ' : '');
+				if (paramOverload == true) {
+					val += method.params[p].name + ':' + '$' + p;
+				} else {
+					val += method.params[p].name + ':' + method.params[p].type;
+				}
+			}
+			
+			if (methodOverload == true) {
+				val += '):$r';
+			} else {
+				val += '):' + method.returns;
+			}
+			
+		} else {
+			
+			val = 'public '  + (method.stat ? 'static ' : '') + 'var ' + method.name + ':';
+			if (method.params.length == 0) {
+				val += 'Void';
+			} else {
+				for (p in 0...method.params.length) {
+					
+					val += (val.endsWith(':') == false ? '->' : '');
+					if (paramOverload == true) {
+						val += '$' + p;
+					} else {
+						val += method.params[p].type;
+					}
+					
+				}
+			}
+			
+			if (methodOverload == true) {
+				val += '->$r';
+			} else {
+				val += '->' + method.returns;
+			}
+			
+		}
+		
+		if (paramOverload == true) {
+			var sorted:Array<Array<String>> = this.processOverloadTypes(paramOverloadArray);
+			for (item in sorted) {
+				if (item != sorted.last()) {
+					output += '\t@:overload(' + val + '{})\n';
+				} else {
+					output += '\t' + val + ';\n';
+				}
+				for (i in 0...item.length) {
+					output = output.replace('$' + i, item[i]);
+				}
+			}
+		} else if (methodOverload == true) { 
+			for (item in methodOverloadArray) {
+				if (item != methodOverloadArray.last()) {
+					output += '\t@:overload(' + val + '{})\n';
+				} else {
+					output += '\t' + val + ';\n';
+				}
+				output = output.replace('$r', this.parseReturnType(item));
+			}
+		}
+		else {
+			output += '\t' + val + ';';
+		}
+		
+		if (output.endsWith('\n') == false) {
+			output += '\n';
+		}
+		
+		/*if (alt == false) {
+			
+			output = '\tpublic ' + (method.stat ? 'static ' : '') + 'function ' + method.name + '(';
+			for (p in method.params) {
+				output += (output.endsWith('(') == false ? ', ' : '');
+				output += this.generateHaxeParameter(p);
+			}
+			output += '):' + method.returns + ';\n';
+			
+		} else {
+			
+			output = '\tpublic '  + (method.stat ? 'static ' : '') + 'var ' + method.name + ':';
+			if (method.params.length == 0) {
+				output += 'Void';
+			} else {
+				for (p in method.params) {
+					output += (output.endsWith(':') == false ? '->' : '');
+					output += p.type;
+				}
+			}
+			output += '->' + method.returns + ';\n';
+			
+		}*/
+		
 		return output;
+	}
+	
+	public function processOverloadTypes(array:Array<Array<String>>):Array<Array<String>> {
+		var copy = array.copy();
+		var length:Int = 0;
+		for (i in copy) {
+			if (i.length >= length) {
+				length = i.length;
+			}
+		}
+		var result:Array<Array<String>> = [];
+		var count = 0;
+		this.generateOverloadTypes(result, copy, length-1, count);
+		return result;
+	}
+	
+	public function generateOverloadTypes(parent:Array<Array<String>>, array:Array<Array<String>>, length:Int, count:Int = 0):Void {
+		var current:Array<String> = new Array<String>();
+		var i:Int = count;
+		for (a in array) {
+			current.push(a[count] == null ? this.parseReturnType(a.last()) : this.parseReturnType(a[count]));
+		}
+		var check:Bool = false;
+		for (v in parent) {
+			if (v.join('') == current.join('')) {
+				check = true;
+				break;
+			}
+		}
+		if (check == false) {
+			parent.push(current);
+		}
+		if (count < length) {
+			i++;
+			this.generateOverloadTypes(parent, array, length, i);
+		} else if (count == length) {
+			this.generateStaggeredOverloadTypes(parent, array, length);
+		}
+	}
+	
+	public function generateStaggeredOverloadTypes(parent:Array<Array<String>>, array:Array<Array<String>>, length:Int, count:Int = 0, stagger:Int = 0):Void {
+		var current:Array<String> = new Array<String>();
+		var i:Int = count;
+		var s:Int = stagger;
+		for (a in array) {
+			current.push(a[s] == null ? this.parseReturnType(a.last()) : this.parseReturnType(a[s]));
+			s++;
+		}
+		var check:Bool = false;
+		for (v in parent) {
+			if (v.join('') == current.join('')) {
+				check = true;
+				break;
+			}
+		}
+		if (check == false) {
+			parent.push(current);
+		}
+		if (count < length) {
+			i++;
+			this.generateStaggeredOverloadTypes(parent, array, length, i, stagger + 1);
+		}
 	}
 	
 	public function generateHaxeParameter(param:HXParams):String {

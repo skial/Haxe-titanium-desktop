@@ -5,7 +5,7 @@ extern class Bytes {
 	public function new():Void;
 	public function byteAt(index:Float):Float;
 	public function charAt(index:Float):String;
-	public function concat(...:Byte|String):Bytes;
+	public function concat(arg:Byte):Bytes;
 	public function indexOf(needle:String):Float;
 	public function lastIndexOf(needle:String):Float;
 	public function split(delimiter:String, limit:Float):Array<String>;

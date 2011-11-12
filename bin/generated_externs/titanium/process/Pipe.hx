@@ -6,5 +6,5 @@ extern class Pipe {
 	public function close():String;
 	public function detach():String;
 	public function isAttached():Bool;
-	public function write(data:Bytes|String):Float;
+	public function write(data:Bytes):Float;
 }
