@@ -221,6 +221,11 @@ class Main {
 		return type;
 	}
 	
+	/**
+	 * 
+	 * @param 	path
+	 * @return
+	 */
 	public function parsePackage(path:String):String {
 		var ns:Array<String> = path.split('.');
 		var name:String = ns.pop();
@@ -248,7 +253,7 @@ class Main {
 		
 		currentImports = externs.get(ns.join('.')).imports;
 		
-		var func:HXFunction = { name:name, params:[], description:method.description, returns:this.parseReturnType(method.returns), stat:false };
+		var func:HXFunction = { name:name, params:[], description:' * ' + method.description, returns:this.parseReturnType(method.returns), stat:false };
 		
 		if (parameters != null) {
 			if (parameters.length != 0) {
@@ -256,10 +261,13 @@ class Main {
 					
 					var p:HXParams = { name:param[1] == '...' ? 'arg' : param[1], type:this.parseReturnType(param[0]), optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
 					func.params.push(p);
+					func.description += '\n * @param\t' + param[1] +'\t' + param[2];
 					
 				}
 			}
 		}
+		
+		func.description += '\n * @return\t' + func.returns + '\n * @since\t' + method.since + (method.examples != null ? '\n * @example\t' + (try { untyped cast(method.examples[0].code, String).replace('\n', '\n\t'); } catch (e:Dynamic) { method.examples; }) : '');
 		
 		externs.get(ns.join('.')).functions.push(func);
 		
@@ -271,7 +279,7 @@ class Main {
 		
 		currentImports = externs.get(ns.join('.')).imports;
 		
-		var prop:HXProperty = { description:property.description, name:name, type:this.parseReturnType(property.returns), stat:property.description.indexOf('constant') == -1 ? false : true };
+		var prop:HXProperty = { description:' * ' + property.description + '\n * @since\t' + property.since + (property.examples != null ? '\n * @example\t' + property.examples : ''), name:name, type:this.parseReturnType(property.returns), stat:property.description.indexOf('constant') == -1 ? false : true };
 		
 		externs.get(ns.join('.')).properties.push(prop);
 		
@@ -294,7 +302,7 @@ class Main {
 			ns[i] = ns[i].lcfirst();
 		}
 		
-		var cls:HXClass = { imports:imports, ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:object.description + '\nsince: ' + object.since };
+		var cls:HXClass = { imports:imports, ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:' * ' + object.description + '\n * @since\t' + object.since + '\n * @example\t' + object.examples };
 		
 		externs.set(object.namespace, cls);
 		
@@ -325,8 +333,9 @@ class Main {
 		
 		content += 'package ' + pck + ';\n';
 		for (i in cls.imports.keys()) {
-			content += i.startsWith('titanium') ? i + ';\n' : 'titanium.' + i + ';\n';
+			content += 'import ' + (i.startsWith('titanium') ? i + ';\n' : 'titanium.' + i + ';\n');
 		}
+		content += '/**\n' + cls.description + '\n*/\n';
 		content += '@:native("' + cls.ns + '")\n';
 		content += 'extern class ' + cls.name + ' {\n';
 		
@@ -345,7 +354,9 @@ class Main {
 	}
 	
 	public function generateHaxeProperty(property:HXProperty):String {
-		return '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
+		var content:String = '\n\t/**\n\t' + property.description.replace('\n', '\n\t') + '\n\t*/\n';
+		content += '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
+		return content;
 	}
 	
 	public function generateHaxeFunction(method:HXFunction):String {
@@ -424,6 +435,8 @@ class Main {
 			}
 			
 		}
+		
+		output += '\n\t/**\n\t' + method.description.replace('\n', '\n\t') + '\n\t*/\n';
 		
 		if (paramOverload == true) {
 			var sorted:Array<Array<String>> = this.processOverloadTypes(paramOverloadArray);
