@@ -4,8 +4,7 @@ import titanium.ui.Menu;
 /**
  * An object representing a menu item.
  * @since	0.6.0
- * @example	null
-*/
+ */
 @:native("Titanium.UI.MenuItem")
 extern class MenuItem {
 	public function new():Void;
@@ -16,7 +15,7 @@ extern class MenuItem {
 	 * @param	listener	(optional) An event listener callback for the item
 	 * @return	MenuItem
 	 * @since	0.6.0
-	*/
+	 */
 	public function addCheckItem(label:String, listener:Dynamic):MenuItem;
 
 	/**
@@ -26,28 +25,28 @@ extern class MenuItem {
 	 * @param	iconURL	The URL for this item's icon
 	 * @return	MenuItem
 	 * @since	0.6.0
-	*/
+	 */
 	public function addItem(label:String, listener:Dynamic, iconURL:String):MenuItem;
 
 	/**
 	 * Add a separator item to this menu item's submenu. If this menu item does not have a submenu, it will be created. This method is not available for separator items.
 	 * @return	MenuItem
 	 * @since	0.6.0
-	*/
+	 */
 	public function addSeparatorItem():MenuItem;
 
 	/**
 	 * Disable this item i.e. make it non-clickable. This method is not available for separator items.
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function disable():String;
 
 	/**
 	 * Enable this item i.e. make it clickable. This method is not available for separator items.
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function enable():String;
 
 	/**
@@ -55,14 +54,14 @@ extern class MenuItem {
 	 * @param	autocheck	Whether or not this item should is an autocheck
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function getAutoCheck(autocheck:Bool):String;
 
 	/**
 	 * Get this item's icon URL This method is not available for separator or check items.
 	 * @return	String|null
 	 * @since	0.6.0
-	*/
+	 */
 	@:overload(public function getIcon():String{})
 	public function getIcon():Void;
 
@@ -70,42 +69,42 @@ extern class MenuItem {
 	 * Get this item's label. This method is not available for separator items.
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function getLabel():String;
 
 	/**
 	 * Gets the state of this check item This method is only available for check items.
 	 * @return	Bool
 	 * @since	0.6.0
-	*/
+	 */
 	public function getState():Bool;
 
 	/**
 	 * Get this item's submenu. This method is not available for separator items.
 	 * @return	Menu
 	 * @since	0.6.0
-	*/
+	 */
 	public function getSubmenu():Menu;
 
 	/**
 	 * Return true if this UI.MenuItem is a check menu item or false otherwise.
 	 * @return	Bool
 	 * @since	0.6.0
-	*/
+	 */
 	public function isCheck():Bool;
 
 	/**
 	 * This method is not available for separator items.
 	 * @return	Bool
 	 * @since	0.6.0
-	*/
+	 */
 	public function isEnabled():Bool;
 
 	/**
 	 * Return true if this UI.MenuItem is seperator menu item or false otherwise.
 	 * @return	Bool
 	 * @since	0.6.0
-	*/
+	 */
 	public function isSeparator():Bool;
 
 	/**
@@ -113,7 +112,7 @@ extern class MenuItem {
 	 * @param	autocheck	Whether or not this item should be an autocheck
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function setAutoCheck(autocheck:Bool):String;
 
 	/**
@@ -121,7 +120,7 @@ extern class MenuItem {
 	 * @param	iconURL	The new icon URL for this item or null to unset it
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	@:overload(public function setIcon(iconURL:String):String{})
 	public function setIcon(iconURL:Void):String;
 
@@ -130,7 +129,7 @@ extern class MenuItem {
 	 * @param	label	The new label for this item
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function setLabel(label:String):String;
 
 	/**
@@ -138,7 +137,7 @@ extern class MenuItem {
 	 * @param	state	A True state is checked
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function setState(state:Bool):String;
 
 	/**
@@ -146,6 +145,6 @@ extern class MenuItem {
 	 * @param	menu	The submenu to use for this item or null to unset it
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function setSubmenu(menu:Menu):String;
 }

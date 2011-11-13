@@ -2,8 +2,7 @@ package titanium.network;
 /**
  * An implementation of an HTTPServer.
  * @since	0.3.0
- * @example	null
-*/
+ */
 @:native("Titanium.Network.HTTPServer")
 extern class HTTPServer {
 	public function new():Void;
@@ -26,20 +25,20 @@ extern class HTTPServer {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public var bind:Float->String->Dynamic->String;
 
 	/**
 	 * close this server
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function close():String;
 
 	/**
 	 * check to see if this server socket is closed
 	 * @return	Bool
 	 * @since	0.3.0
-	*/
+	 */
 	public function isClosed():Bool;
 }

@@ -2,33 +2,32 @@ package titanium.network;
 /**
  * An object representing a TCP client socket connection.
  * @since	0.2.0
- * @example	null
-*/
+ */
 @:native("Titanium.Network.TCPSocket")
 extern class TCPSocket {
 	public function new():Void;
 
 	/**
 	 * Close this Network.TCPSocket connection. If there is no open
-	connection then do nothing. Return true if the connection was
-	closed and false otherwise.
+	 * connection then do nothing. Return true if the connection was
+	 * closed and false otherwise.
 	 * @return	Bool
 	 * @since	0.2.0
-	*/
+	 */
 	public function close():Bool;
 
 	/**
 	 * Connect the Socket object to the host specified during creation. The connection will be made asynchronously. Use onError to detect failures.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function connect():String;
 
 	/**
 	 * Check whether the Socket is closed.
 	 * @return	Bool
 	 * @since	0.2.0
-	*/
+	 */
 	public function isClosed():Bool;
 
 	/**
@@ -36,7 +35,7 @@ extern class TCPSocket {
 	 * @param	onError	Function to be called when an error happens.
 	 * @return	String
 	 * @since	0.8.0
-	*/
+	 */
 	public function onError(onError:Dynamic):String;
 
 	/**
@@ -44,7 +43,7 @@ extern class TCPSocket {
 	 * @param	onRead	Function to be called when data is received.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function onRead(onRead:Dynamic):String;
 
 	/**
@@ -52,7 +51,7 @@ extern class TCPSocket {
 	 * @param	onReadComplete	Function be called when a read completes.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function onReadComplete(onReadComplete:Dynamic):String;
 
 	/**
@@ -60,7 +59,7 @@ extern class TCPSocket {
 	 * @param	onTimeout	Function to be called when an operation times out.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function onTimeout(onTimeout:Dynamic):String;
 
 	/**
@@ -68,7 +67,7 @@ extern class TCPSocket {
 	 * @param	onWrite	Function to be called when data is written.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function onWrite(onWrite:Dynamic):String;
 
 	/**
@@ -76,6 +75,6 @@ extern class TCPSocket {
 	 * @param	data	The data to write to the connection.
 	 * @return	Bool
 	 * @since	0.2.0
-	*/
+	 */
 	public function write(data:String):Bool;
 }

@@ -2,8 +2,7 @@ package titanium.notification;
 /**
  * An object representing a Desktop notification.
  * @since	0.4.0
- * @example	null
-*/
+ */
 @:native("Titanium.Notification.Notification")
 extern class Notification {
 	public function new():Void;
@@ -12,7 +11,7 @@ extern class Notification {
 	 * Hide this Notification.
 	 * @return	Bool
 	 * @since	0.9.0
-	*/
+	 */
 	public function hide():Bool;
 
 	/**
@@ -20,7 +19,7 @@ extern class Notification {
 	 * @param	callback	function to execute when notification is clicked
 	 * @return	String
 	 * @since	0.9.0
-	*/
+	 */
 	public var setCallback:Dynamic->String;
 
 	/**
@@ -28,7 +27,7 @@ extern class Notification {
 	 * @param	icon	path to the icon image
 	 * @return	String
 	 * @since	0.9.0
-	*/
+	 */
 	public function setIcon(icon:String):String;
 
 	/**
@@ -36,7 +35,7 @@ extern class Notification {
 	 * @param	message	notification message text
 	 * @return	String
 	 * @since	0.9.0
-	*/
+	 */
 	public function SetMessage(message:String):String;
 
 	/**
@@ -44,7 +43,7 @@ extern class Notification {
 	 * @param	timeout	Timeout in seconds. (-1 = use system default
 	 * @return	String
 	 * @since	0.9.0
-	*/
+	 */
 	public function setTimeout(timeout:Integer):String;
 
 	/**
@@ -52,13 +51,13 @@ extern class Notification {
 	 * @param	title	notification title text
 	 * @return	String
 	 * @since	0.9.0
-	*/
+	 */
 	public function setTitle(title:String):String;
 
 	/**
 	 * Display the notification
 	 * @return	Bool
 	 * @since	0.9.0
-	*/
+	 */
 	public function show():Bool;
 }

@@ -3,8 +3,7 @@ import titanium.ui.MenuItem;
 /**
  * An object representing a menu.
  * @since	0.6.0
- * @example	null
-*/
+ */
 @:native("Titanium.UI.Menu")
 extern class Menu {
 	public function new():Void;
@@ -15,7 +14,7 @@ extern class Menu {
 	 * @param	listener	(optional) An event listener callback for the item
 	 * @return	MenuItem
 	 * @since	0.6.0
-	*/
+	 */
 	public function addCheckItem(label:String, listener:Dynamic):MenuItem;
 
 	/**
@@ -25,14 +24,14 @@ extern class Menu {
 	 * @param	iconURL	The URL for this item's icon
 	 * @return	MenuItem
 	 * @since	0.6.0
-	*/
+	 */
 	public function addItem(label:String, listener:Dynamic, iconURL:String):MenuItem;
 
 	/**
 	 * Add a separator item to this menu.
 	 * @return	MenuItem
 	 * @since	0.6.0
-	*/
+	 */
 	public function addSeparatorItem():MenuItem;
 
 	/**
@@ -40,14 +39,14 @@ extern class Menu {
 	 * @param	item	Append an item to this menu
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function appendItem(item:MenuItem):String;
 
 	/**
 	 * Remove all items from this menu.
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function clear():String;
 
 	/**
@@ -55,14 +54,14 @@ extern class Menu {
 	 * @param	index	The index of the item to get
 	 * @return	MenuItem
 	 * @since	0.6.0
-	*/
+	 */
 	public function getItemAt(index:Float):MenuItem;
 
 	/**
 	 * Get the length of this menu.
 	 * @return	Float
 	 * @since	0.6.0
-	*/
+	 */
 	public function getLength():Float;
 
 	/**
@@ -71,7 +70,7 @@ extern class Menu {
 	 * @param	index	The index for this menu item
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function insertItemAt(item:MenuItem, index:Float):String;
 
 	/**
@@ -79,6 +78,6 @@ extern class Menu {
 	 * @param	index	The index of the item to remove
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function removeItemAt(index:Float):String;
 }

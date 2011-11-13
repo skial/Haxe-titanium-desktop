@@ -2,15 +2,14 @@ package titanium;
 /**
  * An object for holding arrays of bytes.
  * @since	0.7.0
- * @example	null
-*/
+ */
 @:native("Titanium.Bytes")
 extern class Bytes {
 
 	/**
 	 * The number of bytes in this Bytes object.
 	 * @since	0.3.0
-	*/
+	 */
 	public var length:String;
 	public function new():Void;
 
@@ -19,7 +18,7 @@ extern class Bytes {
 	 * @param	index	The index to look for a character code at.
 	 * @return	Float
 	 * @since	0.7.0
-	*/
+	 */
 	public function byteAt(index:Float):Float;
 
 	/**
@@ -27,7 +26,7 @@ extern class Bytes {
 	 * @param	index	The index to look for a character at.
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function charAt(index:Float):String;
 
 	/**
@@ -35,31 +34,31 @@ extern class Bytes {
 	 * @param	...	A variable-length list of Bytes or Strings to concatenate to this Bytes object.
 	 * @return	Bytes
 	 * @since	0.7.0
-	*/
+	 */
 	public function concat(arg:Byte):Bytes;
 
 	/**
 	 * Return the index of a String within this Bytes. The String will first
-	be converted to UTF-8 before this method searches the Bytes object.
+	 * be converted to UTF-8 before this method searches the Bytes object.
 	 * @param	needle	The String to search for.
 	 * @return	Float
 	 * @since	0.3.0
-	*/
+	 */
 	public function indexOf(needle:String):Float;
 
 	/**
 	 * Return the last index of a String within this Bytes. The String will first
-	be converted to UTF-8 before this method searches the Bytes object.
+	 * be converted to UTF-8 before this method searches the Bytes object.
 	 * @param	needle	The String to search for
 	 * @return	Float
 	 * @since	0.3.0
-	*/
+	 */
 	public function lastIndexOf(needle:String):Float;
 
 	/**
 	 * Split a bytes as if it were a String given a delimiter. The Bytes object is
-	expected to contain a UTF-8 encoded String. That means that the first NUL
-	character in the string will be the end of the string.
+	 * expected to contain a UTF-8 encoded String. That means that the first NUL
+	 * character in the string will be the end of the string.
 	 * @param	delimiter	The index to look for a character at
 	 * @param	limit	(optional) The maximum number of matches to return
 	 * @return	Array<String>
@@ -71,15 +70,15 @@ extern class Bytes {
 		    var list = bytes.split(",");
 		</code></pre>
 		
-	*/
+	 */
 	public function split(delimiter:String, limit:Float):Array<String>;
 
 	/**
 	 * Return a substring of a Bytes given a start index and a length. This
-	assumes that Bytes contains a UTF-8 string. This means that the first
-	NUL character in the Bytes object will signify the end of the string.
-	If no length index is given, return all characters from the start index
-	to the end of the string.
+	 * assumes that Bytes contains a UTF-8 string. This means that the first
+	 * NUL character in the Bytes object will signify the end of the string.
+	 * If no length index is given, return all characters from the start index
+	 * to the end of the string.
 	 * @param	startIndex	The starting index
 	 * @param	length	(optional) The length of the substring
 	 * @return	String
@@ -95,15 +94,15 @@ extern class Bytes {
 		    print("(20, 2): "  + str.substr(20,2)); // ''
 		</code></pre>
 		
-	*/
+	 */
 	public function substr(startIndex:Float, length:Float):String;
 
 	/**
 	 * Return a substring of a Bytes given a start index and end index. This
-	assumes that Bytes contains a UTF-8 string. This means that the first
-	NUL character in the Bytes object will signify the end of the string.
-	If no end index is given, return all characters from the start index
-	to the end of the string. If startIndex &gt; endIndex, the indices are swapped.
+	 * assumes that Bytes contains a UTF-8 string. This means that the first
+	 * NUL character in the Bytes object will signify the end of the string.
+	 * If no end index is given, return all characters from the start index
+	 * to the end of the string. If startIndex &gt; endIndex, the indices are swapped.
 	 * @param	startIndex	The starting index
 	 * @param	endIndex	(optional) The ending index
 	 * @return	String
@@ -126,33 +125,33 @@ extern class Bytes {
 		    replaceString("World", "Web", API.createBytes("Brave New World"));
 		</code></pre>
 		
-	*/
+	 */
 	public function substring(startIndex:Float, endIndex:Float):String;
 
 	/**
 	 * Convert characters in the Bytes to lower-case as if it it were a String.
-	This method assumes that Bytes contains a UTF-8 string. This means that the first
-	NUL character in the Bytes object will signify the end of the string.
+	 * This method assumes that Bytes contains a UTF-8 string. This means that the first
+	 * NUL character in the Bytes object will signify the end of the string.
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function toLowerCase():String;
 
 	/**
 	 * Return a string representation of a Byte object.
-	This method assumes that Bytes contains a UTF-8 string. This means that the first
-	NUL character in the Bytes object will signify the end of the string.
+	 * This method assumes that Bytes contains a UTF-8 string. This means that the first
+	 * NUL character in the Bytes object will signify the end of the string.
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function toString():String;
 
 	/**
 	 * Convert characters in the Bytes to upper-case as if it it were a String.
-	This method assumes that Bytes contains a UTF-8 string. This means that the first
-	NUL character in the Bytes object will signify the end of the string.
+	 * This method assumes that Bytes contains a UTF-8 string. This means that the first
+	 * NUL character in the Bytes object will signify the end of the string.
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function toUpperCase():String;
 }

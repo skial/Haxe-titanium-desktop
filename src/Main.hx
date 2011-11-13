@@ -253,7 +253,7 @@ class Main {
 		
 		currentImports = externs.get(ns.join('.')).imports;
 		
-		var func:HXFunction = { name:name, params:[], description:' * ' + method.description, returns:this.parseReturnType(method.returns), stat:false };
+		var func:HXFunction = { name:name, params:[], description:' * ' + method.description.replace('\n', '\n * '), returns:this.parseReturnType(method.returns), stat:false };
 		
 		if (parameters != null) {
 			if (parameters.length != 0) {
@@ -261,7 +261,7 @@ class Main {
 					
 					var p:HXParams = { name:param[1] == '...' ? 'arg' : param[1], type:this.parseReturnType(param[0]), optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
 					func.params.push(p);
-					func.description += '\n * @param\t' + param[1] +'\t' + param[2];
+					func.description += '\n * @param\t' + param[1] + (param[2] != null ? '\t' + param[2].replace('\n', '\n * ') : '');
 					
 				}
 			}
@@ -302,7 +302,7 @@ class Main {
 			ns[i] = ns[i].lcfirst();
 		}
 		
-		var cls:HXClass = { imports:imports, ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:' * ' + object.description + '\n * @since\t' + object.since + '\n * @example\t' + object.examples };
+		var cls:HXClass = { imports:imports, ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:' * ' + object.description + '\n * @since\t' + object.since + (object.examples != null ? '\n * @example\t' + object.examples : '') };
 		
 		externs.set(object.namespace, cls);
 		
@@ -335,7 +335,7 @@ class Main {
 		for (i in cls.imports.keys()) {
 			content += 'import ' + (i.startsWith('titanium') ? i + ';\n' : 'titanium.' + i + ';\n');
 		}
-		content += '/**\n' + cls.description + '\n*/\n';
+		content += '/**\n' + cls.description + '\n */\n';
 		content += '@:native("' + cls.ns + '")\n';
 		content += 'extern class ' + cls.name + ' {\n';
 		
@@ -354,7 +354,7 @@ class Main {
 	}
 	
 	public function generateHaxeProperty(property:HXProperty):String {
-		var content:String = '\n\t/**\n\t' + property.description.replace('\n', '\n\t') + '\n\t*/\n';
+		var content:String = '\n\t/**\n\t' + property.description.replace('\n', '\n\t') + '\n\t */\n';
 		content += '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
 		return content;
 	}
@@ -436,7 +436,7 @@ class Main {
 			
 		}
 		
-		output += '\n\t/**\n\t' + method.description.replace('\n', '\n\t') + '\n\t*/\n';
+		output += '\n\t/**\n\t' + method.description.replace('\n', '\n\t') + '\n\t */\n';
 		
 		if (paramOverload == true) {
 			var sorted:Array<Array<String>> = this.processOverloadTypes(paramOverloadArray);

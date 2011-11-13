@@ -3,45 +3,44 @@ import titanium.filesystem.File;
 /**
  * A module for dealing with encoding and decoding.
  * @since	0.7.0
- * @example	null
-*/
+ */
 @:native("Titanium.Codec")
 extern class Codec {
 
 	/**
 	 * Constant specifying the Adler-32 checksum algorithm.
 	 * @since	0.7.0
-	*/
+	 */
 	public var ADLER32:Float;
 
 	/**
 	 * Constant specifying the CRC32 checksum algorithm.
 	 * @since	0.7.0
-	*/
+	 */
 	public var CRC32:String;
 
 	/**
 	 * Constant specifying the MD2 hash algorithm.
 	 * @since	0.7.0
-	*/
+	 */
 	public var MD2:String;
 
 	/**
 	 * Constant specifying the MD4 hash algorithm.
 	 * @since	0.7.0
-	*/
+	 */
 	public var MD4:String;
 
 	/**
 	 * Constant specifying the MD5 hash algorithm.
 	 * @since	0.7.0
-	*/
+	 */
 	public var MD5:String;
 
 	/**
 	 * Constant specifying the SHA1 hash algorithm.
 	 * @since	0.7.0
-	*/
+	 */
 	public var SHA1:String;
 	public function new():Void;
 
@@ -51,7 +50,7 @@ extern class Codec {
 	 * @param	checksumType	(optional) The checksum algorithm to use. Either Codec.CRC32 (default) or Codec.ADLER32
 	 * @return	Float
 	 * @since	0.7.0
-	*/
+	 */
 	public function checksum(data:String, checksumType:int):Float;
 
 	/**
@@ -70,7 +69,7 @@ extern class Codec {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public function createZip(root:File, zipFile:File, onComplete:Dynamic):String;
 
 	/**
@@ -78,7 +77,7 @@ extern class Codec {
 	 * @param	data	String to decode.
 	 * @return	String
 	 * @since	0.7.0
-	*/
+	 */
 	public function decodeBase64(data:String):String;
 
 	/**
@@ -86,46 +85,46 @@ extern class Codec {
 	 * @param	data	String to decode.
 	 * @return	String
 	 * @since	0.7.0
-	*/
+	 */
 	public function decodeHexBinary(data:String):String;
 
 	/**
 	 * Digest a String into a hex binary HMAC.
-	String data will first be converted to UTF-8 data.
+	 * String data will first be converted to UTF-8 data.
 	 * @param	hashType	The hash type of the HMAC
 	 * @param	data	The data to encode.
 	 * @param	data	The key to us for the HMAC.
 	 * @return	String
 	 * @since	0.7.0
-	*/
+	 */
 	public function digestHMACToHex(hashType:int, data:String, data:String):String;
 
 	/**
 	 * Encode some data using a digest algorithm to a hex binary String.
-	String data will first be converted to UTF-8 data.
+	 * String data will first be converted to UTF-8 data.
 	 * @param	hashType	The hash type of the digest
 	 * @param	data	The data to encode.
 	 * @return	String
 	 * @since	0.7.0
-	*/
+	 */
 	public function digestToHex(hashType:int, data:Bytes):String;
 
 	/**
 	 * Encode some data into Base64.
-	String data will first be converted to UTF-8 data.
+	 * String data will first be converted to UTF-8 data.
 	 * @param	data	The data to encode.
 	 * @return	String
 	 * @since	0.7.0
-	*/
+	 */
 	public function encodeBase64(data:Bytes):String;
 
 	/**
 	 * Encode some data into a hex binary String.
-	String data will first be converted to UTF-8 data.
+	 * String data will first be converted to UTF-8 data.
 	 * @param	data	data to encode
 	 * @return	String
 	 * @since	0.7.0
-	*/
+	 */
 	public function encodeHexBinary(data:Bytes):String;
 
 	/**
@@ -144,6 +143,6 @@ extern class Codec {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public function extractZip(zipFile:File, dest:File, onComplete:Dynamic):String;
 }

@@ -2,8 +2,7 @@ package titanium.network;
 /**
  * An object representing a single HTTP server response.
  * @since	0.3.0
- * @example	null
-*/
+ */
 @:native("Titanium.Network.HTTPServerResponse")
 extern class HTTPServerResponse {
 	public function new():Void;
@@ -17,7 +16,7 @@ extern class HTTPServerResponse {
 	 * @param	path	(optional) the cookie's path
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function addCookie(name:String, value:String, maxAge:Float, domain:String, path:String):String;
 
 	/**
@@ -25,7 +24,7 @@ extern class HTTPServerResponse {
 	 * @param	length	the content length
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function setContentLength(length:Float):String;
 
 	/**
@@ -33,7 +32,7 @@ extern class HTTPServerResponse {
 	 * @param	type	the content type, i.e "text/plain"
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function setContentType(type:String):String;
 
 	/**
@@ -42,7 +41,7 @@ extern class HTTPServerResponse {
 	 * @param	value	the header value
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function setHeader(name:String, value:String):String;
 
 	/**
@@ -50,7 +49,7 @@ extern class HTTPServerResponse {
 	 * @param	reason	the reason, i.e "OK"
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function setReason(reason:String):String;
 
 	/**
@@ -58,7 +57,7 @@ extern class HTTPServerResponse {
 	 * @param	status	the status, i.e "200"
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function setStatus(status:String):String;
 
 	/**
@@ -67,7 +66,7 @@ extern class HTTPServerResponse {
 	 * @param	reason	the reason, i.e "OK"
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function setStatusAndReason(status:String, reason:String):String;
 
 	/**
@@ -75,6 +74,6 @@ extern class HTTPServerResponse {
 	 * @param	data	content to write (can be string or bytes content)
 	 * @return	String
 	 * @since	0.3.0
-	*/
+	 */
 	public function write(data:String):String;
 }

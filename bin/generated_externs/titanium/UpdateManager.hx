@@ -2,15 +2,14 @@ package titanium;
 /**
  * A module for dealing with application and component updates.
  * @since	0.4.0
- * @example	null
-*/
+ */
 @:native("Titanium.UpdateManager")
 extern class UpdateManager {
 
 	/**
 	 * Set the update handler implementation function that will be invoked when an update is detected
 	 * @since	0.4.0
-	*/
+	 */
 	public var onupdate:String;
 	public function new():Void;
 
@@ -19,7 +18,7 @@ extern class UpdateManager {
 	 * @param	id	The monitor id returned from startMonitor
 	 * @return	String
 	 * @since	0.4.0
-	*/
+	 */
 	public function cancelMonitor(id:Float):String;
 
 	/**
@@ -27,7 +26,7 @@ extern class UpdateManager {
 	 * @param	updateSpec	Update spec object received from update service.
 	 * @return	String
 	 * @since	0.4.0
-	*/
+	 */
 	public function installAppUpdate(updateSpec:Dynamic):String;
 
 	/**
@@ -37,6 +36,6 @@ extern class UpdateManager {
 	 * @param	interval	Interval in milliseconds for how often to check for an update
 	 * @return	Float
 	 * @since	0.4.0
-	*/
+	 */
 	public var startMonitor:String->Dynamic->Float->Float;
 }

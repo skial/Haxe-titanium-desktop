@@ -3,16 +3,15 @@ import titanium.app.Properties;
 /**
  * A module for holding currently running application specific functionality.
  * @since	0.2.0
- * @example	null
-*/
+ */
 @:native("Titanium.App")
 extern class App {
 	public function new():Void;
 
 	/**
 	 * Convert the given app URL to a filesystem path. App URLs generally have
-	the form 'app://subdir/resource.html' and resolve to a fileystem path
-	rooted in the application resources directory.
+	 * the form 'app://subdir/resource.html' and resolve to a fileystem path
+	 * rooted in the application resources directory.
 	 * @return	String
 	 * @since	0.2.0
 	 * @example	<pre><code>
@@ -23,7 +22,7 @@ extern class App {
 		    // At this point path and path2 should refer to the same file.
 		</code></pre>
 		
-	*/
+	 */
 	public function appURLToPath():String;
 
 	/**
@@ -39,22 +38,22 @@ extern class App {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public function createProperties(properties:Dynamic):Properties;
 
 	/**
 	 * Cause the application to exit after firing the Titanium.EXIT
-	event. The application isn't gauaranteed to exit when this
-	method is called, because an event handler may cancel the
-	EXIT event by calling preventDefault or stopPropagation on it.
+	 * event. The application isn't gauaranteed to exit when this
+	 * method is called, because an event handler may cancel the
+	 * EXIT event by calling preventDefault or stopPropagation on it.
 	 * @return	Void
 	 * @since	0.2.0
-	*/
+	 */
 	public function exit():Void;
 
 	/**
 	 * Return the command-line arguments passed to this application,
-	excluding the first which is the path to the application executable.
+	 * excluding the first which is the path to the application executable.
 	 * @return	Array<String>
 	 * @since	0.8.0
 	 * @example	<pre><code>
@@ -65,7 +64,7 @@ extern class App {
 		    }
 		</code></pre>
 		
-	*/
+	 */
 	public function getArguments():Array<String>;
 
 	/**
@@ -77,7 +76,7 @@ extern class App {
 		        Titanium.App.getCopyright());
 		</code></pre>
 		
-	*/
+	 */
 	public function getCopyright():String;
 
 	/**
@@ -88,63 +87,63 @@ extern class App {
 		    document.write(Titanium.App.getDescription());
 		</code></pre>
 		
-	*/
+	 */
 	public function getDescription():String;
 
 	/**
 	 * Return the application's GUID, defined in the application manifest.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function getGUID():String;
 
 	/**
 	 * Return the full path to the application home directory. The application
-	home or contents directory is the subdirectory within the application which
-	contains the application Resources directory and bundled components. On OS X
-	this is the directory "My App.app/Contents" and on Windows and Linux it is
-	simply the path to the application.
+	 * home or contents directory is the subdirectory within the application which
+	 * contains the application Resources directory and bundled components. On OS X
+	 * this is the directory "My App.app/Contents" and on Windows and Linux it is
+	 * simply the path to the application.
 	 * @return	String
 	 * @since	0.8.0
-	*/
+	 */
 	public function getHome():String;
 
 	/**
 	 * Return the full path to the application icon. The application icon path
-	is specified in the application manifest and tiapp.xml relative to the
-	application Resources directory.
+	 * is specified in the application manifest and tiapp.xml relative to the
+	 * application Resources directory.
 	 * @return	String
 	 * @since	0.4.0
-	*/
+	 */
 	public function getIcon():String;
 
 	/**
 	 * Get this human readable id defined in both the
-	application manifest and the application's tiapp.xml file.
+	 * application manifest and the application's tiapp.xml file.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function getID():String;
 
 	/**
 	 * Return the application name.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function getName():String;
 
 	/**
 	 * Return the full path to the application executable.
 	 * @return	String
 	 * @since	0.8.0
-	*/
+	 */
 	public function getPath():String;
 
 	/**
 	 * Return the application publisher information specifiedi in the tiapp.xml file.
 	 * @return	String
 	 * @since	0.4.0
-	*/
+	 */
 	public function getPublisher():String;
 
 	/**
@@ -152,28 +151,28 @@ extern class App {
 	 * @param	...	Any number of String arguments which will be appended as path components of the stream URL.
 	 * @return	String
 	 * @since	0.4.0
-	*/
+	 */
 	public function getStreamURL(arg:String):String;
 
 	/**
 	 * Get the system properties defined in tiapp.xml (see App.Properties).
 	 * @return	Properties
 	 * @since	0.4.0
-	*/
+	 */
 	public function getSystemProperties():Properties;
 
 	/**
 	 * Return the application URL definedin the tiapp.xml file.
 	 * @return	String
 	 * @since	0.4.0
-	*/
+	 */
 	public function getURL():String;
 
 	/**
 	 * Return the application version defined in the tiapp.xml file.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function getVersion():String;
 
 	/**
@@ -181,21 +180,21 @@ extern class App {
 	 * @param	path	Path to a properties file.
 	 * @return	Array<Properties>
 	 * @since	0.2.0
-	*/
+	 */
 	public function loadProperties(path:String):Array<Properties>;
 
 	/**
 	 * Exit the application and restart it.
 	 * @return	String
 	 * @since	0.9.0
-	*/
+	 */
 	public function restart():String;
 
 	/**
 	 * Print a raw string to stderr without a trailing newline.
 	 * @return	String
 	 * @since	0.4.0
-	*/
+	 */
 	public function stderr():String;
 
 	/**
@@ -204,7 +203,7 @@ extern class App {
 	 * @param	delimiter	(optional) Will continue reading stdin until the delimiter character is reached. If no argument is specified, this method will continue reading until a newline.
 	 * @return	String
 	 * @since	0.7.0
-	*/
+	 */
 	public function stdin(prompt:String, delimiter:String):String;
 
 	/**
@@ -212,6 +211,6 @@ extern class App {
 	 * @param	data	The data to print. If not a String
 	 * @return	Void
 	 * @since	0.4.0
-	*/
+	 */
 	public function stdout(data:Dynamic):Void;
 }

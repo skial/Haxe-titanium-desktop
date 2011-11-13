@@ -3,8 +3,7 @@ import titanium.ui.Menu;
 /**
  * An object representing a TrayItem.
  * @since	0.6.0
- * @example	null
-*/
+ */
 @:native("Titanium.UI.Tray")
 extern class Tray {
 	public function new():Void;
@@ -13,28 +12,28 @@ extern class Tray {
 	 * Get the hint for this TrayItem
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function getHint():String;
 
 	/**
 	 * Get the icon URL for this TrayItem
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function getIcon():String;
 
 	/**
 	 * Get the menu for this TrayItem
 	 * @return	Menu
 	 * @since	0.6.0
-	*/
+	 */
 	public function getMenu():Menu;
 
 	/**
 	 * Removes a TrayItem
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function remove():String;
 
 	/**
@@ -42,7 +41,7 @@ extern class Tray {
 	 * @param	hint	(optional) tooltip value or null to unset
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function setHint(hint:String):String;
 
 	/**
@@ -50,7 +49,7 @@ extern class Tray {
 	 * @param	icon	(optional) path to the icon or null to unset
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function setIcon(icon:String):String;
 
 	/**
@@ -58,6 +57,6 @@ extern class Tray {
 	 * @param	menu	The Menu to use for this TrayItem or null to unset
 	 * @return	String
 	 * @since	0.6.0
-	*/
+	 */
 	public function setMenu(menu:Menu):String;
 }

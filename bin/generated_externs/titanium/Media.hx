@@ -3,8 +3,7 @@ import titanium.media.Sound;
 /**
  * A module for dealing with media.
  * @since	0.2.0
- * @example	null
-*/
+ */
 @:native("Titanium.Media")
 extern class Media {
 	public function new():Void;
@@ -13,13 +12,13 @@ extern class Media {
 	 * Activate the system bell. Some systems may have disabled the system bell.
 	 * @return	String
 	 * @since	0.2.0
-	*/
+	 */
 	public function beep():String;
 
 	/**
 	 * Factory method for Sound objects, created given a path or a URL to a sound file.
-	The types of sound files that can be played depend on the codecs installed on the
-	user's system.
+	 * The types of sound files that can be played depend on the codecs installed on the
+	 * user's system.
 	 * @param	path	The path or url to the sound file to play.
 	 * @return	Sound
 	 * @since	0.2.0
@@ -29,6 +28,6 @@ extern class Media {
 		    soundObj.play();
 		</code></pre>
 		
-	*/
+	 */
 	public function createSound(path:String):Sound;
 }

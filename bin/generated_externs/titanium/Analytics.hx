@@ -2,8 +2,7 @@ package titanium;
 /**
  * The Titanium Analytics module used for recording analytics events.
  * @since	0.7.0
- * @example	null
-*/
+ */
 @:native("Titanium.Analytics")
 extern class Analytics {
 	public function new():Void;
@@ -21,7 +20,7 @@ extern class Analytics {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public function featureEvent(name:String, data:Dynamic):Void;
 
 	/**
@@ -36,7 +35,7 @@ extern class Analytics {
 		    Titanium.Analytics.navEvent('tab.places', 'tab.settings');
 		</code></pre>
 		
-	*/
+	 */
 	public function navEvent(from:String, to:String, name:String, data:Dynamic):Void;
 
 	/**
@@ -52,7 +51,7 @@ extern class Analytics {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public function settingsEvent(name:String, data:Dynamic):String;
 
 	/**
@@ -81,7 +80,7 @@ extern class Analytics {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public function timedEvent(event:String, start:Date, stop:Date, duration:Float, data:Dynamic):String;
 
 	/**
@@ -98,6 +97,6 @@ extern class Analytics {
 		    });
 		</code></pre>
 		
-	*/
+	 */
 	public function userEvent(name:String, data:Dynamic):String;
 }
