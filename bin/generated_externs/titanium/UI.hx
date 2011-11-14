@@ -18,7 +18,6 @@ extern class UI {
 	 * @since	0.6.0
 	 */
 	public static var CENTERED:Float;
-	public function new():Void;
 
 	/**
 	 * Create and add a tray icon
@@ -27,14 +26,14 @@ extern class UI {
 	 * @return	Tray
 	 * @since	0.2.0
 	 */
-	public function addTray(iconURL:String, eventListener:Dynamic):Tray;
+	public static function addTray(iconURL:String, eventListener:Dynamic):Tray;
 
 	/**
 	 * Empty the tray of all this application's tray items
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function clearTray():Void;
+	public static function clearTray():Void;
 
 	/**
 	 * Create a new CheckMenuItem object.
@@ -43,7 +42,7 @@ extern class UI {
 	 * @return	CheckMenuItem
 	 * @since	0.6.0
 	 */
-	public function createCheckMenuItem(label:String, eventListener:Dynamic):CheckMenuItem;
+	public static function createCheckMenuItem(label:String, eventListener:Dynamic):CheckMenuItem;
 
 	/**
 	 * Create a new menu
@@ -58,7 +57,7 @@ extern class UI {
 		</pre></codee>
 		
 	 */
-	public function createMenu():Menu;
+	public static function createMenu():Menu;
 
 	/**
 	 * Create a new menu item.
@@ -85,14 +84,14 @@ extern class UI {
 		</pre></codee>
 		
 	 */
-	public function createMenuItem(label:String, eventListener:Dynamic, iconURL:String):MenuItem;
+	public static function createMenuItem(label:String, eventListener:Dynamic, iconURL:String):MenuItem;
 
 	/**
 	 * Create a new separator menu item.
 	 * @return	SeparatorMenuItem
 	 * @since	0.6.0
 	 */
-	public function createSeperatorMenuItem():SeparatorMenuItem;
+	public static function createSeperatorMenuItem():SeparatorMenuItem;
 
 	/**
 	 * <p>
@@ -154,15 +153,15 @@ extern class UI {
 	 * @return	UserWindow
 	 * @since	0.8.1
 	 */
-	@:overload(public function createWindow(options:String):UserWindow{})
-	public function createWindow(options:Dynamic):UserWindow;
+	@:overload(public static function createWindow(options:String):UserWindow{})
+	public static function createWindow(options:Dynamic):UserWindow;
 
 	/**
 	 * Return this application's context menu or null if none is set.
 	 * @return	Menu
 	 * @since	0.2.0
 	 */
-	public function getContextMenu():Menu;
+	public static function getContextMenu():Menu;
 
 	/**
 	 * Return the current window. This function does not exist outside of the context
@@ -170,42 +169,42 @@ extern class UI {
 	 * @return	UserWindow
 	 * @since	0.4.0
 	 */
-	public function getCurrentWindow():UserWindow;
+	public static function getCurrentWindow():UserWindow;
 
 	/**
 	 * Return the user's idle time (for the desktop, not just the application)
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getIdleTime():Float;
+	public static function getIdleTime():Float;
 
 	/**
 	 * Return the application's main window
 	 * @return	UserWindow
 	 * @since	0.6.0
 	 */
-	public function getMainWindow():UserWindow;
+	public static function getMainWindow():UserWindow;
 
 	/**
 	 * Return the application's main MenuItem or null if none is set.
 	 * @return	Menu
 	 * @since	0.2.0
 	 */
-	public function getMenu():Menu;
+	public static function getMenu():Menu;
 
 	/**
 	 * Return a list of currently open windows.
 	 * @return	Array<UserWindow>
 	 * @since	0.8.0
 	 */
-	public function getOpenWindows():Array<UserWindow>;
+	public static function getOpenWindows():Array<UserWindow>;
 
 	/**
 	 * Return a list of currently open windows.
 	 * @return	Array<UserWindow>
 	 * @since	0.8.0
 	 */
-	public function getWindows():Array<UserWindow>;
+	public static function getWindows():Array<UserWindow>;
 
 	/**
 	 * Set the application icon's badge text.
@@ -213,7 +212,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setBadge(text:String):String;
+	public static function setBadge(text:String):String;
 
 	/**
 	 * Set the application icon's badge image.
@@ -221,7 +220,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setBadgeImage(imageURL:String):String;
+	public static function setBadgeImage(imageURL:String):String;
 
 	/**
 	 * Set the application's context menu
@@ -229,7 +228,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setContextMenu(menu:Menu):String;
+	public static function setContextMenu(menu:Menu):String;
 
 	/**
 	 * Set the dock icon
@@ -237,7 +236,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setDockIcon(icon:String):String;
+	public static function setDockIcon(icon:String):String;
 
 	/**
 	 * Set the dock menu
@@ -245,7 +244,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setDockMenu(menu:Menu):String;
+	public static function setDockMenu(menu:Menu):String;
 
 	/**
 	 * Set the application's icon
@@ -253,7 +252,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setIcon(menu:String):String;
+	public static function setIcon(menu:String):String;
 
 	/**
 	 * Set a menu for the application
@@ -261,7 +260,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setMenu(menu:Menu):String;
+	public static function setMenu(menu:Menu):String;
 
 	/**
 	 * create a UI dialog
@@ -269,5 +268,5 @@ extern class UI {
 	 * @return	Dialog
 	 * @since	0.4.0
 	 */
-	public function showDialog(params:Dynamic):Dialog;
+	public static function showDialog(params:Dynamic):Dialog;
 }

@@ -11,38 +11,37 @@ extern class Codec {
 	 * Constant specifying the Adler-32 checksum algorithm.
 	 * @since	0.7.0
 	 */
-	public var ADLER32:Float;
+	public static var ADLER32:Float;
 
 	/**
 	 * Constant specifying the CRC32 checksum algorithm.
 	 * @since	0.7.0
 	 */
-	public var CRC32:String;
+	public static var CRC32:String;
 
 	/**
 	 * Constant specifying the MD2 hash algorithm.
 	 * @since	0.7.0
 	 */
-	public var MD2:String;
+	public static var MD2:String;
 
 	/**
 	 * Constant specifying the MD4 hash algorithm.
 	 * @since	0.7.0
 	 */
-	public var MD4:String;
+	public static var MD4:String;
 
 	/**
 	 * Constant specifying the MD5 hash algorithm.
 	 * @since	0.7.0
 	 */
-	public var MD5:String;
+	public static var MD5:String;
 
 	/**
 	 * Constant specifying the SHA1 hash algorithm.
 	 * @since	0.7.0
 	 */
-	public var SHA1:String;
-	public function new():Void;
+	public static var SHA1:String;
 
 	/**
 	 * Compute the checksum of the given String with the given checksum algorithm.
@@ -51,7 +50,7 @@ extern class Codec {
 	 * @return	Float
 	 * @since	0.7.0
 	 */
-	public function checksum(data:String, checksumType:int):Float;
+	public static function checksum(data:String, checksumType:int):Float;
 
 	/**
 	 * Asynchronously write the contents of a directory to a zip file.
@@ -70,7 +69,7 @@ extern class Codec {
 		</code></pre>
 		
 	 */
-	public function createZip(root:File, zipFile:File, onComplete:Dynamic):String;
+	public static function createZip(root:File, zipFile:File, onComplete:Dynamic):String;
 
 	/**
 	 * Decode a Base64-encoded String.
@@ -78,7 +77,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function decodeBase64(data:String):String;
+	public static function decodeBase64(data:String):String;
 
 	/**
 	 * Decode a hex binary-encoded String.
@@ -86,7 +85,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function decodeHexBinary(data:String):String;
+	public static function decodeHexBinary(data:String):String;
 
 	/**
 	 * Digest a String into a hex binary HMAC.
@@ -97,7 +96,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function digestHMACToHex(hashType:int, data:String, data:String):String;
+	public static function digestHMACToHex(hashType:int, data:String, data:String):String;
 
 	/**
 	 * Encode some data using a digest algorithm to a hex binary String.
@@ -107,7 +106,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function digestToHex(hashType:int, data:Bytes):String;
+	public static function digestToHex(hashType:int, data:Bytes):String;
 
 	/**
 	 * Encode some data into Base64.
@@ -116,7 +115,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function encodeBase64(data:Bytes):String;
+	public static function encodeBase64(data:Bytes):String;
 
 	/**
 	 * Encode some data into a hex binary String.
@@ -125,7 +124,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function encodeHexBinary(data:Bytes):String;
+	public static function encodeHexBinary(data:Bytes):String;
 
 	/**
 	 * Asynchronously extract the contents of a zip file.
@@ -144,5 +143,5 @@ extern class Codec {
 		</code></pre>
 		
 	 */
-	public function extractZip(zipFile:File, dest:File, onComplete:Dynamic):String;
+	public static function extractZip(zipFile:File, dest:File, onComplete:Dynamic):String;
 }

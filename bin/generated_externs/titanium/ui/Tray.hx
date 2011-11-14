@@ -6,35 +6,34 @@ import titanium.ui.Menu;
  */
 @:native("Titanium.UI.Tray")
 extern class Tray {
-	public function new():Void;
 
 	/**
 	 * Get the hint for this TrayItem
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function getHint():String;
+	public static function getHint():String;
 
 	/**
 	 * Get the icon URL for this TrayItem
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function getIcon():String;
+	public static function getIcon():String;
 
 	/**
 	 * Get the menu for this TrayItem
 	 * @return	Menu
 	 * @since	0.6.0
 	 */
-	public function getMenu():Menu;
+	public static function getMenu():Menu;
 
 	/**
 	 * Removes a TrayItem
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function remove():String;
+	public static function remove():String;
 
 	/**
 	 * Sets a TrayItem's tooltip
@@ -42,7 +41,7 @@ extern class Tray {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setHint(hint:String):String;
+	public static function setHint(hint:String):String;
 
 	/**
 	 * Sets a TrayItem's icon
@@ -50,7 +49,7 @@ extern class Tray {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setIcon(icon:String):String;
+	public static function setIcon(icon:String):String;
 
 	/**
 	 * Set the menu for this TrayItem
@@ -58,5 +57,5 @@ extern class Tray {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function setMenu(menu:Menu):String;
+	public static function setMenu(menu:Menu):String;
 }

@@ -5,7 +5,6 @@ package titanium.api;
  */
 @:native("Titanium.API.Script")
 extern class Script {
-	public function new():Void;
 
 	/**
 	 * <p>
@@ -35,7 +34,7 @@ extern class Script {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function addScriptEvaluator(evaluator:Dynamic):String;
+	public static function addScriptEvaluator(evaluator:Dynamic):String;
 
 	/**
 	 * 
@@ -43,7 +42,7 @@ extern class Script {
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	public function canEvaluate(evaluator:Dynamic):Bool;
+	public static function canEvaluate(evaluator:Dynamic):Bool;
 
 	/**
 	 * 
@@ -51,7 +50,7 @@ extern class Script {
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	public function canPreprocess(url:String):Bool;
+	public static function canPreprocess(url:String):Bool;
 
 	/**
 	 * Evaluates a string of code
@@ -62,7 +61,7 @@ extern class Script {
 	 * @return	Dynamic
 	 * @since	0.7.0
 	 */
-	public function evaluate(mimeType:String, name:String, code:String, scope:Dynamic):Dynamic;
+	public static function evaluate(mimeType:String, name:String, code:String, scope:Dynamic):Dynamic;
 
 	/**
 	 * Runs an app URL through preprocessing, returning the result as a string
@@ -71,7 +70,7 @@ extern class Script {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function preprocess(URL:String, scope:Dynamic):String;
+	public static function preprocess(URL:String, scope:Dynamic):String;
 
 	/**
 	 * Removes a script evalutor
@@ -79,5 +78,5 @@ extern class Script {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function removeScriptEvaluator(evaluator:Dynamic):String;
+	public static function removeScriptEvaluator(evaluator:Dynamic):String;
 }

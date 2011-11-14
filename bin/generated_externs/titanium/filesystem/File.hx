@@ -7,7 +7,6 @@ import titanium.filesystem.Filestream;
  */
 @:native("Titanium.Filesystem.File")
 extern class File {
-	public function new():Void;
 
 	/**
 	 * Copies a file to the specified location. If the target is a directory
@@ -17,7 +16,7 @@ extern class File {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function copy(target:File):Void;
+	public static function copy(target:File):Void;
 
 	/**
 	 * Create a new directory at this File object's path. If the
@@ -27,7 +26,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function createDirectory():Bool;
+	public static function createDirectory():Bool;
 
 	/**
 	 * Creates a shortcut to a file or directory at this Filesystem.File's
@@ -38,7 +37,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function createShortcut(target:File):Bool;
+	public static function createShortcut(target:File):Bool;
 
 	/**
 	 * Return the timestamp for when this file or directory was created.
@@ -47,7 +46,7 @@ extern class File {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function createTimestamp():Float;
+	public static function createTimestamp():Float;
 
 	/**
 	 * Remove the file or directory specified by this Filesystem.File.
@@ -56,7 +55,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function deleteDirectory(recursive:Bool):Bool;
+	public static function deleteDirectory(recursive:Bool):Bool;
 
 	/**
 	 * Remove the file or directory specified by this Filesystem.File,
@@ -65,7 +64,7 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function deleteFile():String;
+	public static function deleteFile():String;
 
 	/**
 	 * Return true if a file or directory exists at the path
@@ -73,14 +72,14 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function exists():Bool;
+	public static function exists():Bool;
 
 	/**
 	 * Return the extension of this Filesystem.File.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function extension():String;
+	public static function extension():String;
 
 	/**
 	 * If this Filesystem.File specifies the path to a directory,
@@ -89,7 +88,7 @@ extern class File {
 	 * @return	Array<File>
 	 * @since	0.2.0
 	 */
-	public function getDirectoryListing():Array<File>;
+	public static function getDirectoryListing():Array<File>;
 
 	/**
 	 * Return true if the path specified by this Filesystem.File refers
@@ -97,7 +96,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isDirectory():Bool;
+	public static function isDirectory():Bool;
 
 	/**
 	 * Return true if the directory or file at the path specified by
@@ -106,7 +105,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isExecutable():Bool;
+	public static function isExecutable():Bool;
 
 	/**
 	 * Return true if the path specified by this Filesystem.File refers
@@ -114,7 +113,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isFile():Bool;
+	public static function isFile():Bool;
 
 	/**
 	 * Return true if the path specified by this Filesystem.File refers
@@ -124,7 +123,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isHidden():Bool;
+	public static function isHidden():Bool;
 
 	/**
 	 * Return true if the path specified by this Filesystem.File refers
@@ -132,7 +131,7 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function isReadonly():String;
+	public static function isReadonly():String;
 
 	/**
 	 * Return true if the path specified by this Filesystem.File refers
@@ -140,7 +139,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isSymbolicLink():Bool;
+	public static function isSymbolicLink():Bool;
 
 	/**
 	 * Return true if the path specified by this Filesystem.File refers
@@ -148,14 +147,14 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isWritable():Bool;
+	public static function isWritable():Bool;
 
 	/**
 	 * Return the modification timestamp of a file or directory
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function modificationTimestamp():Float;
+	public static function modificationTimestamp():Float;
 
 	/**
 	 * Moves to the specified location. If the target is a directory
@@ -165,14 +164,14 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function move(target:File):String;
+	public static function move(target:File):String;
 
 	/**
 	 * Return the full path of this File.Filesystem object.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function nativePath():String;
+	public static function nativePath():String;
 
 	/**
 	 * Create and open a Filestream for this File object.
@@ -185,21 +184,21 @@ extern class File {
 	 * @return	Filestream
 	 * @since	1.1.0
 	 */
-	public function open(mode:Float, binary:Bool, append:Bool):Filestream;
+	public static function open(mode:Float, binary:Bool, append:Bool):Filestream;
 
 	/**
 	 * Return the parent directory of this File.Filesystem object.
 	 * @return	File
 	 * @since	0.2.0
 	 */
-	public function parent():File;
+	public static function parent():File;
 
 	/**
 	 * Return the entire contents of a file as a Bytes object.
 	 * @return	Bytes
 	 * @since	0.2.0
 	 */
-	public function read():Bytes;
+	public static function read():Bytes;
 
 	/**
 	 * Return one line from the file specified by this Filesystem.File object.
@@ -211,7 +210,7 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function readLine():String;
+	public static function readLine():String;
 
 	/**
 	 * Renames a file to the given path.
@@ -219,7 +218,7 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function rename(newPath:String):String;
+	public static function rename(newPath:String):String;
 
 	/**
 	 * Resolves a given relative path against the path specified by this
@@ -229,7 +228,7 @@ extern class File {
 	 * @return	File
 	 * @since	0.2.0
 	 */
-	public function resolve(subPath:String):File;
+	public static function resolve(subPath:String):File;
 
 	/**
 	 * Set the execute bit on the file or directory at the path specified
@@ -238,7 +237,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function setExecutable():Bool;
+	public static function setExecutable():Bool;
 
 	/**
 	 * Remove the wrtiable bit and ensure there is a readable bit on the file
@@ -248,7 +247,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function setReadonly():Bool;
+	public static function setReadonly():Bool;
 
 	/**
 	 * Set the write bit on the file or directory at the path specified
@@ -257,14 +256,14 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function setWritable():Bool;
+	public static function setWritable():Bool;
 
 	/**
 	 * Return the size of the file in number of bytes.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function size():Float;
+	public static function size():Float;
 
 	/**
 	 * Return the space available on the filesystem containing the
@@ -273,14 +272,14 @@ extern class File {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function spaceAvailable():Float;
+	public static function spaceAvailable():Float;
 
 	/**
 	 * Return the path of this Filesystem.File object as a String.
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function toString():String;
+	public static function toString():String;
 
 	/**
 	 * Creates a new, empty file in an atomic operation.
@@ -288,7 +287,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	1.1.0
 	 */
-	public function touch():Bool;
+	public static function touch():Bool;
 
 	/**
 	 * If this file is a zip file, unzip it into the given destination directory.
@@ -298,7 +297,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	public function unzip(destination:File):Bool;
+	public static function unzip(destination:File):Bool;
 
 	/**
 	 * Write data to the file at the path specified by this Filesystem.File
@@ -308,5 +307,5 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function write(data:Bytes):String;
+	public static function write(data:Bytes):String;
 }

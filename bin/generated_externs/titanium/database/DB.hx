@@ -11,21 +11,20 @@ extern class DB {
 	 * The row id of the last insert operation.
 	 * @since	0.4.0
 	 */
-	public var lastInsertRowId:Float;
+	public static var lastInsertRowId:Float;
 
 	/**
 	 * The number of rows affected by the last execute call.
 	 * @since	0.4.0
 	 */
-	public var rowsAffected:Float;
-	public function new():Void;
+	public static var rowsAffected:Float;
 
 	/**
 	 * Close an open Database.DB. If the database is not open, this method will do nothing.
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function close():Void;
+	public static function close():Void;
 
 	/**
 	 * Executes an SQL query on this Database.DB. Currently all queries must
@@ -50,7 +49,7 @@ extern class DB {
 		</code></pre>
 		
 	 */
-	public function execute(query:String, arg:Dynamic):ResultSet;
+	public static function execute(query:String, arg:Dynamic):ResultSet;
 
 	/**
 	 * Get the full filesystem path to the database. If this database was
@@ -60,7 +59,7 @@ extern class DB {
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function getPath():String;
+	public static function getPath():String;
 
 	/**
 	 * Remove a Database.DB. This method will close the database
@@ -68,5 +67,5 @@ extern class DB {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function remove():Void;
+	public static function remove():Void;
 }

@@ -26,7 +26,6 @@ extern class Filesystem {
 	 * @since	0.3.0
 	 */
 	public static var MODE_WRITE:Float;
-	public function new():Void;
 
 	/**
 	 * Executes an asynchronous copy operation and returns an AsyncCopy object.
@@ -61,7 +60,7 @@ extern class Filesystem {
 		</code></pre>
 		
 	 */
-	public var asyncCopy:Array<File>->File->Dynamic->AsyncCopy;
+	public static var asyncCopy:Array<File>->File->Dynamic->AsyncCopy;
 
 	/**
 	 * Create a temporary directory. This directory is guaranteed to be
@@ -70,7 +69,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function createTempDirectory():File;
+	public static function createTempDirectory():File;
 
 	/**
 	 * Create an temporary file. This file is guaranteed to be
@@ -79,7 +78,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function createTempFile():File;
+	public static function createTempFile():File;
 
 	/**
 	 * Return the data directory of the application. The data directory is per-user
@@ -88,7 +87,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getApplicationDataDirectory():File;
+	public static function getApplicationDataDirectory():File;
 
 	/**
 	 * Return the directory containing the application. The application directory
@@ -98,7 +97,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getApplicationDirectory():File;
+	public static function getApplicationDirectory():File;
 
 	/**
 	 * Return the Desktop directory for the current user. OS X and Windows will
@@ -107,7 +106,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getDesktopDirectory():File;
+	public static function getDesktopDirectory():File;
 
 	/**
 	 * Return the documents directory for the current user. OS X and Windows will
@@ -116,7 +115,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getDocumentsDirectory():File;
+	public static function getDocumentsDirectory():File;
 
 	/**
 	 * Create a Filesystem.File object given a variable-length argument list
@@ -147,7 +146,7 @@ extern class Filesystem {
 		</code></pre>
 		
 	 */
-	public function getFile(base:File, arg:File):File;
+	public static function getFile(base:File, arg:File):File;
 
 	/**
 	 * Create a Filesystem.Filestream object given a Filesystem.File or a path. 
@@ -155,7 +154,7 @@ extern class Filesystem {
 	 * @return	Filestream
 	 * @since	0.8.0
 	 */
-	public function getFileStream():Filestream;
+	public static function getFileStream():Filestream;
 
 	/**
 	 * Return the line ending most commonly used by the current operating system.
@@ -164,7 +163,7 @@ extern class Filesystem {
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function getLineEnding():String;
+	public static function getLineEnding():String;
 
 	/**
 	 * Return the directory commonly used for storing applications on this
@@ -173,7 +172,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getProgramsDirectory():File;
+	public static function getProgramsDirectory():File;
 
 	/**
 	 * Return the path to this application's resources directory. This diretory
@@ -183,7 +182,7 @@ extern class Filesystem {
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getResourcesDirectory():File;
+	public static function getResourcesDirectory():File;
 
 	/**
 	 * Return the system root directories. On Unix systems there is at
@@ -192,26 +191,26 @@ extern class Filesystem {
 	 * @return	Array<File>
 	 * @since	0.8.0
 	 */
-	public function getRootDirectories():Array<File>;
+	public static function getRootDirectories():Array<File>;
 
 	/**
 	 * Return the directory of the current Titanium runtime files.
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getRuntimeHomeDirectory():File;
+	public static function getRuntimeHomeDirectory():File;
 
 	/**
 	 * Return the path separator used by the operating system.
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function getSeparator():String;
+	public static function getSeparator():String;
 
 	/**
 	 * Return the home directory of the current user.
 	 * @return	File
 	 * @since	0.8.0
 	 */
-	public function getUserDirectory():File;
+	public static function getUserDirectory():File;
 }

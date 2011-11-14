@@ -5,7 +5,6 @@ package titanium.media;
  */
 @:native("Titanium.Media.Sound")
 extern class Sound {
-	public function new():Void;
 
 	/**
 	 * Return the current volume of this Media.Sound object. Volume
@@ -13,28 +12,28 @@ extern class Sound {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getVolume():Float;
+	public static function getVolume():Float;
 
 	/**
 	 * Return true if this Media.Sound is set to loop and false otherwise.
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isLooping():Bool;
+	public static function isLooping():Bool;
 
 	/**
 	 * Return true if this Media.Sound is paused and false otherwise.
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isPaused():Bool;
+	public static function isPaused():Bool;
 
 	/**
 	 * Return true if this Media.Sound is playing and false otherwise.
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isPlaying():Bool;
+	public static function isPlaying():Bool;
 
 	/**
 	 * Set a callback to invoke once this sound is finished playing. If
@@ -45,28 +44,28 @@ extern class Sound {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function onComplete(callback|null:Dynamic):Void;
+	public static function onComplete(callback|null:Dynamic):Void;
 
 	/**
 	 * Pause a currently playing sound.
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function pause():Void;
+	public static function pause():Void;
 
 	/**
 	 * Play a sound object. If the sound is paused, it will resume from the current location.
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function play():Void;
+	public static function play():Void;
 
 	/**
 	 * Reload this sound from the original URL or path.
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function reload():Void;
+	public static function reload():Void;
 
 	/**
 	 * Set whether or not this sound should loop.
@@ -74,7 +73,7 @@ extern class Sound {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function setLooping(looping:Bool):Void;
+	public static function setLooping(looping:Bool):Void;
 
 	/**
 	 * Set the volume of this sound. Sound volumes should be between
@@ -84,12 +83,12 @@ extern class Sound {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function setVolume(volume:Float):Void;
+	public static function setVolume(volume:Float):Void;
 
 	/**
 	 * Stop a currently playing sound.
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function stop():Void;
+	public static function stop():Void;
 }

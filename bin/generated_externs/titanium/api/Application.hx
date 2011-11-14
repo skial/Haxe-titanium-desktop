@@ -8,7 +8,6 @@ application or one on disk.
  */
 @:native("Titanium.API.Application")
 extern class Application {
-	public function new():Void;
 
 	/**
 	 * Retrieve a list of command-line arguments passed to this application. This
@@ -16,7 +15,7 @@ extern class Application {
 	 * @return	Array<String>
 	 * @since	0.4.0
 	 */
-	public function getArguments():Array<String>;
+	public static function getArguments():Array<String>;
 
 	/**
 	 * Find the value for a given argument. You may either pass 
@@ -26,7 +25,7 @@ extern class Application {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getArgumentValue(argument:String):String;
+	public static function getArgumentValue(argument:String):String;
 
 	/**
 	 * Return a list of all available (installed and bundled) components
@@ -37,7 +36,7 @@ extern class Application {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getAvailableComponents():Array<Component>;
+	public static function getAvailableComponents():Array<Component>;
 
 	/**
 	 * Return a list of all available (installed and bundled) modules
@@ -48,7 +47,7 @@ extern class Application {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getAvailableModules():Array<Component>;
+	public static function getAvailableModules():Array<Component>;
 
 	/**
 	 * Return a list of all available (installed and bundled) runtimes
@@ -59,7 +58,7 @@ extern class Application {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getAvailableRuntimes():Array<Component>;
+	public static function getAvailableRuntimes():Array<Component>;
 
 	/**
 	 * Return a list of all bundled components for this for this application.
@@ -74,14 +73,14 @@ extern class Application {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getBundledComponents():Array<Component>;
+	public static function getBundledComponents():Array<Component>;
 
 	/**
 	 * Return a list of all modules bundled with this application
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getBundledModules():Array<Component>;
+	public static function getBundledModules():Array<Component>;
 
 	/**
 	 * Return a list of all bundled runtimes for this for this application.
@@ -90,7 +89,7 @@ extern class Application {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getBundledRuntimes():Array<Component>;
+	public static function getBundledRuntimes():Array<Component>;
 
 	/**
 	 * Return a list of all resolved components for this for this application.
@@ -100,7 +99,7 @@ extern class Application {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getComponents():Array<Component>;
+	public static function getComponents():Array<Component>;
 
 	/**
 	 * Get the path to the application's user data directory. This path is
@@ -110,7 +109,7 @@ extern class Application {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getDataPath():String;
+	public static function getDataPath():String;
 
 	/**
 	 * Get a list of this application's dependencies. Dependencies
@@ -118,14 +117,14 @@ extern class Application {
 	 * @return	Array<Dependency>
 	 * @since	0.4.0
 	 */
-	public function getDependencies():Array<Dependency>;
+	public static function getDependencies():Array<Dependency>;
 
 	/**
 	 * Get the path to this application's executable.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getExecutablePath():String;
+	public static function getExecutablePath():String;
 
 	/**
 	 * Get this application globally unique identifier. This is
@@ -133,7 +132,7 @@ extern class Application {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getGUID():String;
+	public static function getGUID():String;
 
 	/**
 	 * Get this human readable id currently defined in both the
@@ -141,7 +140,7 @@ extern class Application {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getID():String;
+	public static function getID():String;
 
 	/**
 	 * Get the contents of this application's manifest as an array
@@ -150,14 +149,14 @@ extern class Application {
 	 * @return	Array<Array<String>>
 	 * @since	0.4.0
 	 */
-	public function getManifest():Array<Array<String>>;
+	public static function getManifest():Array<Array<String>>;
 
 	/**
 	 * Get the path to this application's manifest
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getManifestPath():String;
+	public static function getManifestPath():String;
 
 	/**
 	 * Return a list of all resolved modules for this for this application.
@@ -167,14 +166,14 @@ extern class Application {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getModules():Array<Component>;
+	public static function getModules():Array<Component>;
 
 	/**
 	 * Get this application's name.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getName():String;
+	public static function getName():String;
 
 	/**
 	 * Get this application's path. Note that this is the top-level path of
@@ -183,14 +182,14 @@ extern class Application {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getPath():String;
+	public static function getPath():String;
 
 	/**
 	 * Retrieve the process identifier of this application
 	 * @return	Float
 	 * @since	0.4.0
 	 */
-	public function getPID():Float;
+	public static function getPID():Float;
 
 	/**
 	 * Return the path to this application's resources directory. This directory
@@ -198,7 +197,7 @@ extern class Application {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getResourcesPath():String;
+	public static function getResourcesPath():String;
 
 	/**
 	 * Return the resolved runtime for this for this application.
@@ -208,14 +207,14 @@ extern class Application {
 	 * @return	Component
 	 * @since	0.4.0
 	 */
-	public function getRuntime():Component;
+	public static function getRuntime():Component;
 
 	/**
 	 * Get this application's version.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getVersion():String;
+	public static function getVersion():String;
 
 	/**
 	 * Determine if the given argument is in the argument list.
@@ -225,14 +224,14 @@ extern class Application {
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function hasArgument(argument:String):Bool;
+	public static function hasArgument(argument:String):Bool;
 
 	/**
 	 * Returns whether or not this is the currently running application.
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function isCurrent():Bool;
+	public static function isCurrent():Bool;
 
 	/**
 	 * Attempt to resolve all the dependencies for this application. Resolved components
@@ -241,5 +240,5 @@ extern class Application {
 	 * @return	Array<Dependency>
 	 * @since	0.4.0
 	 */
-	public function resolveDependencies():Array<Dependency>;
+	public static function resolveDependencies():Array<Dependency>;
 }

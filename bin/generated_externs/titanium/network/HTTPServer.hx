@@ -5,7 +5,6 @@ package titanium.network;
  */
 @:native("Titanium.Network.HTTPServer")
 extern class HTTPServer {
-	public function new():Void;
 
 	/**
 	 * bind this server to a port on a specific interface
@@ -26,19 +25,19 @@ extern class HTTPServer {
 		</code></pre>
 		
 	 */
-	public var bind:Float->String->Dynamic->String;
+	public static var bind:Float->String->Dynamic->String;
 
 	/**
 	 * close this server
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function close():String;
+	public static function close():String;
 
 	/**
 	 * check to see if this server socket is closed
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	public function isClosed():Bool;
+	public static function isClosed():Bool;
 }

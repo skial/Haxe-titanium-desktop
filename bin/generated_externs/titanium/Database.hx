@@ -6,7 +6,6 @@ import titanium.database.DB;
  */
 @:native("Titanium.Database")
 extern class Database {
-	public function new():Void;
 
 	/**
 	 * Open a WebKit HTML5 compatible-database, given the name of the database
@@ -22,7 +21,7 @@ extern class Database {
 		</code></pre>
 		
 	 */
-	public function open(name:String):DB;
+	public static function open(name:String):DB;
 
 	/**
 	 * Open a database, given a path to an sqlite file.
@@ -30,5 +29,5 @@ extern class Database {
 	 * @return	DB
 	 * @since	0.8.0
 	 */
-	public function openFile(path:String):DB;
+	public static function openFile(path:String):DB;
 }

@@ -5,7 +5,6 @@ package titanium;
  */
 @:native("Titanium.Analytics")
 extern class Analytics {
-	public function new():Void;
 
 	/**
 	 * Send an analytics event associated with application feature functionality.
@@ -21,7 +20,7 @@ extern class Analytics {
 		</code></pre>
 		
 	 */
-	public function featureEvent(name:String, data:Dynamic):Void;
+	public static function featureEvent(name:String, data:Dynamic):Void;
 
 	/**
 	 * Send an analytics event associated with application navigation.
@@ -36,7 +35,7 @@ extern class Analytics {
 		</code></pre>
 		
 	 */
-	public function navEvent(from:String, to:String, name:String, data:Dynamic):Void;
+	public static function navEvent(from:String, to:String, name:String, data:Dynamic):Void;
 
 	/**
 	 * Send an analytics event associated with application settings or configuration
@@ -52,7 +51,7 @@ extern class Analytics {
 		</code></pre>
 		
 	 */
-	public function settingsEvent(name:String, data:Dynamic):String;
+	public static function settingsEvent(name:String, data:Dynamic):String;
 
 	/**
 	 * Send an analytics event tracking the duration of an application action
@@ -81,7 +80,7 @@ extern class Analytics {
 		</code></pre>
 		
 	 */
-	public function timedEvent(event:String, start:Date, stop:Date, duration:Float, data:Dynamic):String;
+	public static function timedEvent(event:String, start:Date, stop:Date, duration:Float, data:Dynamic):String;
 
 	/**
 	 * Send an analytics event not covered by the other interfaces.
@@ -98,5 +97,5 @@ extern class Analytics {
 		</code></pre>
 		
 	 */
-	public function userEvent(name:String, data:Dynamic):String;
+	public static function userEvent(name:String, data:Dynamic):String;
 }

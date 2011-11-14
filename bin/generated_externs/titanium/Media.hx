@@ -6,14 +6,13 @@ import titanium.media.Sound;
  */
 @:native("Titanium.Media")
 extern class Media {
-	public function new():Void;
 
 	/**
 	 * Activate the system bell. Some systems may have disabled the system bell.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function beep():String;
+	public static function beep():String;
 
 	/**
 	 * Factory method for Sound objects, created given a path or a URL to a sound file.
@@ -29,5 +28,5 @@ extern class Media {
 		</code></pre>
 		
 	 */
-	public function createSound(path:String):Sound;
+	public static function createSound(path:String):Sound;
 }

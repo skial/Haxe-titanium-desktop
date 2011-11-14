@@ -5,7 +5,6 @@ package titanium;
  */
 @:native("Titanium.JSON")
 extern class JSON {
-	public function new():Void;
 
 	/**
 	 * Deserialize a JSON string into a JavaScript value.
@@ -13,7 +12,7 @@ extern class JSON {
 	 * @return	Dynamic
 	 * @since	0.4.0
 	 */
-	public function parse(jsonString:String):Dynamic;
+	public static function parse(jsonString:String):Dynamic;
 
 	/**
 	 * Serialize a JavaScript value into a JSON string.
@@ -21,5 +20,5 @@ extern class JSON {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function stringify(value:Dynamic):String;
+	public static function stringify(value:Dynamic):String;
 }

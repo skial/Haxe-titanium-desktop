@@ -5,7 +5,6 @@ package titanium.network;
  */
 @:native("Titanium.Network.TCPSocket")
 extern class TCPSocket {
-	public function new():Void;
 
 	/**
 	 * Close this Network.TCPSocket connection. If there is no open
@@ -14,21 +13,21 @@ extern class TCPSocket {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function close():Bool;
+	public static function close():Bool;
 
 	/**
 	 * Connect the Socket object to the host specified during creation. The connection will be made asynchronously. Use onError to detect failures.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function connect():String;
+	public static function connect():String;
 
 	/**
 	 * Check whether the Socket is closed.
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isClosed():Bool;
+	public static function isClosed():Bool;
 
 	/**
 	 * Set the callback that will be fired when the Socket encounters an error.
@@ -36,7 +35,7 @@ extern class TCPSocket {
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function onError(onError:Dynamic):String;
+	public static function onError(onError:Dynamic):String;
 
 	/**
 	 * Set a callback that will be fired when data is received on the Socket.
@@ -44,7 +43,7 @@ extern class TCPSocket {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function onRead(onRead:Dynamic):String;
+	public static function onRead(onRead:Dynamic):String;
 
 	/**
 	 * Set the callback function that will be fired when a read finishes. A read is considered finished if some bytes have been read and a subsequent call to read returns zero bytes.
@@ -52,7 +51,7 @@ extern class TCPSocket {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function onReadComplete(onReadComplete:Dynamic):String;
+	public static function onReadComplete(onReadComplete:Dynamic):String;
 
 	/**
 	 * Set the callback that will be fired when an operation times out on the Socket.
@@ -60,7 +59,7 @@ extern class TCPSocket {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function onTimeout(onTimeout:Dynamic):String;
+	public static function onTimeout(onTimeout:Dynamic):String;
 
 	/**
 	 * Set a callback that will be fired when data is written on the Socket.
@@ -68,7 +67,7 @@ extern class TCPSocket {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function onWrite(onWrite:Dynamic):String;
+	public static function onWrite(onWrite:Dynamic):String;
 
 	/**
 	 * Write data to the Socket's connection, if open.
@@ -76,5 +75,5 @@ extern class TCPSocket {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function write(data:String):Bool;
+	public static function write(data:String):Bool;
 }

@@ -7,7 +7,6 @@ Properties offer an alternative to traditional HTML5 DOM storage.
  */
 @:native("Titanium.App.Properties")
 extern class Properties {
-	public function new():Void;
 
 	/**
 	 * Returns a property value as double.
@@ -19,7 +18,7 @@ extern class Properties {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public var getDouble:String->Float->Float;
+	public static var getDouble:String->Float->Float;
 
 	/**
 	 * Returns a property value as an integer.
@@ -31,7 +30,7 @@ extern class Properties {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public var getInt:String->Float->Float;
+	public static var getInt:String->Float->Float;
 
 	/**
 	 * Returns a property value as an Array.
@@ -43,7 +42,7 @@ extern class Properties {
 	 * @return	Dynamic
 	 * @since	0.2.0
 	 */
-	public var getList:Dynamic->Dynamic->Dynamic;
+	public static var getList:Dynamic->Dynamic->Dynamic;
 
 	/**
 	 * Returns a property value as a String.
@@ -55,7 +54,7 @@ extern class Properties {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public var getString:String->String->String;
+	public static var getString:String->String->String;
 
 	/**
 	 * Query whether or not a given property exists in this Property object.
@@ -63,14 +62,14 @@ extern class Properties {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function hasProperty(name:String):Bool;
+	public static function hasProperty(name:String):Bool;
 
 	/**
 	 * Returns an Array of all property names in this App.Properties object.
 	 * @return	Array<String>
 	 * @since	0.2.0
 	 */
-	public function listProperties():Array<String>;
+	public static function listProperties():Array<String>;
 
 	/**
 	 * Save this App.Properties object to file at the given path.
@@ -78,7 +77,7 @@ extern class Properties {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function saveTo(path:String):Void;
+	public static function saveTo(path:String):Void;
 
 	/**
 	 * Set a double property value given the name and value.
@@ -87,7 +86,7 @@ extern class Properties {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function setDouble(name:String, value:Float):Void;
+	public static function setDouble(name:String, value:Float):Void;
 
 	/**
 	 * Set an integer property value given the name and value.
@@ -96,7 +95,7 @@ extern class Properties {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function setInt(name:String, value:Float):Void;
+	public static function setInt(name:String, value:Float):Void;
 
 	/**
 	 * Set a list property value given the name and array of Strings.
@@ -105,7 +104,7 @@ extern class Properties {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function setList(name:String, value:Array<String>):Void;
+	public static function setList(name:String, value:Array<String>):Void;
 
 	/**
 	 * Set a String property value given the name and value.
@@ -114,5 +113,5 @@ extern class Properties {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function setString(name:String, value:String):Void;
+	public static function setString(name:String, value:String):Void;
 }

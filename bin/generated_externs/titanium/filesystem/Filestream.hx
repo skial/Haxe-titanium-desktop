@@ -23,7 +23,6 @@ extern class Filestream {
 	 * @since	0.4.0
 	 */
 	public static var MODE_WRITE:String;
-	public function new():Void;
 
 	/**
 	 * Close this Filsystem.Filstream. Return true if the stream closed
@@ -31,14 +30,14 @@ extern class Filestream {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function close():Bool;
+	public static function close():Bool;
 
 	/**
 	 * Return true if this Fileystem.Filestream is open and false otherwise.
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function isOpen():Bool;
+	public static function isOpen():Bool;
 
 	/**
 	 * Open this Filesystem.Filestream. Return true if the operation is
@@ -52,7 +51,7 @@ extern class Filestream {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function open(mode:Float, binary:Bool, append:Bool):Bool;
+	public static function open(mode:Float, binary:Bool, append:Bool):Bool;
 
 	/**
 	 * Read data from a Filesystem.Filestream into a Bytes object
@@ -62,7 +61,7 @@ extern class Filestream {
 	 * @return	Bytes
 	 * @since	0.2.0
 	 */
-	public function read(size:Integer):Bytes;
+	public static function read(size:Integer):Bytes;
 
 	/**
 	 * Reads one line from this Filesystem.Filestream. The stream must
@@ -83,14 +82,14 @@ extern class Filestream {
 		</code></pre>
 		
 	 */
-	public function readLine():Bytes;
+	public static function readLine():Bytes;
 
 	/**
 	 * Return true if this Filesystem.Filestream is ready for IO operations or false otherwise.
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function ready():Bool;
+	public static function ready():Bool;
 
 	/**
 	 * Set the current read/write position with in the file.
@@ -107,7 +106,7 @@ extern class Filestream {
 		</code></pre>
 		
 	 */
-	public function seek(offset:Integer, dir:Integer):Void;
+	public static function seek(offset:Integer, dir:Integer):Void;
 
 	/**
 	 * Returns current position in file relative to the beginning
@@ -121,7 +120,7 @@ extern class Filestream {
 		</code></pre>
 		
 	 */
-	public function tell():Integer;
+	public static function tell():Integer;
 
 	/**
 	 * Writes a line to this Filesystem.Filestream. Return true if this
@@ -130,7 +129,7 @@ extern class Filestream {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function write(data:Bytes):Bool;
+	public static function write(data:Bytes):Bool;
 
 	/**
 	 * Writes a line to this Filesystem.Filestream. The data will be followed
@@ -140,5 +139,5 @@ extern class Filestream {
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function writeLine(data:Bytes):Bool;
+	public static function writeLine(data:Bytes):Bool;
 }

@@ -6,47 +6,46 @@ runtime, SDK, Mobile SDK or application update.
  */
 @:native("Titanium.API.Component")
 extern class Component {
-	public function new():Void;
 
 	/**
 	 * Get the name of this component.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getName():String;
+	public static function getName():String;
 
 	/**
 	 * Get the path to this component.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getPath():String;
+	public static function getPath():String;
 
 	/**
 	 * Get the type of this component. Component types are defined as constants on the API module.
 	 * @return	Float
 	 * @since	0.4.0
 	 */
-	public function getType():Float;
+	public static function getType():Float;
 
 	/**
 	 * Get the version of this component. Note that bundled components do not currently have a version.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getVersion():String;
+	public static function getVersion():String;
 
 	/**
 	 * Whether or not this component is bundled with an application.
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function isBundled():Bool;
+	public static function isBundled():Bool;
 
 	/**
 	 * Whether or not this component is currently loaded.
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function isLoaded():Bool;
+	public static function isLoaded():Bool;
 }

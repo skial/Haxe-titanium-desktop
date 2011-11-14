@@ -5,14 +5,13 @@ package titanium.notification;
  */
 @:native("Titanium.Notification.Notification")
 extern class Notification {
-	public function new():Void;
 
 	/**
 	 * Hide this Notification.
 	 * @return	Bool
 	 * @since	0.9.0
 	 */
-	public function hide():Bool;
+	public static function hide():Bool;
 
 	/**
 	 * Set a callback function fired when notification is clicked.
@@ -20,7 +19,7 @@ extern class Notification {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public var setCallback:Dynamic->String;
+	public static var setCallback:Dynamic->String;
 
 	/**
 	 * Set the notification icon image.
@@ -28,7 +27,7 @@ extern class Notification {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function setIcon(icon:String):String;
+	public static function setIcon(icon:String):String;
 
 	/**
 	 * Set the notification message
@@ -36,7 +35,7 @@ extern class Notification {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function SetMessage(message:String):String;
+	public static function SetMessage(message:String):String;
 
 	/**
 	 * Set the timeout before the notification expires.
@@ -44,7 +43,7 @@ extern class Notification {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function setTimeout(timeout:Integer):String;
+	public static function setTimeout(timeout:Integer):String;
 
 	/**
 	 * Set the notification title
@@ -52,12 +51,12 @@ extern class Notification {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function setTitle(title:String):String;
+	public static function setTitle(title:String):String;
 
 	/**
 	 * Display the notification
 	 * @return	Bool
 	 * @since	0.9.0
 	 */
-	public function show():Bool;
+	public static function show():Bool;
 }

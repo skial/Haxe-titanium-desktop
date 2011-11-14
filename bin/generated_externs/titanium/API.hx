@@ -216,7 +216,6 @@ extern class API {
 	 * @since	0.4.0
 	 */
 	public static var WARN:Float;
-	public function new():Void;
 
 	/**
 	 * Register a root event listener. Event listeners registered using this
@@ -233,7 +232,7 @@ extern class API {
 		</code></pre>
 		
 	 */
-	public var addEventListener:String->Dynamic->Float;
+	public static var addEventListener:String->Dynamic->Float;
 
 	/**
 	 * Create a Kroll Bytes object given a String. A Bytes object is a generic
@@ -245,7 +244,7 @@ extern class API {
 	 * @return	Bytes
 	 * @since	0.9.0
 	 */
-	public function createBytes(contents:String):Bytes;
+	public static function createBytes(contents:String):Bytes;
 
 	/**
 	 * A constructor for API.Dependency objects.
@@ -256,7 +255,7 @@ extern class API {
 	 * @return	Dependency
 	 * @since	0.4.0
 	 */
-	public function createDependency(type:Float, name:String, version:String, requirement:Float):Dependency;
+	public static function createDependency(type:Float, name:String, version:String, requirement:Float):Dependency;
 
 	/**
 	 * Create a Kroll list given an optional JavaScript array. This method is mainly used for testing.
@@ -264,7 +263,7 @@ extern class API {
 	 * @return	Array
 	 * @since	0.5.0
 	 */
-	public function createKList(toWrap:Array):Array;
+	public static function createKList(toWrap:Array):Array;
 
 	/**
 	 * Create a Kroll method given an existing JavaScript Funtion. This method is mainly used for testing.
@@ -272,7 +271,7 @@ extern class API {
 	 * @return	Dynamic
 	 * @since	0.5.0
 	 */
-	public function createKMethod(toWrap:Dynamic):Dynamic;
+	public static function createKMethod(toWrap:Dynamic):Dynamic;
 
 	/**
 	 * Create a Kroll object given an existing JavaScript Object. This method is mainly used for testing.
@@ -280,7 +279,7 @@ extern class API {
 	 * @return	Dynamic
 	 * @since	0.5.0
 	 */
-	public function createKObject(toWrap:Dynamic):Dynamic;
+	public static function createKObject(toWrap:Dynamic):Dynamic;
 
 	/**
 	 * Log a statement with CRITICAL severity.
@@ -299,7 +298,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function critical(statement:String):Void;
+	public static function critical(statement:String):Void;
 
 	/**
 	 * Log a statement with DEBUG severity. The severity levels in order from
@@ -322,7 +321,7 @@ extern class API {
 		</code></pre>
 		
 	 */
-	public function debug(statement:String):Void;
+	public static function debug(statement:String):Void;
 
 	/**
 	 * Log a statement with ERROR severity.
@@ -341,7 +340,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function error(statement:String):Void;
+	public static function error(statement:String):Void;
 
 	/**
 	 * Log a statement with FATAL severity.
@@ -360,7 +359,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function fatal(statement:String):Void;
+	public static function fatal(statement:String):Void;
 
 	/**
 	 * Fire an event to the top-level event listener.
@@ -368,8 +367,8 @@ extern class API {
 	 * @return	Void
 	 * @since	0.5.0
 	 */
-	@:overload(public function fireEvent(event:String):Void{})
-	public function fireEvent(event:Dynamic):Void;
+	@:overload(public static function fireEvent(event:String):Void{})
+	public static function fireEvent(event:Dynamic):Void;
 
 	/**
 	 * Get an attribute in the global object
@@ -377,7 +376,7 @@ extern class API {
 	 * @return	Dynamic
 	 * @since	0.2.0
 	 */
-	public function get(key:String):Dynamic;
+	public static function get(key:String):Dynamic;
 
 	/**
 	 * Get the currently running application. This application will
@@ -385,14 +384,14 @@ extern class API {
 	 * @return	Application
 	 * @since	0.2.0
 	 */
-	public function getApplication():Application;
+	public static function getApplication():Application;
 
 	/**
 	 * Get a list of the paths on which Titanium searches for installed components. This does not include paths of bundled components.
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getComponentSearchPaths():Array<Component>;
+	public static function getComponentSearchPaths():Array<Component>;
 
 	/**
 	 * Get the system environment object, which can be queried and updated
@@ -408,7 +407,7 @@ extern class API {
 		</code></pre>
 		
 	 */
-	public function getEnvironment():Environment;
+	public static function getEnvironment():Environment;
 
 	/**
 	 * Get a list of the currently installed Titanium components.
@@ -418,7 +417,7 @@ extern class API {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getInstalledComponents():Array<Component>;
+	public static function getInstalledComponents():Array<Component>;
 
 	/**
 	 * Get a list of the currently installed Titanium Mobile SDK components.
@@ -428,7 +427,7 @@ extern class API {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getInstalledMobileSDKs():Array<Component>;
+	public static function getInstalledMobileSDKs():Array<Component>;
 
 	/**
 	 * Get a list of the currently installed Titanium module components.
@@ -438,7 +437,7 @@ extern class API {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getInstalledModules():Array<Component>;
+	public static function getInstalledModules():Array<Component>;
 
 	/**
 	 * Get a list of the currently installed Titanium runtime components.
@@ -448,7 +447,7 @@ extern class API {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getInstalledRuntimes():Array<Component>;
+	public static function getInstalledRuntimes():Array<Component>;
 
 	/**
 	 * Get a list of the currently installed Titanium SDK components.
@@ -458,7 +457,7 @@ extern class API {
 	 * @return	Array<Component>
 	 * @since	0.4.0
 	 */
-	public function getInstalledSDKs():Array<Component>;
+	public static function getInstalledSDKs():Array<Component>;
 
 	/**
 	 * Get the log level threshold of the Titanium logger. The logger
@@ -477,7 +476,7 @@ extern class API {
 	 * @return	Float
 	 * @since	0.5.0
 	 */
-	public function getLogLevel():Float;
+	public static function getLogLevel():Float;
 
 	/**
 	 * Log a statement with INFO severity. The severity levels in order from
@@ -496,7 +495,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function info(statement:String):Void;
+	public static function info(statement:String):Void;
 
 	/**
 	 * Invoke the installer to find and install a list of dependencies. When
@@ -510,7 +509,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public var installDependencies:Array<Dependency>->Dynamic->Void;
+	public static var installDependencies:Array<Dependency>->Dynamic->Void;
 
 	/**
 	 * Log a statement with a given severity level. The severity levels are
@@ -530,7 +529,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function log(type:Float, statement:String):Void;
+	public static function log(type:Float, statement:String):Void;
 
 	/**
 	 * Log a statement with NOTICE severity. The severity levels in order from
@@ -549,7 +548,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function notice(statement:String):Void;
+	public static function notice(statement:String):Void;
 
 	/**
 	 * Print a String to stdout without a trailing newline
@@ -557,7 +556,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.6.0
 	 */
-	public function print(data:Dynamic):Void;
+	public static function print(data:Dynamic):Void;
 
 	/**
 	 * Read an application manifest at a given path and return an
@@ -567,7 +566,7 @@ extern class API {
 	 * @return	Application
 	 * @since	0.4.0
 	 */
-	public function readApplicationManifest(manifestPath:String, applicationPath:String):Application;
+	public static function readApplicationManifest(manifestPath:String, applicationPath:String):Application;
 
 	/**
 	 * Remove a root event listener. If no listener with the given id or
@@ -576,8 +575,8 @@ extern class API {
 	 * @return	Void
 	 * @since	0.5.0
 	 */
-	@:overload(public function removeEventListener(id:Float):Void{})
-	public function removeEventListener(id:Dynamic):Void;
+	@:overload(public static function removeEventListener(id:Float):Void{})
+	public static function removeEventListener(id:Dynamic):Void;
 
 	/**
 	 * Execute the method asynchronously on the main thread. This should be
@@ -589,7 +588,7 @@ extern class API {
 	 * @return	Dynamic
 	 * @since	0.5.0
 	 */
-	public function runOnMainThread(method:Dynamic, arg:Dynamic):Dynamic;
+	public static function runOnMainThread(method:Dynamic, arg:Dynamic):Dynamic;
 
 	/**
 	 * Execute the method asynchronously on the main thread. This should be
@@ -600,7 +599,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.5.0
 	 */
-	public function runOnMainThreadAsync(method:Dynamic, arg:Dynamic):Void;
+	public static function runOnMainThreadAsync(method:Dynamic, arg:Dynamic):Void;
 
 	/**
 	 * Set an attribute in the global object
@@ -609,7 +608,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function set(key:String, value:String):Void;
+	public static function set(key:String, value:String):Void;
 
 	/**
 	 * Set the log level threshold of the Titanium logger. The logger
@@ -629,7 +628,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.5.0
 	 */
-	public function setLogLevel(level:Float):Void;
+	public static function setLogLevel(level:Float):Void;
 
 	/**
 	 * Log a statement with TRACE severity. The severity levels in order from
@@ -648,7 +647,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function trace(statement:String):Void;
+	public static function trace(statement:String):Void;
 
 	/**
 	 * Log a statement with WARN severity. The severity levels in order from
@@ -667,5 +666,5 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function warn(statement:String):Void;
+	public static function warn(statement:String):Void;
 }

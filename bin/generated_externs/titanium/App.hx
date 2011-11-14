@@ -6,7 +6,6 @@ import titanium.app.Properties;
  */
 @:native("Titanium.App")
 extern class App {
-	public function new():Void;
 
 	/**
 	 * Convert the given app URL to a filesystem path. App URLs generally have
@@ -23,7 +22,7 @@ extern class App {
 		</code></pre>
 		
 	 */
-	public function appURLToPath():String;
+	public static function appURLToPath():String;
 
 	/**
 	 * Create a new App.Properties object.
@@ -39,7 +38,7 @@ extern class App {
 		</code></pre>
 		
 	 */
-	public function createProperties(properties:Dynamic):Properties;
+	public static function createProperties(properties:Dynamic):Properties;
 
 	/**
 	 * Cause the application to exit after firing the Titanium.EXIT
@@ -49,7 +48,7 @@ extern class App {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public function exit():Void;
+	public static function exit():Void;
 
 	/**
 	 * Return the command-line arguments passed to this application,
@@ -65,7 +64,7 @@ extern class App {
 		</code></pre>
 		
 	 */
-	public function getArguments():Array<String>;
+	public static function getArguments():Array<String>;
 
 	/**
 	 * Return the application's copyright information, defined in the tiapp.xml file.
@@ -77,7 +76,7 @@ extern class App {
 		</code></pre>
 		
 	 */
-	public function getCopyright():String;
+	public static function getCopyright():String;
 
 	/**
 	 * Return the application's description, defined in the tiapp.xml file.
@@ -88,14 +87,14 @@ extern class App {
 		</code></pre>
 		
 	 */
-	public function getDescription():String;
+	public static function getDescription():String;
 
 	/**
 	 * Return the application's GUID, defined in the application manifest.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getGUID():String;
+	public static function getGUID():String;
 
 	/**
 	 * Return the full path to the application home directory. The application
@@ -106,7 +105,7 @@ extern class App {
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function getHome():String;
+	public static function getHome():String;
 
 	/**
 	 * Return the full path to the application icon. The application icon path
@@ -115,7 +114,7 @@ extern class App {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getIcon():String;
+	public static function getIcon():String;
 
 	/**
 	 * Get this human readable id defined in both the
@@ -123,28 +122,28 @@ extern class App {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getID():String;
+	public static function getID():String;
 
 	/**
 	 * Return the application name.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getName():String;
+	public static function getName():String;
 
 	/**
 	 * Return the full path to the application executable.
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function getPath():String;
+	public static function getPath():String;
 
 	/**
 	 * Return the application publisher information specifiedi in the tiapp.xml file.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getPublisher():String;
+	public static function getPublisher():String;
 
 	/**
 	 * Return the stream URL for the application's updates.
@@ -152,28 +151,28 @@ extern class App {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getStreamURL(arg:String):String;
+	public static function getStreamURL(arg:String):String;
 
 	/**
 	 * Get the system properties defined in tiapp.xml (see App.Properties).
 	 * @return	Properties
 	 * @since	0.4.0
 	 */
-	public function getSystemProperties():Properties;
+	public static function getSystemProperties():Properties;
 
 	/**
 	 * Return the application URL definedin the tiapp.xml file.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getURL():String;
+	public static function getURL():String;
 
 	/**
 	 * Return the application version defined in the tiapp.xml file.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getVersion():String;
+	public static function getVersion():String;
 
 	/**
 	 * Loads a properties list from a file path.
@@ -181,21 +180,21 @@ extern class App {
 	 * @return	Array<Properties>
 	 * @since	0.2.0
 	 */
-	public function loadProperties(path:String):Array<Properties>;
+	public static function loadProperties(path:String):Array<Properties>;
 
 	/**
 	 * Exit the application and restart it.
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function restart():String;
+	public static function restart():String;
 
 	/**
 	 * Print a raw string to stderr without a trailing newline.
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function stderr():String;
+	public static function stderr():String;
 
 	/**
 	 * Reads from stdin
@@ -204,7 +203,7 @@ extern class App {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function stdin(prompt:String, delimiter:String):String;
+	public static function stdin(prompt:String, delimiter:String):String;
 
 	/**
 	 * Print a String to stdout including a trailing newline.
@@ -212,5 +211,5 @@ extern class App {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function stdout(data:Dynamic):Void;
+	public static function stdout(data:Dynamic):Void;
 }

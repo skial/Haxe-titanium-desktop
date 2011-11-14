@@ -10,8 +10,7 @@ extern class IRCClient {
 	 * The connected property of an IRCClient object
 	 * @since	0.2.0
 	 */
-	public var connected:String;
-	public function new():Void;
+	public static var connected:String;
 
 	/**
 	 * Connects an IRC to the host specified during creation of the IRCClient object
@@ -25,42 +24,42 @@ extern class IRCClient {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public var connect:String->Float->String->String->String->String->Dynamic->String;
+	public static var connect:String->Float->String->String->String->String->Dynamic->String;
 
 	/**
 	 * Disconnects an IRC connection
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function disconnect():String;
+	public static function disconnect():String;
 
 	/**
 	 * Returns the nick name for the connection
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getNick():String;
+	public static function getNick():String;
 
 	/**
 	 * Returns a list of users for the channel
 	 * @return	Array<String>
 	 * @since	0.2.0
 	 */
-	public function getUsers():Array<String>;
+	public static function getUsers():Array<String>;
 
 	/**
 	 * Checks whether a user has OP status
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isOp():Bool;
+	public static function isOp():Bool;
 
 	/**
 	 * Checks whether a user has VOICE status
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isVoice():Bool;
+	public static function isVoice():Bool;
 
 	/**
 	 * Joins a channel
@@ -68,7 +67,7 @@ extern class IRCClient {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function join(channel:String):String;
+	public static function join(channel:String):String;
 
 	/**
 	 * Sends data to the IRC connection
@@ -77,7 +76,7 @@ extern class IRCClient {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function send(channel:String, message:String):String;
+	public static function send(channel:String, message:String):String;
 
 	/**
 	 * Sets the nick name for the connection
@@ -85,7 +84,7 @@ extern class IRCClient {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setNick(nick:String):String;
+	public static function setNick(nick:String):String;
 
 	/**
 	 * Leaves a channel
@@ -93,5 +92,5 @@ extern class IRCClient {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function unjoin(channel:String):String;
+	public static function unjoin(channel:String):String;
 }

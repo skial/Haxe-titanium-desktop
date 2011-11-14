@@ -12,189 +12,188 @@ extern class Process {
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGABRT:String;
+	public static var SIGABRT:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGALRM:String;
+	public static var SIGALRM:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGBUS:String;
+	public static var SIGBUS:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGCHLD:String;
+	public static var SIGCHLD:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGEMT:String;
+	public static var SIGEMT:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGFPE:String;
+	public static var SIGFPE:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGHUP:String;
+	public static var SIGHUP:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGILL:String;
+	public static var SIGILL:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGINFO:String;
+	public static var SIGINFO:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGINT:String;
+	public static var SIGINT:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGIO:String;
+	public static var SIGIO:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGKILL:String;
+	public static var SIGKILL:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGPIPE:String;
+	public static var SIGPIPE:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGPROF:String;
+	public static var SIGPROF:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGQUIT:String;
+	public static var SIGQUIT:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGSEGV:String;
+	public static var SIGSEGV:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGSTOP:String;
+	public static var SIGSTOP:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGSYS:String;
+	public static var SIGSYS:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGTERM:String;
+	public static var SIGTERM:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGTRAP:String;
+	public static var SIGTRAP:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGTSTP:String;
+	public static var SIGTSTP:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGTTIN:String;
+	public static var SIGTTIN:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGTTOU:String;
+	public static var SIGTTOU:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGURG:String;
+	public static var SIGURG:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGUSR1:String;
+	public static var SIGUSR1:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGUSR2:String;
+	public static var SIGUSR2:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGVTALRM:String;
+	public static var SIGVTALRM:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGWINCH:String;
+	public static var SIGWINCH:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGXCPU:String;
+	public static var SIGXCPU:String;
 
 	/**
 	 * 
 	 * @since	0.5.0
 	 */
-	public var SIGXFSZ:String;
-	public function new():Void;
+	public static var SIGXFSZ:String;
 
 	/**
 	 * Create a pipe for attaching to/from any number of processes.
 	 * @return	Pipe
 	 * @since	0.5.0
 	 */
-	public function createPipe():Pipe;
+	public static function createPipe():Pipe;
 
 	/**
 	 * Create a Process object. There are two main ways to use this function:
@@ -236,7 +235,7 @@ extern class Process {
 		</code></pre>
 		
 	 */
-	public function createProcess(args:Array<String>, envionment:Dynamic, pipeIn:Pipe, pipeOut:Pipe, pipeErr:Pipe):Process;
+	public static function createProcess(args:Array<String>, envionment:Dynamic, pipeIn:Pipe, pipeOut:Pipe, pipeErr:Pipe):Process;
 
 	/**
 	 * This method is deprecated. See Process.Process.createProcess()
@@ -245,5 +244,5 @@ extern class Process {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function launch(command:String, arguments:Array<String>):String;
+	public static function launch(command:String, arguments:Array<String>):String;
 }

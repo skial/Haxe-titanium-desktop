@@ -5,70 +5,69 @@ package titanium.network;
  */
 @:native("Titanium.Network.HTTPCookie")
 extern class HTTPCookie {
-	public function new():Void;
 
 	/**
 	 * Get the cookie comment text
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function getComment():String;
+	public static function getComment():String;
 
 	/**
 	 * Get the domain for which the cookie is valid
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function getDomain():String;
+	public static function getDomain():String;
 
 	/**
 	 * Get the lifetime of the cookie, in seconds.
 	 * @return	Integer
 	 * @since	0.7.0
 	 */
-	public function getMaxAge():Integer;
+	public static function getMaxAge():Integer;
 
 	/**
 	 * Get the cookie name
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function getName():String;
+	public static function getName():String;
 
 	/**
 	 * Get the subset of URLs to which this cookie applies
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function getPath():String;
+	public static function getPath():String;
 
 	/**
 	 * Get the cookie value
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function getValue():String;
+	public static function getValue():String;
 
 	/**
 	 * Identifies to which version of the state management specification the cookie conforms. 0 = netscape 1 = RFC2109
 	 * @return	Integer
 	 * @since	0.7.0
 	 */
-	public function getVersion():Integer;
+	public static function getVersion():Integer;
 
 	/**
 	 * Check if the http only flag is set on the cookie
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	public function isHTTPOnly():Bool;
+	public static function isHTTPOnly():Bool;
 
 	/**
 	 * Check if the secure flag is set on the cookie
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	public function isSecure():Bool;
+	public static function isSecure():Bool;
 
 	/**
 	 * Set the cookie comment text
@@ -76,7 +75,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setComment(comment:String):String;
+	public static function setComment(comment:String):String;
 
 	/**
 	 * Set the domain for which the cookie is valid
@@ -84,7 +83,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setDomain(domain:String):String;
+	public static function setDomain(domain:String):String;
 
 	/**
 	 * Set the http only flag on the cookie
@@ -92,7 +91,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setHTTPOnly(enableHTTPOnly:Bool):String;
+	public static function setHTTPOnly(enableHTTPOnly:Bool):String;
 
 	/**
 	 * Set the lifetime of the cookie, in seconds.
@@ -100,7 +99,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setMaxAge(lifetime:Integer):String;
+	public static function setMaxAge(lifetime:Integer):String;
 
 	/**
 	 * Set the cookie name
@@ -108,7 +107,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setName(name:String):String;
+	public static function setName(name:String):String;
 
 	/**
 	 * Set the subset of URLs to which this cookie applies
@@ -116,7 +115,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setPath(path:String):String;
+	public static function setPath(path:String):String;
 
 	/**
 	 * Set the secure flag on the cookie
@@ -124,7 +123,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setSecure(enableSecure:Bool):String;
+	public static function setSecure(enableSecure:Bool):String;
 
 	/**
 	 * Set the cookie value
@@ -132,7 +131,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setValue(value:String):String;
+	public static function setValue(value:String):String;
 
 	/**
 	 * Set the state management specifiction version the cookie conforms. (Default: 0)
@@ -140,12 +139,12 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setVersion(version:Integer):String;
+	public static function setVersion(version:Integer):String;
 
 	/**
 	 * return a string representation of the cookie
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function toString():String;
+	public static function toString():String;
 }

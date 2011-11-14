@@ -6,7 +6,6 @@ import titanium.ui.MenuItem;
  */
 @:native("Titanium.UI.Menu")
 extern class Menu {
-	public function new():Void;
 
 	/**
 	 * Add a check item to this menu with the given attributes.
@@ -15,7 +14,7 @@ extern class Menu {
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public function addCheckItem(label:String, listener:Dynamic):MenuItem;
+	public static function addCheckItem(label:String, listener:Dynamic):MenuItem;
 
 	/**
 	 * Add an item to this menu with the given attributes.
@@ -25,14 +24,14 @@ extern class Menu {
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public function addItem(label:String, listener:Dynamic, iconURL:String):MenuItem;
+	public static function addItem(label:String, listener:Dynamic, iconURL:String):MenuItem;
 
 	/**
 	 * Add a separator item to this menu.
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public function addSeparatorItem():MenuItem;
+	public static function addSeparatorItem():MenuItem;
 
 	/**
 	 * Append a MenuItem object to a menu.
@@ -40,14 +39,14 @@ extern class Menu {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function appendItem(item:MenuItem):String;
+	public static function appendItem(item:MenuItem):String;
 
 	/**
 	 * Remove all items from this menu.
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function clear():String;
+	public static function clear():String;
 
 	/**
 	 * Get an item from this menu at the given index. This method will throw an exception if the index is out of range.
@@ -55,14 +54,14 @@ extern class Menu {
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public function getItemAt(index:Float):MenuItem;
+	public static function getItemAt(index:Float):MenuItem;
 
 	/**
 	 * Get the length of this menu.
 	 * @return	Float
 	 * @since	0.6.0
 	 */
-	public function getLength():Float;
+	public static function getLength():Float;
 
 	/**
 	 * Insert a menu item before the given index. This method will throw an exception if the index of out of range.
@@ -71,7 +70,7 @@ extern class Menu {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function insertItemAt(item:MenuItem, index:Float):String;
+	public static function insertItemAt(item:MenuItem, index:Float):String;
 
 	/**
 	 * Remove the item in this menu at the given index. This method will throw an exception if the index is out of range.
@@ -79,5 +78,5 @@ extern class Menu {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function removeItemAt(index:Float):String;
+	public static function removeItemAt(index:Float):String;
 }

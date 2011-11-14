@@ -12,15 +12,14 @@ extern class UserWindow {
 	 * true if this window is a UI Dialog
 	 * @since	0.4.0
 	 */
-	public var isDialog:Bool;
-	public function new():Void;
+	public static var isDialog:Bool;
 
 	/**
 	 * Closes a window
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function close():String;
+	public static function close():String;
 
 	/**
 	 * Creates a new window as a child of the current window
@@ -28,15 +27,15 @@ extern class UserWindow {
 	 * @return	UserWindow
 	 * @since	0.2.0
 	 */
-	@:overload(public function createWindow(options:String):UserWindow{})
-	public function createWindow(options:Dynamic):UserWindow;
+	@:overload(public static function createWindow(options:String):UserWindow{})
+	public static function createWindow(options:Dynamic):UserWindow;
 
 	/**
 	 * Focuses a window
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function focus():String;
+	public static function focus():String;
 
 	/**
 	 * Return this window's bounds object. A bounds object is a simple JavaScript object
@@ -45,7 +44,7 @@ extern class UserWindow {
 	 * @return	Dynamic
 	 * @since	0.2.0
 	 */
-	public function getBounds():Dynamic;
+	public static function getBounds():Dynamic;
 
 	/**
 	 * Get all children of this UI.UserWindow. All windows open
@@ -55,14 +54,14 @@ extern class UserWindow {
 	 * @return	Array<UserWindow>
 	 * @since	0.5.0
 	 */
-	public function getChildren():Array<UserWindow>;
+	public static function getChildren():Array<UserWindow>;
 
 	/**
 	 * Return the context menu set on this UI.Userwindow or null if none is set.
 	 * @return	Menu
 	 * @since	0.5.0
 	 */
-	public function getContextMenu():Menu;
+	public static function getContextMenu():Menu;
 
 	/**
 	 * Return the WebKit DOMWindow of the page loaded in this window if
@@ -72,106 +71,106 @@ extern class UserWindow {
 	 * @return	DOMWindow
 	 * @since	0.5.0
 	 */
-	public function getDOMWindow():DOMWindow;
+	public static function getDOMWindow():DOMWindow;
 
 	/**
 	 * Return this window's height in pixels.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getHeight():Float;
+	public static function getHeight():Float;
 
 	/**
 	 * Return this window's icon, if one is set or null
 	 * @return	String|Null
 	 * @since	0.2.0
 	 */
-	@:overload(public function getIcon():String{})
-	public function getIcon():Void;
+	@:overload(public static function getIcon():String{})
+	public static function getIcon():Void;
 
 	/**
 	 * Return this window's configuration id.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getID():String;
+	public static function getID():String;
 
 	/**
 	 * Return this window's maximum height.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getMaxHeight():Float;
+	public static function getMaxHeight():Float;
 
 	/**
 	 * Return this window's maximum height in pixels.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getMaxWidth():Float;
+	public static function getMaxWidth():Float;
 
 	/**
 	 * Return the window menu set on this UI.UserWindow if one is set, otherwise return null.
 	 * @return	Menu
 	 * @since	0.5.0
 	 */
-	public function getMenu():Menu;
+	public static function getMenu():Menu;
 
 	/**
 	 * Return this window's minimum height.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getMinHeight():Float;
+	public static function getMinHeight():Float;
 
 	/**
 	 * Return this window's minimum width.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getMinWidth():Float;
+	public static function getMinWidth():Float;
 
 	/**
 	 * Return this window's parent window or null if it is a top-level window.
 	 * @return	UserWindow
 	 * @since	0.3.0
 	 */
-	public function getParent():UserWindow;
+	public static function getParent():UserWindow;
 
 	/**
 	 * Return the title of this window.
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getTitle():String;
+	public static function getTitle():String;
 
 	/**
 	 * Return this window's opacity.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getTransparency():Float;
+	public static function getTransparency():Float;
 
 	/**
 	 * Return this window's current URL."
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function getURL():String;
+	public static function getURL():String;
 
 	/**
 	 * Return this window's width in pixels.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getWidth():Float;
+	public static function getWidth():Float;
 
 	/**
 	 * Return a window's horizontal (X-axis) position.
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getX():Float;
+	public static function getX():Float;
 
 	/**
 	 * Return a UI.UserWindow's vertical (Y-axis) position on the screen. The
@@ -179,21 +178,21 @@ extern class UserWindow {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function getY():Float;
+	public static function getY():Float;
 
 	/**
 	 * Checks whether a window has a transparent background or not. If a window has a transparent background, transparent colors on the page will show through to windows underneath.
 	 * @return	Bool
 	 * @since	0.8.0
 	 */
-	public function hasTransparentBackground():Bool;
+	public static function hasTransparentBackground():Bool;
 
 	/**
 	 * Hides a window
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function hide():String;
+	public static function hide():String;
 
 	/**
 	 * Return true if this window is active. An active window is one
@@ -201,21 +200,21 @@ extern class UserWindow {
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	public function isActive():Bool;
+	public static function isActive():Bool;
 
 	/**
 	 * Checks whether a window could be closed or not
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isCloseable():Bool;
+	public static function isCloseable():Bool;
 
 	/**
 	 * Checks whether a window is in an edited state
 	 * @return	Bool
 	 * @since	1.1.0
 	 */
-	public function isDocumentEdited():Bool;
+	public static function isDocumentEdited():Bool;
 
 	/**
 	 * Checks whether a window is in fullscreen
@@ -223,77 +222,77 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public function isFullscreen(chrome:Bool):String;
+	public static function isFullscreen(chrome:Bool):String;
 
 	/**
 	 * Checks whether a window could be maximized or not
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function isMaximizable():String;
+	public static function isMaximizable():String;
 
 	/**
 	 * Checks whether a window is maximized
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function isMaximized():Bool;
+	public static function isMaximized():Bool;
 
 	/**
 	 * Checks whether a window could be minimized or not
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isMinimizable():Bool;
+	public static function isMinimizable():Bool;
 
 	/**
 	 * Checks whether a window is minimized
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function isMinimized():Bool;
+	public static function isMinimized():Bool;
 
 	/**
 	 * Checks whether a window is resizable
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isResizable():Bool;
+	public static function isResizable():Bool;
 
 	/**
 	 * Checks whether a window is top most
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	public function isTopMost():Bool;
+	public static function isTopMost():Bool;
 
 	/**
 	 * Checks whether a window uses system chrome
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isUsingChrome():Bool;
+	public static function isUsingChrome():Bool;
 
 	/**
 	 * Checks whether a window is visible
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function isVisible():Bool;
+	public static function isVisible():Bool;
 
 	/**
 	 * Maximizes a window
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function maximize():String;
+	public static function maximize():String;
 
 	/**
 	 * Minimizes a window
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function minimize():String;
+	public static function minimize():String;
 
 	/**
 	 * Set a UI.UserWindow's position on the screen. The
@@ -303,14 +302,14 @@ extern class UserWindow {
 	 * @return	Void
 	 * @since	1.1.0
 	 */
-	public function moveTo(x:Float, y:Float):Void;
+	public static function moveTo(x:Float, y:Float):Void;
 
 	/**
 	 * Opens a window
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function open():String;
+	public static function open():String;
 
 	/**
 	 * <p>
@@ -332,7 +331,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public var openFileChooserDialog:Dynamic->Dynamic->String;
+	public static var openFileChooserDialog:Dynamic->Dynamic->String;
 
 	/**
 	 * Displays the folder chooser dialog
@@ -341,7 +340,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public var openFolderChooserDialog:Dynamic->Dynamic->String;
+	public static var openFolderChooserDialog:Dynamic->Dynamic->String;
 
 	/**
 	 * Displays the save as file dialog.
@@ -366,7 +365,7 @@ extern class UserWindow {
 		</pre></codee>
 		
 	 */
-	public var openSaveAsDialog:Dynamic->Dynamic->Void;
+	public static var openSaveAsDialog:Dynamic->Dynamic->Void;
 
 	/**
 	 * Set this window's bounds object. A bounds object is a simple JavaScript object
@@ -376,7 +375,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setBounds(bounds:Dynamic):String;
+	public static function setBounds(bounds:Dynamic):String;
 
 	/**
 	 * Sets whether a window could be closed or not
@@ -384,7 +383,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setCloseable(closeable:Bool):String;
+	public static function setCloseable(closeable:Bool):String;
 
 	/**
 	 * Set the contents of the UserWindow, given an HTML string
@@ -395,7 +394,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function setContents(contents:String, baseURL:String):String;
+	public static function setContents(contents:String, baseURL:String):String;
 
 	/**
 	 * Set this window's context menu
@@ -403,7 +402,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public function setContextMenu(menu:Menu):String;
+	public static function setContextMenu(menu:Menu):String;
 
 	/**
 	 * Set a window to the edited (a dot in the close button) or unedited state. OS X only.
@@ -411,7 +410,7 @@ extern class UserWindow {
 	 * @return	Void
 	 * @since	1.1.0
 	 */
-	public function setDocumentEdited(edited:Bool):Void;
+	public static function setDocumentEdited(edited:Bool):Void;
 
 	/**
 	 * Makes a window fullscreen
@@ -419,7 +418,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public function setFullscreen(fullscreen:Bool):String;
+	public static function setFullscreen(fullscreen:Bool):String;
 
 	/**
 	 * Sets a window's height
@@ -427,7 +426,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setHeight(height:Float):String;
+	public static function setHeight(height:Float):String;
 
 	/**
 	 * Sets a window's icon
@@ -435,7 +434,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setIcon(icon:String):String;
+	public static function setIcon(icon:String):String;
 
 	/**
 	 * Sets a window's max-height
@@ -443,7 +442,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setMaxHeight(height:Float):String;
+	public static function setMaxHeight(height:Float):String;
 
 	/**
 	 * Sets whether a window could be maximized or not
@@ -451,7 +450,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setMaximizable(maximizable:Bool):String;
+	public static function setMaximizable(maximizable:Bool):String;
 
 	/**
 	 * Sets a window's max-width
@@ -459,7 +458,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setMaxWidth(width:Float):String;
+	public static function setMaxWidth(width:Float):String;
 
 	/**
 	 * Set this window's menu
@@ -467,7 +466,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public function setMenu(menu:Menu):String;
+	public static function setMenu(menu:Menu):String;
 
 	/**
 	 * Sets a window's min height
@@ -475,7 +474,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setMinHeight(height:Float):String;
+	public static function setMinHeight(height:Float):String;
 
 	/**
 	 * Sets whether a window could be maximized or not
@@ -483,7 +482,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setMinimizable(minimizable:Bool):String;
+	public static function setMinimizable(minimizable:Bool):String;
 
 	/**
 	 * Sets a window's min-width
@@ -491,7 +490,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setMinWidth(width:Float):String;
+	public static function setMinWidth(width:Float):String;
 
 	/**
 	 * Set if plugins are enabled
@@ -499,7 +498,7 @@ extern class UserWindow {
 	 * @return	undefined
 	 * @since	1.1.0
 	 */
-	public function setPluginsEnabled(enabled:Bool):undefined;
+	public static function setPluginsEnabled(enabled:Bool):undefined;
 
 	/**
 	 * Sets whether a window could be resized or not
@@ -507,7 +506,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setResizable(resizable:Bool):String;
+	public static function setResizable(resizable:Bool):String;
 
 	/**
 	 * Sets a window's width and height.
@@ -516,7 +515,7 @@ extern class UserWindow {
 	 * @return	undefined
 	 * @since	1.3.0
 	 */
-	public function setSize(width:Float, height:Float):undefined;
+	public static function setSize(width:Float, height:Float):undefined;
 
 	/**
 	 * Sets the title of a window
@@ -524,7 +523,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setTitle(title:Dynamic):String;
+	public static function setTitle(title:Dynamic):String;
 
 	/**
 	 * Sets whether a window is top most (above other windows)
@@ -532,7 +531,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setTopMost(topmost:Bool):String;
+	public static function setTopMost(topmost:Bool):String;
 
 	/**
 	 * Sets a window's transparency value
@@ -540,7 +539,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setTransparency(url:Float):String;
+	public static function setTransparency(url:Float):String;
 
 	/**
 	 * Sets the url for a window
@@ -548,7 +547,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setURL(url:String):String;
+	public static function setURL(url:String):String;
 
 	/**
 	 * Sets whether a window should use system chrome
@@ -556,7 +555,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setUsingChrome(chrome:Bool):String;
+	public static function setUsingChrome(chrome:Bool):String;
 
 	/**
 	 * Sets the visibility of the window
@@ -564,7 +563,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setVisible(visible:Bool):String;
+	public static function setVisible(visible:Bool):String;
 
 	/**
 	 * Sets a window's width
@@ -572,7 +571,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setWidth(width:Float):String;
+	public static function setWidth(width:Float):String;
 
 	/**
 	 * Set a UI.UserWindow's horizontal (X-axis) position on the screen. The
@@ -581,7 +580,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setX(x:Float):String;
+	public static function setX(x:Float):String;
 
 	/**
 	 * Set a UI.UserWindow's vertical (Y-axis) position on the screen. The
@@ -590,14 +589,14 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function setY(y:Float):String;
+	public static function setY(y:Float):String;
 
 	/**
 	 * Shows a window
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function show():String;
+	public static function show():String;
 
 	/**
 	 * Show a UI.UserWindow's web inspector.
@@ -605,26 +604,26 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public function showInspector(console:Bool):String;
+	public static function showInspector(console:Bool):String;
 
 	/**
 	 * Unfocuses a window
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function unfocus():String;
+	public static function unfocus():String;
 
 	/**
 	 * Unmaximizes a window
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function unmaximize():String;
+	public static function unmaximize():String;
 
 	/**
 	 * Unminimizes a window
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function unminimize():String;
+	public static function unminimize():String;
 }

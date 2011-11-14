@@ -5,7 +5,6 @@ package titanium.ui;
  */
 @:native("Titanium.UI.Dialog")
 extern class Dialog {
-	public function new():Void;
 
 	/**
 	 * Get an incoming UI dialog parameter
@@ -14,12 +13,12 @@ extern class Dialog {
 	 * @return	Dynamic
 	 * @since	0.4.0
 	 */
-	public function getDialogParameter(name:String, defaultValue:Dynamic):Dynamic;
+	public static function getDialogParameter(name:String, defaultValue:Dynamic):Dynamic;
 
 	/**
 	 * get results from UI dialog
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function getDialogResult():String;
+	public static function getDialogResult():String;
 }

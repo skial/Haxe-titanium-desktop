@@ -5,14 +5,13 @@ package titanium.database;
  */
 @:native("Titanium.Database.ResultSet")
 extern class ResultSet {
-	public function new():Void;
 
 	/**
 	 * Releases the memory associated with this Database.ResultSet.
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function close():Void;
+	public static function close():Void;
 
 	/**
 	 * Return the value of a field in the current row of this Database.ResultSet, given
@@ -21,7 +20,7 @@ extern class ResultSet {
 	 * @return	Bytes
 	 * @since	0.4.0
 	 */
-	public function field(fieldIndex:Float):Bytes;
+	public static function field(fieldIndex:Float):Bytes;
 
 	/**
 	 * Return the value of the specified field in the current row.
@@ -29,14 +28,14 @@ extern class ResultSet {
 	 * @return	Bytes
 	 * @since	0.4.0
 	 */
-	public function fieldByName(name:String):Bytes;
+	public static function fieldByName(name:String):Bytes;
 
 	/**
 	 * Return the number of fields in this Database.ResultSet.
 	 * @return	Float
 	 * @since	0.4.0
 	 */
-	public function fieldCount():Float;
+	public static function fieldCount():Float;
 
 	/**
 	 * Return the name of the specified field in the Database.ResultSet given its index.
@@ -46,7 +45,7 @@ extern class ResultSet {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function fieldName(fieldIndex:Float):String;
+	public static function fieldName(fieldIndex:Float):String;
 
 	/**
 	 * Check whether the current row of this Datbase.ResultSet is valid. Reasons
@@ -56,7 +55,7 @@ extern class ResultSet {
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function isValidRow():Bool;
+	public static function isValidRow():Bool;
 
 	/**
 	 * Move the Database.ResultSet iterator to the next row of this
@@ -66,12 +65,12 @@ extern class ResultSet {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public function next():Void;
+	public static function next():Void;
 
 	/**
 	 * Return the number of rows in this Database.ResultSet.
 	 * @return	Float
 	 * @since	0.4.0
 	 */
-	public function rowCount():Float;
+	public static function rowCount():Float;
 }

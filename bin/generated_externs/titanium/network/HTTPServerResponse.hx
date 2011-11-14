@@ -5,7 +5,6 @@ package titanium.network;
  */
 @:native("Titanium.Network.HTTPServerResponse")
 extern class HTTPServerResponse {
-	public function new():Void;
 
 	/**
 	 * add a cookie to this response
@@ -17,7 +16,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function addCookie(name:String, value:String, maxAge:Float, domain:String, path:String):String;
+	public static function addCookie(name:String, value:String, maxAge:Float, domain:String, path:String):String;
 
 	/**
 	 * set the content length of this response
@@ -25,7 +24,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setContentLength(length:Float):String;
+	public static function setContentLength(length:Float):String;
 
 	/**
 	 * set the content type of this response
@@ -33,7 +32,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setContentType(type:String):String;
+	public static function setContentType(type:String):String;
 
 	/**
 	 * set an HTTP header of this response
@@ -42,7 +41,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setHeader(name:String, value:String):String;
+	public static function setHeader(name:String, value:String):String;
 
 	/**
 	 * set the reason of this response
@@ -50,7 +49,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setReason(reason:String):String;
+	public static function setReason(reason:String):String;
 
 	/**
 	 * set the status of this response
@@ -58,7 +57,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setStatus(status:String):String;
+	public static function setStatus(status:String):String;
 
 	/**
 	 * set the status and reason of this response
@@ -67,7 +66,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setStatusAndReason(status:String, reason:String):String;
+	public static function setStatusAndReason(status:String, reason:String):String;
 
 	/**
 	 * write content into this response
@@ -75,5 +74,5 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function write(data:String):String;
+	public static function write(data:String):String;
 }

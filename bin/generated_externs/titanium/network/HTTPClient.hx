@@ -12,142 +12,141 @@ extern class HTTPClient {
 	 * Whether an HTTPClient object is connected or not
 	 * @since	0.3.0
 	 */
-	public var connected:String;
+	public static var connected:String;
 
 	/**
 	 * Amount of data received from server so far. Updated on HTTP_DATA_RECEIVED event.
 	 * @since	0.7.0
 	 */
-	public var dataReceived:String;
+	public static var dataReceived:String;
 
 	/**
 	 * Amount of data sent to server so far. Updated on HTTP_DATA_SENT event.
 	 * @since	0.7.0
 	 */
-	public var dataSent:String;
+	public static var dataSent:String;
 
 	/**
 	 * The DONE readyState property
 	 * @since	0.3.0
 	 */
-	public var DONE:String;
+	public static var DONE:String;
 
 	/**
 	 * The HEADERS_RECEIVED readyState property
 	 * @since	0.3.0
 	 */
-	public var HEADERS_RECEIVED:String;
+	public static var HEADERS_RECEIVED:String;
 
 	/**
 	 * The LOADING readyState property
 	 * @since	0.3.0
 	 */
-	public var LOADING:String;
+	public static var LOADING:String;
 
 	/**
 	 * The handler function that will be fired as stream data is received from an HTTP request
 	 * @since	0.3.0
 	 */
-	public var ondatastream:String;
+	public static var ondatastream:String;
 
 	/**
 	 * The handler function that will be fired when request is completed
 	 * @since	0.7.0
 	 */
-	public var onload:String;
+	public static var onload:String;
 
 	/**
 	 * The handler function that will be fired when the readyState code of an HTTPClient object changes.
 	 * @since	0.3.0
 	 */
-	public var onreadystatechange:String;
+	public static var onreadystatechange:String;
 
 	/**
 	 * The handler function that will be fired as the stream data is sent.
 	 * @since	0.3.0
 	 */
-	public var onsendstream:String;
+	public static var onsendstream:String;
 
 	/**
 	 * The OPENED readyState property
 	 * @since	0.3.0
 	 */
-	public var OPENED:String;
+	public static var OPENED:String;
 
 	/**
 	 * The ready-state status for the connection
 	 * @since	0.3.0
 	 */
-	public var readyState:String;
+	public static var readyState:String;
 
 	/**
 	 * The response of an HTTP request as a Bytes. Currently this property is only valid after the request has been completed.
 	 * @since	0.8.0
 	 */
-	public var responseData:String;
+	public static var responseData:String;
 
 	/**
 	 * The response of an HTTP request as text
 	 * @since	0.3.0
 	 */
-	public var responseText:String;
+	public static var responseText:String;
 
 	/**
 	 * The response of an HTTP request as parsable XML
 	 * @since	0.3.0
 	 */
-	public var responseXML:String;
+	public static var responseXML:String;
 
 	/**
 	 * The response status code of an HTTP request
 	 * @since	0.3.0
 	 */
-	public var status:String;
+	public static var status:String;
 
 	/**
 	 * The response status text of an HTTP Request
 	 * @since	0.3.0
 	 */
-	public var statusText:String;
+	public static var statusText:String;
 
 	/**
 	 * True if HTTP request timed out
 	 * @since	0.7.0
 	 */
-	public var timedOut:String;
+	public static var timedOut:String;
 
 	/**
 	 * The UNSENT readyState property.
 	 * @since	0.3.0
 	 */
-	public var UNSENT:String;
+	public static var UNSENT:String;
 
 	/**
 	 * The request URL. This value will be updated on redirect events.
 	 * @since	0.7.0
 	 */
-	public var url:String;
+	public static var url:String;
 
 	/**
 	 * User agent string to use for requests. (Default: Titanium.userAgent)
 	 * @since	0.7.0
 	 */
-	public var userAgent:String;
-	public function new():Void;
+	public static var userAgent:String;
 
 	/**
 	 * Aborts an in progress connection
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function abort():String;
+	public static function abort():String;
 
 	/**
 	 * Clear any cookies set on the request
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function clearCookies():String;
+	public static function clearCookies():String;
 
 	/**
 	 * Get a HTTP cookie from the response.
@@ -155,14 +154,14 @@ extern class HTTPClient {
 	 * @return	HTTPCookie
 	 * @since	0.7.0
 	 */
-	public function getCookie(name:String):HTTPCookie;
+	public static function getCookie(name:String):HTTPCookie;
 
 	/**
 	 * Get the maximum number of redirects to follow. The default is -1, which means that there is no maximum limit to the number of redirects to follow.
 	 * @return	Float
 	 * @since	0.8.0
 	 */
-	public function getMaxRedirects():Float;
+	public static function getMaxRedirects():Float;
 
 	/**
 	 * Return the value of a response header, given it's name. If the given name occurs multiple times, this method will only return one occurence.
@@ -170,14 +169,14 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function getResponseHeader(name:String):String;
+	public static function getResponseHeader(name:String):String;
 
 	/**
 	 * Return all response headers as an array of two element arrays.
 	 * @return	Array<Array<String, String>>
 	 * @since	0.8.0
 	 */
-	public function getResponseHeaders():Array<Array<String, String>>;
+	public static function getResponseHeaders():Array<Array<String, String>>;
 
 	/**
 	 * Return the current timeout setting of this Network.HTTPClient
@@ -186,7 +185,7 @@ extern class HTTPClient {
 	 * @return	Float
 	 * @since	0.8.0
 	 */
-	public function getTimeout():Float;
+	public static function getTimeout():Float;
 
 	/**
 	 * Opens an HTTP connection
@@ -198,7 +197,7 @@ extern class HTTPClient {
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	public function open(method:String, url:String, asynchronous:Bool, username:String, password:String):Bool;
+	public static function open(method:String, url:String, asynchronous:Bool, username:String, password:String):Bool;
 
 	/**
 	 * Sends a request to the server and receive data with the provided handler.
@@ -207,9 +206,9 @@ extern class HTTPClient {
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	@:overload(public function receive(handler:Dynamic, data:Dynamic):Bool{})
-	@:overload(public function receive(handler:Dynamic, data:String):Bool{})
-	public function receive(handler:Dynamic, data:Void):Bool;
+	@:overload(public static function receive(handler:Dynamic, data:Dynamic):Bool{})
+	@:overload(public static function receive(handler:Dynamic, data:String):Bool{})
+	public static function receive(handler:Dynamic, data:Void):Bool;
 
 	/**
 	 * Sends data through the HTTP connection
@@ -217,9 +216,9 @@ extern class HTTPClient {
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	@:overload(public function send(data:Dynamic):Bool{})
-	@:overload(public function send(data:String):Bool{})
-	public function send(data:Void):Bool;
+	@:overload(public static function send(data:Dynamic):Bool{})
+	@:overload(public static function send(data:String):Bool{})
+	public static function send(data:Void):Bool;
 
 	/**
 	 * Sends the contents of a file as body content
@@ -227,7 +226,7 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function sendFile(file:File):String;
+	public static function sendFile(file:File):String;
 
 	/**
 	 * Set the basic authentication credentials
@@ -236,7 +235,7 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setBasicCredentials(username:String, password:String):String;
+	public static function setBasicCredentials(username:String, password:String):String;
 
 	/**
 	 * Set a HTTP cookie in the request.
@@ -245,7 +244,7 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setCookie(name:String, value:String):String;
+	public static function setCookie(name:String, value:String):String;
 
 	/**
 	 * Set the authentication credentials for the HTTPClient.
@@ -254,7 +253,7 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function setCredentials(username:String, password:String):String;
+	public static function setCredentials(username:String, password:String):String;
 
 	/**
 	 * Set the maximum number of redirects to follow. The default is -1, which means that there is no maximum limit to the number of redirects to follow.
@@ -262,7 +261,7 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function setMaxRedirects(amount:Float):String;
+	public static function setMaxRedirects(amount:Float):String;
 
 	/**
 	 * Sets a request header for the connection
@@ -271,7 +270,7 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function setRequestHeader(header:String, value:String):String;
+	public static function setRequestHeader(header:String, value:String):String;
 
 	/**
 	 * Set the timeout setting of this Network.HTTPClient.
@@ -281,5 +280,5 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public function setTimeout(timeout:Float):String;
+	public static function setTimeout(timeout:Float):String;
 }

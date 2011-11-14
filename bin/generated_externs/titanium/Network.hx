@@ -18,8 +18,7 @@ extern class Network {
 	 * Note this is deprecated and only returns true starting in 1.2.
 	 * @since	0.2.0
 	 */
-	public var online:Bool;
-	public function new():Void;
+	public static var online:Bool;
 
 	/**
 	 * Adds a connectivity change listener that fires when the system connects or disconnects from the internet
@@ -27,28 +26,28 @@ extern class Network {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public function addConnectivityListener(listener:Dynamic):Float;
+	public static function addConnectivityListener(listener:Dynamic):Float;
 
 	/**
 	 * Creates an HTTPClient object
 	 * @return	HTTPClient
 	 * @since	0.3.0
 	 */
-	public function createHTTPClient():HTTPClient;
+	public static function createHTTPClient():HTTPClient;
 
 	/**
 	 * Creates a new HTTPCookie object
 	 * @return	HTTPCookie
 	 * @since	0.7.0
 	 */
-	public function createHTTPCookie():HTTPCookie;
+	public static function createHTTPCookie():HTTPCookie;
 
 	/**
 	 * Creates an HTTPServer object
 	 * @return	HTTPServer
 	 * @since	0.4.0
 	 */
-	public function createHTTPServer():HTTPServer;
+	public static function createHTTPServer():HTTPServer;
 
 	/**
 	 * Creates an IPAddress object
@@ -56,14 +55,14 @@ extern class Network {
 	 * @return	IPAddress
 	 * @since	0.2.0
 	 */
-	public function createIPAddress(address:String):IPAddress;
+	public static function createIPAddress(address:String):IPAddress;
 
 	/**
 	 * Creates an IRCClient object [DEPRECATED]
 	 * @return	IRCClient
 	 * @since	0.2.0
 	 */
-	public function createIRCClient():IRCClient;
+	public static function createIRCClient():IRCClient;
 
 	/**
 	 * Creates a TCPSocket object
@@ -72,7 +71,7 @@ extern class Network {
 	 * @return	TCPSocket
 	 * @since	0.2.0
 	 */
-	public function createTCPSocket(host:String, port:Float):TCPSocket;
+	public static function createTCPSocket(host:String, port:Float):TCPSocket;
 
 	/**
 	 * Decodes a URI component
@@ -80,7 +79,7 @@ extern class Network {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function decodeURIComponent(value:String):String;
+	public static function decodeURIComponent(value:String):String;
 
 	/**
 	 * Encodes a URI Component
@@ -88,21 +87,21 @@ extern class Network {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public function encodeURIComponent(value:String):String;
+	public static function encodeURIComponent(value:String):String;
 
 	/**
 	 * Return the first IPv4 address in this system's list of interfaces.
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function getFirstIPAddress():String;
+	public static function getFirstIPAddress():String;
 
 	/**
 	 * Return the first MAC address in this system's list of interfaces.
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public function getFirstMACAddress():String;
+	public static function getFirstMACAddress():String;
 
 	/**
 	 * Returns a Host object using an address
@@ -110,7 +109,7 @@ extern class Network {
 	 * @return	Host
 	 * @since	0.2.0
 	 */
-	public function getHostByAddress(address:String):Host;
+	public static function getHostByAddress(address:String):Host;
 
 	/**
 	 * Returns a Host object using a hostname
@@ -118,30 +117,30 @@ extern class Network {
 	 * @return	Host
 	 * @since	0.2.0
 	 */
-	public function getHostByName(name:String):Host;
+	public static function getHostByName(name:String):Host;
 
 	/**
 	 * Return the proxy override, if one is set.
 	 * @return	String|null
 	 * @since	0.7.0
 	 */
-	@:overload(public function getHTTPProxy():String{})
-	public function getHTTPProxy():Void;
+	@:overload(public static function getHTTPProxy():String{})
+	public static function getHTTPProxy():Void;
 
 	/**
 	 * Return the proxy override, if one is set.
 	 * @return	String|null
 	 * @since	0.7.0
 	 */
-	@:overload(public function getHTTPSProxy():String{})
-	public function getHTTPSProxy():Void;
+	@:overload(public static function getHTTPSProxy():String{})
+	public static function getHTTPSProxy():Void;
 
 	/**
 	 * Return a list of network interfaces on this system.
 	 * @return	Array<Interface>
 	 * @since	0.9.0
 	 */
-	public function getInterfaces():Array<Interface>;
+	public static function getInterfaces():Array<Interface>;
 
 	/**
 	 * Removes a connectivity change listener
@@ -149,7 +148,7 @@ extern class Network {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function removeConnectivityListener(id:Float):String;
+	public static function removeConnectivityListener(id:Float):String;
 
 	/**
 	 * Override application proxy autodetection with a proxy URL.
@@ -157,7 +156,7 @@ extern class Network {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setHTTPProxy(hostname:String):String;
+	public static function setHTTPProxy(hostname:String):String;
 
 	/**
 	 * Override application proxy autodetection with a proxy URL.
@@ -165,5 +164,5 @@ extern class Network {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public function setHTTPSProxy(hostname:String):String;
+	public static function setHTTPSProxy(hostname:String):String;
 }

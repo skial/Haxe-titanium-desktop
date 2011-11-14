@@ -6,12 +6,11 @@ import titanium.ui.Notification;
  */
 @:native("Titanium.Notification")
 extern class Notification {
-	public function new():Void;
 
 	/**
 	 * Create a new Notification object.
 	 * @return	Notification
 	 * @since	0.4.0
 	 */
-	public function createNotification():Notification;
+	public static function createNotification():Notification;
 }

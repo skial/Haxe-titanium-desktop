@@ -187,19 +187,18 @@ extern class Titanium {
 	 * @since	0.6.0
 	 */
 	public static var UNFULLSCREENED:String;
-	public function new():Void;
 
 	/**
 	 * Return the current platform, usually one of 'osx', 'win32', or 'linux'.
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function getPlatform():String;
+	public static function getPlatform():String;
 
 	/**
 	 * Return the Titanium runtime version.
 	 * @return	String
 	 * @since	0.8.0
 	 */
-	public function getVersion():String;
+	public static function getVersion():String;
 }

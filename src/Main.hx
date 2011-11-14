@@ -221,11 +221,6 @@ class Main {
 		return type;
 	}
 	
-	/**
-	 * 
-	 * @param 	path
-	 * @return
-	 */
 	public function parsePackage(path:String):String {
 		var ns:Array<String> = path.split('.');
 		var name:String = ns.pop();
@@ -342,7 +337,7 @@ class Main {
 		for (p in cls.properties) {
 			content += this.generateHaxeProperty(p);
 		}
-		content += '\tpublic function new():Void;\n';
+		//content += '\tpublic function new():Void;\n';
 		for (f in cls.functions) {
 			content += this.generateHaxeFunction(f);
 		}
@@ -355,7 +350,8 @@ class Main {
 	
 	public function generateHaxeProperty(property:HXProperty):String {
 		var content:String = '\n\t/**\n\t' + property.description.replace('\n', '\n\t') + '\n\t */\n';
-		content += '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
+		//content += '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
+		content += '\tpublic static ' + 'var ' + property.name + ':' + property.type + ';\n';
 		return content;
 	}
 	
@@ -393,7 +389,8 @@ class Main {
 		
 		if (alt == false) {
 			
-			val = 'public ' + (method.stat ? 'static ' : '') + 'function ' + method.name + '(';
+			//val = 'public ' + (method.stat ? 'static ' : '') + 'function ' + method.name + '(';
+			val = 'public static ' + 'function ' + method.name + '(';
 			
 			for (p in 0...method.params.length) {
 				val += (val.endsWith('(') == false ? ', ' : '');
@@ -412,7 +409,8 @@ class Main {
 			
 		} else {
 			
-			val = 'public '  + (method.stat ? 'static ' : '') + 'var ' + method.name + ':';
+			//val = 'public '  + (method.stat ? 'static ' : '') + 'var ' + method.name + ':';
+			val = 'public static ' + 'var ' + method.name + ':';
 			if (method.params.length == 0) {
 				val += 'Void';
 			} else {
