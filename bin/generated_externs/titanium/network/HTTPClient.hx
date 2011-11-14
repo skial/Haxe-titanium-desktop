@@ -173,10 +173,10 @@ extern class HTTPClient {
 
 	/**
 	 * Return all response headers as an array of two element arrays.
-	 * @return	Array<Array<String, String>>
+	 * @return	Array<Array<Dynamic>
 	 * @since	0.8.0
 	 */
-	public static function getResponseHeaders():Array<Array<String, String>>;
+	public static function getResponseHeaders():Array<Array<Dynamic>;
 
 	/**
 	 * Return the current timeout setting of this Network.HTTPClient
@@ -197,7 +197,7 @@ extern class HTTPClient {
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	public static function open(method:String, url:String, asynchronous:Bool, username:String, password:String):Bool;
+	public static function open(method:String, url:String, ?asynchronous:Bool, ?username:String, ?password:String):Bool;
 
 	/**
 	 * Sends a request to the server and receive data with the provided handler.
@@ -206,9 +206,9 @@ extern class HTTPClient {
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	@:overload(public static function receive(handler:Dynamic, data:Dynamic):Bool{})
-	@:overload(public static function receive(handler:Dynamic, data:String):Bool{})
-	public static function receive(handler:Dynamic, data:Void):Bool;
+	@:overload( function receive(handler:Dynamic, ?data:Dynamic):Bool{})
+	@:overload( function receive(handler:Dynamic, ?data:String):Bool{})
+	public static function receive(handler:Dynamic, ?data:Void):Bool;
 
 	/**
 	 * Sends data through the HTTP connection
@@ -216,9 +216,9 @@ extern class HTTPClient {
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	@:overload(public static function send(data:Dynamic):Bool{})
-	@:overload(public static function send(data:String):Bool{})
-	public static function send(data:Void):Bool;
+	@:overload( function send(?data:Dynamic):Bool{})
+	@:overload( function send(?data:String):Bool{})
+	public static function send(?data:Void):Bool;
 
 	/**
 	 * Sends the contents of a file as body content

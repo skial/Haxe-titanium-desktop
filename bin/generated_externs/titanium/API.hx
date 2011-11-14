@@ -244,7 +244,7 @@ extern class API {
 	 * @return	Bytes
 	 * @since	0.9.0
 	 */
-	public static function createBytes(contents:String):Bytes;
+	public static function createBytes(?contents:String):Bytes;
 
 	/**
 	 * A constructor for API.Dependency objects.
@@ -255,7 +255,7 @@ extern class API {
 	 * @return	Dependency
 	 * @since	0.4.0
 	 */
-	public static function createDependency(type:Float, name:String, version:String, requirement:Float):Dependency;
+	public static function createDependency(type:Float, name:String, version:String, ?requirement:Float):Dependency;
 
 	/**
 	 * Create a Kroll list given an optional JavaScript array. This method is mainly used for testing.
@@ -263,7 +263,7 @@ extern class API {
 	 * @return	Array
 	 * @since	0.5.0
 	 */
-	public static function createKList(toWrap:Array):Array;
+	public static function createKList(?toWrap:Array):Array;
 
 	/**
 	 * Create a Kroll method given an existing JavaScript Funtion. This method is mainly used for testing.
@@ -271,7 +271,7 @@ extern class API {
 	 * @return	Dynamic
 	 * @since	0.5.0
 	 */
-	public static function createKMethod(toWrap:Dynamic):Dynamic;
+	public static function createKMethod(?toWrap:Dynamic):Dynamic;
 
 	/**
 	 * Create a Kroll object given an existing JavaScript Object. This method is mainly used for testing.
@@ -279,7 +279,7 @@ extern class API {
 	 * @return	Dynamic
 	 * @since	0.5.0
 	 */
-	public static function createKObject(toWrap:Dynamic):Dynamic;
+	public static function createKObject(?toWrap:Dynamic):Dynamic;
 
 	/**
 	 * Log a statement with CRITICAL severity.
@@ -367,7 +367,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.5.0
 	 */
-	@:overload(public static function fireEvent(event:String):Void{})
+	@:overload( function fireEvent(event:String):Void{})
 	public static function fireEvent(event:Dynamic):Void;
 
 	/**
@@ -566,7 +566,7 @@ extern class API {
 	 * @return	Application
 	 * @since	0.4.0
 	 */
-	public static function readApplicationManifest(manifestPath:String, applicationPath:String):Application;
+	public static function readApplicationManifest(manifestPath:String, ?applicationPath:String):Application;
 
 	/**
 	 * Remove a root event listener. If no listener with the given id or
@@ -575,7 +575,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.5.0
 	 */
-	@:overload(public static function removeEventListener(id:Float):Void{})
+	@:overload( function removeEventListener(id:Float):Void{})
 	public static function removeEventListener(id:Dynamic):Void;
 
 	/**

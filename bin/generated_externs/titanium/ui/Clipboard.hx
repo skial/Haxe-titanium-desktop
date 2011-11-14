@@ -12,7 +12,7 @@ extern class Clipboard {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public static function clearData(type:String):String;
+	public static function clearData(?type:String):String;
 
 	/**
 	 * Clear the text portion of the clipboard.
@@ -42,7 +42,7 @@ extern class Clipboard {
 	 * @return	Bool
 	 * @since	0.7.0
 	 */
-	public static function hasData(type:String):Bool;
+	public static function hasData(?type:String):Bool;
 
 	/**
 	 * Return true if there is any content in the text portion of the clipboard.

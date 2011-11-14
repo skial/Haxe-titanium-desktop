@@ -124,7 +124,7 @@ extern class Network {
 	 * @return	String|null
 	 * @since	0.7.0
 	 */
-	@:overload(public static function getHTTPProxy():String{})
+	@:overload( function getHTTPProxy():String{})
 	public static function getHTTPProxy():Void;
 
 	/**
@@ -132,7 +132,7 @@ extern class Network {
 	 * @return	String|null
 	 * @since	0.7.0
 	 */
-	@:overload(public static function getHTTPSProxy():String{})
+	@:overload( function getHTTPSProxy():String{})
 	public static function getHTTPSProxy():Void;
 
 	/**

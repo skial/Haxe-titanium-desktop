@@ -26,7 +26,7 @@ extern class UI {
 	 * @return	Tray
 	 * @since	0.2.0
 	 */
-	public static function addTray(iconURL:String, eventListener:Dynamic):Tray;
+	public static function addTray(iconURL:String, ?eventListener:Dynamic):Tray;
 
 	/**
 	 * Empty the tray of all this application's tray items
@@ -42,7 +42,7 @@ extern class UI {
 	 * @return	CheckMenuItem
 	 * @since	0.6.0
 	 */
-	public static function createCheckMenuItem(label:String, eventListener:Dynamic):CheckMenuItem;
+	public static function createCheckMenuItem(label:String, ?eventListener:Dynamic):CheckMenuItem;
 
 	/**
 	 * Create a new menu
@@ -84,7 +84,7 @@ extern class UI {
 		</pre></codee>
 		
 	 */
-	public static function createMenuItem(label:String, eventListener:Dynamic, iconURL:String):MenuItem;
+	public static function createMenuItem(label:String, ?eventListener:Dynamic, ?iconURL:String):MenuItem;
 
 	/**
 	 * Create a new separator menu item.
@@ -153,8 +153,8 @@ extern class UI {
 	 * @return	UserWindow
 	 * @since	0.8.1
 	 */
-	@:overload(public static function createWindow(options:String):UserWindow{})
-	public static function createWindow(options:Dynamic):UserWindow;
+	@:overload( function createWindow(?options:String):UserWindow{})
+	public static function createWindow(?options:Dynamic):UserWindow;
 
 	/**
 	 * Return this application's context menu or null if none is set.

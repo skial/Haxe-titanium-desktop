@@ -71,5 +71,5 @@ extern class HTTPServerRequest {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public static function read(length:Float):String;
+	public static function read(?length:Float):String;
 }

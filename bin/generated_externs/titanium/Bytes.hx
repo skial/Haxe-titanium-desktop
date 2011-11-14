@@ -34,7 +34,8 @@ extern class Bytes {
 	 * @return	Bytes
 	 * @since	0.7.0
 	 */
-	public static function concat(arg:Byte):Bytes;
+	@:overload( function concat(arg:Dynamic):Bytes{})
+	public static function concat(arg:String):Bytes;
 
 	/**
 	 * Return the index of a String within this Bytes. The String will first
@@ -70,7 +71,7 @@ extern class Bytes {
 		</code></pre>
 		
 	 */
-	public static function split(delimiter:String, limit:Float):Array<String>;
+	public static function split(delimiter:String, ?limit:Float):Array<String>;
 
 	/**
 	 * Return a substring of a Bytes given a start index and a length. This
@@ -94,7 +95,7 @@ extern class Bytes {
 		</code></pre>
 		
 	 */
-	public static function substr(startIndex:Float, length:Float):String;
+	public static function substr(startIndex:Float, ?length:Float):String;
 
 	/**
 	 * Return a substring of a Bytes given a start index and end index. This
@@ -125,7 +126,7 @@ extern class Bytes {
 		</code></pre>
 		
 	 */
-	public static function substring(startIndex:Float, endIndex:Float):String;
+	public static function substring(startIndex:Float, ?endIndex:Float):String;
 
 	/**
 	 * Convert characters in the Bytes to lower-case as if it it were a String.

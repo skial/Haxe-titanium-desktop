@@ -9,10 +9,10 @@ extern class Process {
 
 	/**
 	 * Return a clone of this process' environment.
-	 * @return	Object, environment
+	 * @return	Dynamic
 	 * @since	0.5.0
 	 */
-	public static function cloneEnvironment():Object, environment;
+	public static function cloneEnvironment():Dynamic;
 
 	/**
 	 * Return the list of arguments associated with this Process.
@@ -27,7 +27,7 @@ extern class Process {
 	 * @return	String|Object
 	 * @since	0.5.0
 	 */
-	@:overload(public static function getEnvironment(key:String):String{})
+	@:overload( function getEnvironment(key:String):String{})
 	public static function getEnvironment(key:String):Dynamic;
 
 	/**
@@ -92,7 +92,7 @@ extern class Process {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	@:overload(public static function sendSignal(signal:Float):String{})
+	@:overload( function sendSignal(signal:Float):String{})
 	public static function sendSignal(signal:String):String;
 
 	/**

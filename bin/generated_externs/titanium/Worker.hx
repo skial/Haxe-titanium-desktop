@@ -13,6 +13,6 @@ extern class Worker {
 	 * @return	Worker
 	 * @since	0.6.0
 	 */
-	@:overload(public static function createWorker(source:String):Worker{})
+	@:overload( function createWorker(source:String):Worker{})
 	public static function createWorker(source:Dynamic):Worker;
 }

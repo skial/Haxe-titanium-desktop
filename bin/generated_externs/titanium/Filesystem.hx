@@ -146,7 +146,7 @@ extern class Filesystem {
 		</code></pre>
 		
 	 */
-	public static function getFile(base:File, arg:File):File;
+	public static function getFile(base:File, ?arg:File):File;
 
 	/**
 	 * Create a Filesystem.Filestream object given a Filesystem.File or a path. 

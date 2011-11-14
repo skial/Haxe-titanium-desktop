@@ -16,7 +16,7 @@ extern class HTTPServerResponse {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public static function addCookie(name:String, value:String, maxAge:Float, domain:String, path:String):String;
+	public static function addCookie(name:String, value:String, ?maxAge:Float, ?domain:String, ?path:String):String;
 
 	/**
 	 * set the content length of this response

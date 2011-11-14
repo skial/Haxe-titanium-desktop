@@ -49,7 +49,7 @@ extern class DB {
 		</code></pre>
 		
 	 */
-	public static function execute(query:String, arg:Dynamic):ResultSet;
+	public static function execute(query:String, ?arg:Dynamic):ResultSet;
 
 	/**
 	 * Get the full filesystem path to the database. If this database was

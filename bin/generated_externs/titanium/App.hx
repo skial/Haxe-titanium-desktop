@@ -38,7 +38,7 @@ extern class App {
 		</code></pre>
 		
 	 */
-	public static function createProperties(properties:Dynamic):Properties;
+	public static function createProperties(?properties:Dynamic):Properties;
 
 	/**
 	 * Cause the application to exit after firing the Titanium.EXIT
@@ -203,7 +203,7 @@ extern class App {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public static function stdin(prompt:String, delimiter:String):String;
+	public static function stdin(?prompt:String, ?delimiter:String):String;
 
 	/**
 	 * Print a String to stdout including a trailing newline.

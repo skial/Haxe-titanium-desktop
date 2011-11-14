@@ -15,7 +15,7 @@ extern class MenuItem {
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addCheckItem(label:String, listener:Dynamic):MenuItem;
+	public static function addCheckItem(label:String, ?listener:Dynamic):MenuItem;
 
 	/**
 	 * Add an item to this menu item's submenu with the given attributes. If this menu item does not have a submenu, it will be created. This method is not available for separator items.
@@ -25,7 +25,7 @@ extern class MenuItem {
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addItem(label:String, listener:Dynamic, iconURL:String):MenuItem;
+	public static function addItem(label:String, ?listener:Dynamic, iconURL:String):MenuItem;
 
 	/**
 	 * Add a separator item to this menu item's submenu. If this menu item does not have a submenu, it will be created. This method is not available for separator items.
@@ -61,7 +61,7 @@ extern class MenuItem {
 	 * @return	String|null
 	 * @since	0.6.0
 	 */
-	@:overload(public static function getIcon():String{})
+	@:overload( function getIcon():String{})
 	public static function getIcon():Void;
 
 	/**
@@ -120,7 +120,7 @@ extern class MenuItem {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	@:overload(public static function setIcon(iconURL:String):String{})
+	@:overload( function setIcon(iconURL:String):String{})
 	public static function setIcon(iconURL:Void):String;
 
 	/**

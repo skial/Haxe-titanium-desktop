@@ -51,7 +51,7 @@ extern class Filestream {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public static function open(mode:Float, binary:Bool, append:Bool):Bool;
+	public static function open(?mode:Float, ?binary:Bool, ?append:Bool):Bool;
 
 	/**
 	 * Read data from a Filesystem.Filestream into a Bytes object

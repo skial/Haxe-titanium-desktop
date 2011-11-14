@@ -184,7 +184,7 @@ extern class File {
 	 * @return	Filestream
 	 * @since	1.1.0
 	 */
-	public static function open(mode:Float, binary:Bool, append:Bool):Filestream;
+	public static function open(?mode:Float, ?binary:Bool, ?append:Bool):Filestream;
 
 	/**
 	 * Return the parent directory of this File.Filesystem object.

@@ -27,8 +27,8 @@ extern class UserWindow {
 	 * @return	UserWindow
 	 * @since	0.2.0
 	 */
-	@:overload(public static function createWindow(options:String):UserWindow{})
-	public static function createWindow(options:Dynamic):UserWindow;
+	@:overload( function createWindow(?options:String):UserWindow{})
+	public static function createWindow(?options:Dynamic):UserWindow;
 
 	/**
 	 * Focuses a window
@@ -85,7 +85,7 @@ extern class UserWindow {
 	 * @return	String|Null
 	 * @since	0.2.0
 	 */
-	@:overload(public static function getIcon():String{})
+	@:overload( function getIcon():String{})
 	public static function getIcon():Void;
 
 	/**
@@ -394,7 +394,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public static function setContents(contents:String, baseURL:String):String;
+	public static function setContents(contents:String, ?baseURL:String):String;
 
 	/**
 	 * Set this window's context menu
@@ -604,7 +604,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public static function showInspector(console:Bool):String;
+	public static function showInspector(?console:Bool):String;
 
 	/**
 	 * Unfocuses a window

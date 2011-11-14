@@ -99,6 +99,8 @@ class Main {
 		returnTypes.set('null', 'Void');
 		/* list is an assocative array */
 		returnTypes.set('list', 'Dynamic');
+		/* titanium mentions byte which doesnt exists */
+		returnTypes.set('byte', 'Dynamic');
 		
 		badUpperCase = cast NYAML.decode(File.getContent('./badUpperCaseWords.yml'))[0].bad;
 		keywords = cast NYAML.decode(File.getContent('./haxeKeywords.yml'))[0].keywords;
@@ -217,6 +219,9 @@ class Main {
 		}
 		if (type.indexOf('.') != -1) {
 			return this.parsePackage(type);
+		}
+		if (type.indexOf(',') != -1) {
+			return 'Dynamic';
 		}
 		return type;
 	}
@@ -395,9 +400,9 @@ class Main {
 			for (p in 0...method.params.length) {
 				val += (val.endsWith('(') == false ? ', ' : '');
 				if (paramOverload == true) {
-					val += method.params[p].name + ':' + '$' + p;
+					val += (method.params[p].optional == true ? '?' : '') + method.params[p].name + ':' + '$' + p;
 				} else {
-					val += method.params[p].name + ':' + method.params[p].type;
+					val += (method.params[p].optional == true ? '?' : '') + method.params[p].name + ':' + method.params[p].type;
 				}
 			}
 			
@@ -440,7 +445,7 @@ class Main {
 			var sorted:Array<Array<String>> = this.processOverloadTypes(paramOverloadArray);
 			for (item in sorted) {
 				if (item != sorted.last()) {
-					output += '\t@:overload(' + val + '{})\n';
+					output += '\t@:overload(' + val.replace('public static', '') + '{})\n';
 				} else {
 					output += '\t' + val + ';\n';
 				}
@@ -451,7 +456,7 @@ class Main {
 		} else if (methodOverload == true) { 
 			for (item in methodOverloadArray) {
 				if (item != methodOverloadArray.last()) {
-					output += '\t@:overload(' + val + '{})\n';
+					output += '\t@:overload(' + val.replace('public static', '') + '{})\n';
 				} else {
 					output += '\t' + val + ';\n';
 				}
@@ -465,30 +470,6 @@ class Main {
 		if (output.endsWith('\n') == false) {
 			output += '\n';
 		}
-		
-		/*if (alt == false) {
-			
-			output = '\tpublic ' + (method.stat ? 'static ' : '') + 'function ' + method.name + '(';
-			for (p in method.params) {
-				output += (output.endsWith('(') == false ? ', ' : '');
-				output += this.generateHaxeParameter(p);
-			}
-			output += '):' + method.returns + ';\n';
-			
-		} else {
-			
-			output = '\tpublic '  + (method.stat ? 'static ' : '') + 'var ' + method.name + ':';
-			if (method.params.length == 0) {
-				output += 'Void';
-			} else {
-				for (p in method.params) {
-					output += (output.endsWith(':') == false ? '->' : '');
-					output += p.type;
-				}
-			}
-			output += '->' + method.returns + ';\n';
-			
-		}*/
 		
 		return output;
 	}
@@ -556,7 +537,7 @@ class Main {
 	}
 	
 	public function generateHaxeParameter(param:HXParams):String {
-		return param.name + ':' + param.type;
+		return (param.optional == true ? '?' : '') + param.name + ':' + param.type;
 	}
 	
 }

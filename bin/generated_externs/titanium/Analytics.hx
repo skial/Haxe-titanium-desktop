@@ -80,7 +80,7 @@ extern class Analytics {
 		</code></pre>
 		
 	 */
-	public static function timedEvent(event:String, start:Date, stop:Date, duration:Float, data:Dynamic):String;
+	public static function timedEvent(event:String, ?start:Date, ?stop:Date, ?duration:Float, data:Dynamic):String;
 
 	/**
 	 * Send an analytics event not covered by the other interfaces.

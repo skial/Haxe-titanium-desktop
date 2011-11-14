@@ -41,7 +41,7 @@ extern class Tray {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function setHint(hint:String):String;
+	public static function setHint(?hint:String):String;
 
 	/**
 	 * Sets a TrayItem's icon
@@ -49,7 +49,7 @@ extern class Tray {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function setIcon(icon:String):String;
+	public static function setIcon(?icon:String):String;
 
 	/**
 	 * Set the menu for this TrayItem

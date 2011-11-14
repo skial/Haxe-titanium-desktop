@@ -235,7 +235,7 @@ extern class Process {
 		</code></pre>
 		
 	 */
-	public static function createProcess(args:Array<String>, envionment:Dynamic, pipeIn:Pipe, pipeOut:Pipe, pipeErr:Pipe):Process;
+	public static function createProcess(args:Array<String>, ?envionment:Dynamic, ?pipeIn:Pipe, ?pipeOut:Pipe, ?pipeErr:Pipe):Process;
 
 	/**
 	 * This method is deprecated. See Process.Process.createProcess()

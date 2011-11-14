@@ -50,7 +50,7 @@ extern class Codec {
 	 * @return	Float
 	 * @since	0.7.0
 	 */
-	public static function checksum(data:String, checksumType:int):Float;
+	public static function checksum(data:String, ?checksumType:int):Float;
 
 	/**
 	 * Asynchronously write the contents of a directory to a zip file.

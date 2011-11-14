@@ -14,7 +14,7 @@ extern class Menu {
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addCheckItem(label:String, listener:Dynamic):MenuItem;
+	public static function addCheckItem(label:String, ?listener:Dynamic):MenuItem;
 
 	/**
 	 * Add an item to this menu with the given attributes.
@@ -24,7 +24,7 @@ extern class Menu {
 	 * @return	MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addItem(label:String, listener:Dynamic, iconURL:String):MenuItem;
+	public static function addItem(label:String, ?listener:Dynamic, iconURL:String):MenuItem;
 
 	/**
 	 * Add a separator item to this menu.
