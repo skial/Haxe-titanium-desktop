@@ -1,3 +1,27 @@
-#Mon Nov 14 10:58:37 GMT 2011
+#Mon Nov 14 11:55:45 GMT 2011
 DESKTOP_PROJECT_SDK_VERSION=1.1.0
 eclipse.preferences.version=1
+packages/Linux\ Intel\ 32-bit/app_page=http\://api.appcelerator.net/p/pages/app_page?token\=s4tHPK35
+packages/Linux\ Intel\ 32-bit/app_version=1.0
+packages/Linux\ Intel\ 32-bit/label=Linux Intel 32-bit
+packages/Linux\ Intel\ 32-bit/platform=linux
+packages/Linux\ Intel\ 32-bit/pubdate=2011-11-14 02\:58\:34
+packages/Linux\ Intel\ 32-bit/url=http\://api.appcelerator.net/p/v1/download?token\=t4tHQZy3
+packages/Linux\ Intel\ 64-bit/app_page=http\://api.appcelerator.net/p/pages/app_page?token\=s4tHPK35
+packages/Linux\ Intel\ 64-bit/app_version=1.0
+packages/Linux\ Intel\ 64-bit/label=Linux Intel 64-bit
+packages/Linux\ Intel\ 64-bit/platform=linux
+packages/Linux\ Intel\ 64-bit/pubdate=2011-11-14 02\:58\:34
+packages/Linux\ Intel\ 64-bit/url=http\://api.appcelerator.net/p/v1/download?token\=y4tHQZB3
+packages/OSX\ 10.5\ Intel/app_page=http\://api.appcelerator.net/p/pages/app_page?token\=s4tHPK35
+packages/OSX\ 10.5\ Intel/app_version=1.0
+packages/OSX\ 10.5\ Intel/label=OSX 10.5 Intel
+packages/OSX\ 10.5\ Intel/platform=osx
+packages/OSX\ 10.5\ Intel/pubdate=2011-11-14 02\:58\:34
+packages/OSX\ 10.5\ Intel/url=http\://api.appcelerator.net/p/v1/download?token\=t4tHQZy6
+packages/Windows\ 32-bit/app_page=http\://api.appcelerator.net/p/pages/app_page?token\=s4tHPK35
+packages/Windows\ 32-bit/app_version=1.0
+packages/Windows\ 32-bit/label=Windows 32-bit
+packages/Windows\ 32-bit/platform=win32
+packages/Windows\ 32-bit/pubdate=2011-11-14 02\:58\:34
+packages/Windows\ 32-bit/url=http\://api.appcelerator.net/p/v1/download?token\=B4tHQZR6
