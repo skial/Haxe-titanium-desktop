@@ -19,7 +19,7 @@ extern class Media {
 	 * The types of sound files that can be played depend on the codecs installed on the
 	 * user's system.
 	 * @param	path	The path or url to the sound file to play.
-	 * @return	Sound
+	 * @return	titanium.media.Sound
 	 * @since	0.2.0
 	 * @example	<pre><code>
 		    // The "app://" points to the Resources folder of your Titanium application.
@@ -28,5 +28,5 @@ extern class Media {
 		</code></pre>
 		
 	 */
-	public static function createSound(path:String):Sound;
+	public static function createSound(path:String):titanium.media.Sound;
 }

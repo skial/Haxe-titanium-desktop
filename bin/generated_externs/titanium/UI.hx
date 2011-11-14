@@ -23,10 +23,10 @@ extern class UI {
 	 * Create and add a tray icon
 	 * @param	iconURL	Local URL on system which app is running on to the icon location
 	 * @param	eventListener	(optional) Event listener to add for this item
-	 * @return	Tray
+	 * @return	titanium.ui.Tray
 	 * @since	0.2.0
 	 */
-	public static function addTray(iconURL:String, ?eventListener:Dynamic):Tray;
+	public static function addTray(iconURL:String, ?eventListener:Dynamic):titanium.ui.Tray;
 
 	/**
 	 * Empty the tray of all this application's tray items
@@ -39,14 +39,14 @@ extern class UI {
 	 * Create a new CheckMenuItem object.
 	 * @param	label	The label for this menu item
 	 * @param	eventListener	(optional) An event listener for this menu item
-	 * @return	CheckMenuItem
+	 * @return	titanium.ui.CheckMenuItem
 	 * @since	0.6.0
 	 */
-	public static function createCheckMenuItem(label:String, ?eventListener:Dynamic):CheckMenuItem;
+	public static function createCheckMenuItem(label:String, ?eventListener:Dynamic):titanium.ui.CheckMenuItem;
 
 	/**
 	 * Create a new menu
-	 * @return	Menu
+	 * @return	titanium.ui.Menu
 	 * @since	0.6.0
 	 * @example	<pre><code>
 		    var menu = Titanium.UI.createMenu();
@@ -57,14 +57,14 @@ extern class UI {
 		</pre></codee>
 		
 	 */
-	public static function createMenu():Menu;
+	public static function createMenu():titanium.ui.Menu;
 
 	/**
 	 * Create a new menu item.
 	 * @param	label	The label for this menu item
 	 * @param	eventListener	(optional) An event listener for this menu item
 	 * @param	iconURL	(optional) A URL to an icon to use for this menu item
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 * @example	<pre><code>
 		    // Creating a menu item with no callback.
@@ -84,14 +84,14 @@ extern class UI {
 		</pre></codee>
 		
 	 */
-	public static function createMenuItem(label:String, ?eventListener:Dynamic, ?iconURL:String):MenuItem;
+	public static function createMenuItem(label:String, ?eventListener:Dynamic, ?iconURL:String):titanium.ui.MenuItem;
 
 	/**
 	 * Create a new separator menu item.
-	 * @return	SeparatorMenuItem
+	 * @return	titanium.ui.SeparatorMenuItem
 	 * @since	0.6.0
 	 */
-	public static function createSeperatorMenuItem():SeparatorMenuItem;
+	public static function createSeperatorMenuItem():titanium.ui.SeparatorMenuItem;
 
 	/**
 	 * <p>
@@ -150,26 +150,26 @@ extern class UI {
 	 * <a href="http://developer.appcelerator.com/doc/desktop/tiapp.xml">tiapp.xml guide</a>.
 	 * </p>
 	 * @param	options	(optional) A string containing a url of the new window or an object containing properties for the new window
-	 * @return	UserWindow
+	 * @return	titanium.ui.UserWindow
 	 * @since	0.8.1
 	 */
-	@:overload( function createWindow(?options:String):UserWindow{})
-	public static function createWindow(?options:Dynamic):UserWindow;
+	@:overload( function createWindow(?options:String):titanium.ui.UserWindow{})
+	public static function createWindow(?options:Dynamic):titanium.ui.UserWindow;
 
 	/**
 	 * Return this application's context menu or null if none is set.
-	 * @return	Menu
+	 * @return	titanium.ui.Menu
 	 * @since	0.2.0
 	 */
-	public static function getContextMenu():Menu;
+	public static function getContextMenu():titanium.ui.Menu;
 
 	/**
 	 * Return the current window. This function does not exist outside of the context
 	 * of a window.
-	 * @return	UserWindow
+	 * @return	titanium.ui.UserWindow
 	 * @since	0.4.0
 	 */
-	public static function getCurrentWindow():UserWindow;
+	public static function getCurrentWindow():titanium.ui.UserWindow;
 
 	/**
 	 * Return the user's idle time (for the desktop, not just the application)
@@ -180,17 +180,17 @@ extern class UI {
 
 	/**
 	 * Return the application's main window
-	 * @return	UserWindow
+	 * @return	titanium.ui.UserWindow
 	 * @since	0.6.0
 	 */
-	public static function getMainWindow():UserWindow;
+	public static function getMainWindow():titanium.ui.UserWindow;
 
 	/**
 	 * Return the application's main MenuItem or null if none is set.
-	 * @return	Menu
+	 * @return	titanium.ui.Menu
 	 * @since	0.2.0
 	 */
-	public static function getMenu():Menu;
+	public static function getMenu():titanium.ui.Menu;
 
 	/**
 	 * Return a list of currently open windows.
@@ -228,7 +228,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function setContextMenu(menu:Menu):String;
+	public static function setContextMenu(menu:titanium.ui.Menu):String;
 
 	/**
 	 * Set the dock icon
@@ -244,7 +244,7 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function setDockMenu(menu:Menu):String;
+	public static function setDockMenu(menu:titanium.ui.Menu):String;
 
 	/**
 	 * Set the application's icon
@@ -260,13 +260,13 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function setMenu(menu:Menu):String;
+	public static function setMenu(menu:titanium.ui.Menu):String;
 
 	/**
 	 * create a UI dialog
 	 * @param	params	options to pass in to create window
-	 * @return	Dialog
+	 * @return	titanium.ui.Dialog
 	 * @since	0.4.0
 	 */
-	public static function showDialog(params:Dynamic):Dialog;
+	public static function showDialog(params:Dynamic):titanium.ui.Dialog;
 }

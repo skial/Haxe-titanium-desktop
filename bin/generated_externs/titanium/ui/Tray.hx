@@ -23,10 +23,10 @@ extern class Tray {
 
 	/**
 	 * Get the menu for this TrayItem
-	 * @return	Menu
+	 * @return	titanium.ui.Menu
 	 * @since	0.6.0
 	 */
-	public static function getMenu():Menu;
+	public static function getMenu():titanium.ui.Menu;
 
 	/**
 	 * Removes a TrayItem
@@ -57,5 +57,5 @@ extern class Tray {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public static function setMenu(menu:Menu):String;
+	public static function setMenu(menu:titanium.ui.Menu):String;
 }

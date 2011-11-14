@@ -16,10 +16,10 @@ extern class Interface {
 
 	/**
 	 * Return the IP addresso of this interface.
-	 * @return	IPAddress
+	 * @return	titanium.network.IPAddress
 	 * @since	0.9.0
 	 */
-	public static function getIPAddress():IPAddress;
+	public static function getIPAddress():titanium.network.IPAddress;
 
 	/**
 	 * Get the name of this interface.
@@ -30,10 +30,10 @@ extern class Interface {
 
 	/**
 	 * Return the subnet mask of this interface as a Network.IPAddress object.
-	 * @return	IPAddress
+	 * @return	titanium.network.IPAddress
 	 * @since	0.9.0
 	 */
-	public static function getSubnetMask():IPAddress;
+	public static function getSubnetMask():titanium.network.IPAddress;
 
 	/**
 	 * Return true if this interface supports IPv4 and false otherwise.

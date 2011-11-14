@@ -151,10 +151,10 @@ extern class HTTPClient {
 	/**
 	 * Get a HTTP cookie from the response.
 	 * @param	name	name of the cookie to get
-	 * @return	HTTPCookie
+	 * @return	titanium.network.HTTPCookie
 	 * @since	0.7.0
 	 */
-	public static function getCookie(name:String):HTTPCookie;
+	public static function getCookie(name:String):titanium.network.HTTPCookie;
 
 	/**
 	 * Get the maximum number of redirects to follow. The default is -1, which means that there is no maximum limit to the number of redirects to follow.
@@ -226,7 +226,7 @@ extern class HTTPClient {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public static function sendFile(file:File):String;
+	public static function sendFile(file:titanium.filesystem.File):String;
 
 	/**
 	 * Set the basic authentication credentials

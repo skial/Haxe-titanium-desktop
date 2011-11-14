@@ -11,27 +11,27 @@ extern class Menu {
 	 * Add a check item to this menu with the given attributes.
 	 * @param	label	The label for the new item
 	 * @param	listener	(optional) An event listener callback for the item
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addCheckItem(label:String, ?listener:Dynamic):MenuItem;
+	public static function addCheckItem(label:String, ?listener:Dynamic):titanium.ui.MenuItem;
 
 	/**
 	 * Add an item to this menu with the given attributes.
 	 * @param	label	The label for the new item
 	 * @param	listener	(optional) An event listener callback for the item
 	 * @param	iconURL	The URL for this item's icon
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addItem(label:String, ?listener:Dynamic, iconURL:String):MenuItem;
+	public static function addItem(label:String, ?listener:Dynamic, iconURL:String):titanium.ui.MenuItem;
 
 	/**
 	 * Add a separator item to this menu.
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addSeparatorItem():MenuItem;
+	public static function addSeparatorItem():titanium.ui.MenuItem;
 
 	/**
 	 * Append a MenuItem object to a menu.
@@ -39,7 +39,7 @@ extern class Menu {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public static function appendItem(item:MenuItem):String;
+	public static function appendItem(item:titanium.ui.MenuItem):String;
 
 	/**
 	 * Remove all items from this menu.
@@ -51,10 +51,10 @@ extern class Menu {
 	/**
 	 * Get an item from this menu at the given index. This method will throw an exception if the index is out of range.
 	 * @param	index	The index of the item to get
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 */
-	public static function getItemAt(index:Float):MenuItem;
+	public static function getItemAt(index:Float):titanium.ui.MenuItem;
 
 	/**
 	 * Get the length of this menu.
@@ -70,7 +70,7 @@ extern class Menu {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public static function insertItemAt(item:MenuItem, index:Float):String;
+	public static function insertItemAt(item:titanium.ui.MenuItem, index:Float):String;
 
 	/**
 	 * Remove the item in this menu at the given index. This method will throw an exception if the index is out of range.

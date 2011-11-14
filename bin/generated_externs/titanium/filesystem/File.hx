@@ -16,7 +16,7 @@ extern class File {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public static function copy(target:File):Void;
+	public static function copy(target:titanium.filesystem.File):Void;
 
 	/**
 	 * Create a new directory at this File object's path. If the
@@ -37,7 +37,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public static function createShortcut(target:File):Bool;
+	public static function createShortcut(target:titanium.filesystem.File):Bool;
 
 	/**
 	 * Return the timestamp for when this file or directory was created.
@@ -164,7 +164,7 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function move(target:File):String;
+	public static function move(target:titanium.filesystem.File):String;
 
 	/**
 	 * Return the full path of this File.Filesystem object.
@@ -181,17 +181,17 @@ extern class File {
 	 * 
 	 * @param	binary	(optional) Whether or not to open this stream in binary mode. If not supplied this will be false.
 	 * @param	append	(optional) Whether or not to open this stream in append mode. If not supplied this will be false.
-	 * @return	Filestream
+	 * @return	titanium.filesystem.Filestream
 	 * @since	1.1.0
 	 */
-	public static function open(?mode:Float, ?binary:Bool, ?append:Bool):Filestream;
+	public static function open(?mode:Float, ?binary:Bool, ?append:Bool):titanium.filesystem.Filestream;
 
 	/**
 	 * Return the parent directory of this File.Filesystem object.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.2.0
 	 */
-	public static function parent():File;
+	public static function parent():titanium.filesystem.File;
 
 	/**
 	 * Return the entire contents of a file as a Bytes object.
@@ -225,10 +225,10 @@ extern class File {
 	 * Filesystem.File object. If the given path is absolute, the absolute
 	 * path is returned.
 	 * @param	subPath	The subPath to resolve against this Filesystem.File object.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.2.0
 	 */
-	public static function resolve(subPath:String):File;
+	public static function resolve(subPath:String):titanium.filesystem.File;
 
 	/**
 	 * Set the execute bit on the file or directory at the path specified
@@ -297,7 +297,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	public static function unzip(destination:File):Bool;
+	public static function unzip(destination:titanium.filesystem.File):Bool;
 
 	/**
 	 * Write data to the file at the path specified by this Filesystem.File

@@ -10,9 +10,9 @@ extern class Worker {
 	/**
 	 * Create a worker thread instance.
 	 * @param	source	Either a JavaScript function (does not support closures)
-	 * @return	Worker
+	 * @return	titanium.worker.Worker
 	 * @since	0.6.0
 	 */
-	@:overload( function createWorker(source:String):Worker{})
-	public static function createWorker(source:Dynamic):Worker;
+	@:overload( function createWorker(source:String):titanium.worker.Worker{})
+	public static function createWorker(source:Dynamic):titanium.worker.Worker;
 }

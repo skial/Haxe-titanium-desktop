@@ -252,10 +252,10 @@ extern class API {
 	 * @param	name	The name of this dependency.
 	 * @param	version	The version requirement for this dependency.
 	 * @param	requirement	(optional) The requirement for this dependency. This is one of the requirement specification constants from the API module such as API.LT (less-than)]
-	 * @return	Dependency
+	 * @return	titanium.api.Dependency
 	 * @since	0.4.0
 	 */
-	public static function createDependency(type:Float, name:String, version:String, ?requirement:Float):Dependency;
+	public static function createDependency(type:Float, name:String, version:String, ?requirement:Float):titanium.api.Dependency;
 
 	/**
 	 * Create a Kroll list given an optional JavaScript array. This method is mainly used for testing.
@@ -381,10 +381,10 @@ extern class API {
 	/**
 	 * Get the currently running application. This application will
 	 * should have all of its dependencies resolved.
-	 * @return	Application
+	 * @return	titanium.api.Application
 	 * @since	0.2.0
 	 */
-	public static function getApplication():Application;
+	public static function getApplication():titanium.api.Application;
 
 	/**
 	 * Get a list of the paths on which Titanium searches for installed components. This does not include paths of bundled components.
@@ -396,7 +396,7 @@ extern class API {
 	/**
 	 * Get the system environment object, which can be queried and updated
 	 * just by accessing or setting its properties.
-	 * @return	Environment
+	 * @return	titanium.api.Environment
 	 * @since	0.5.0
 	 * @example	<pre><code>
 		    var environment = Titanium.API.getEnvironment();
@@ -407,7 +407,7 @@ extern class API {
 		</code></pre>
 		
 	 */
-	public static function getEnvironment():Environment;
+	public static function getEnvironment():titanium.api.Environment;
 
 	/**
 	 * Get a list of the currently installed Titanium components.
@@ -563,10 +563,10 @@ extern class API {
 	 * Titanium.API.Application object representing the application.
 	 * @param	manifestPath	The path to the manifest to read.
 	 * @param	applicationPath	(optional) An optional application path override
-	 * @return	Application
+	 * @return	titanium.api.Application
 	 * @since	0.4.0
 	 */
-	public static function readApplicationManifest(manifestPath:String, ?applicationPath:String):Application;
+	public static function readApplicationManifest(manifestPath:String, ?applicationPath:String):titanium.api.Application;
 
 	/**
 	 * Remove a root event listener. If no listener with the given id or

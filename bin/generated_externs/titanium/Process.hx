@@ -190,10 +190,10 @@ extern class Process {
 
 	/**
 	 * Create a pipe for attaching to/from any number of processes.
-	 * @return	Pipe
+	 * @return	titanium.process.Pipe
 	 * @since	0.5.0
 	 */
-	public static function createPipe():Pipe;
+	public static function createPipe():titanium.process.Pipe;
 
 	/**
 	 * Create a Process object. There are two main ways to use this function:
@@ -217,7 +217,7 @@ extern class Process {
 	 * @param	pipeIn	(optional) A Process.Pipe object which the new process should use for receiving input.
 	 * @param	pipeOut	(optional) A Process.Pipe object which the new process should use for sending output.
 	 * @param	pipeErr	(optional) A Process.Pipe object which the new process should use for sending error output.
-	 * @return	Process
+	 * @return	titanium.process.Process
 	 * @since	0.5.0
 	 * @example	<pre><code>
 		    // Reading the output of a process using the read event.
@@ -235,7 +235,7 @@ extern class Process {
 		</code></pre>
 		
 	 */
-	public static function createProcess(args:Array<String>, ?envionment:Dynamic, ?pipeIn:Pipe, ?pipeOut:Pipe, ?pipeErr:Pipe):Process;
+	public static function createProcess(args:Array<String>, ?envionment:Dynamic, ?pipeIn:titanium.process.Pipe, ?pipeOut:titanium.process.Pipe, ?pipeErr:titanium.process.Pipe):titanium.process.Process;
 
 	/**
 	 * This method is deprecated. See Process.Process.createProcess()

@@ -27,7 +27,7 @@ extern class App {
 	/**
 	 * Create a new App.Properties object.
 	 * @param	properties	(optional) Initial properties for the new App.Properties object.
-	 * @return	Properties
+	 * @return	titanium.app.Properties
 	 * @since	0.6.0
 	 * @example	<pre><code>
 		    var properties = Titanium.App.createProperties({
@@ -38,7 +38,7 @@ extern class App {
 		</code></pre>
 		
 	 */
-	public static function createProperties(?properties:Dynamic):Properties;
+	public static function createProperties(?properties:Dynamic):titanium.app.Properties;
 
 	/**
 	 * Cause the application to exit after firing the Titanium.EXIT
@@ -155,10 +155,10 @@ extern class App {
 
 	/**
 	 * Get the system properties defined in tiapp.xml (see App.Properties).
-	 * @return	Properties
+	 * @return	titanium.app.Properties
 	 * @since	0.4.0
 	 */
-	public static function getSystemProperties():Properties;
+	public static function getSystemProperties():titanium.app.Properties;
 
 	/**
 	 * Return the application URL definedin the tiapp.xml file.

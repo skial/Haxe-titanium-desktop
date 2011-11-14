@@ -24,11 +24,11 @@ extern class UserWindow {
 	/**
 	 * Creates a new window as a child of the current window
 	 * @param	options	(optional) A string containing a url of the new window or an object containing properties for the new window
-	 * @return	UserWindow
+	 * @return	titanium.ui.UserWindow
 	 * @since	0.2.0
 	 */
-	@:overload( function createWindow(?options:String):UserWindow{})
-	public static function createWindow(?options:Dynamic):UserWindow;
+	@:overload( function createWindow(?options:String):titanium.ui.UserWindow{})
+	public static function createWindow(?options:Dynamic):titanium.ui.UserWindow;
 
 	/**
 	 * Focuses a window
@@ -58,10 +58,10 @@ extern class UserWindow {
 
 	/**
 	 * Return the context menu set on this UI.Userwindow or null if none is set.
-	 * @return	Menu
+	 * @return	titanium.ui.Menu
 	 * @since	0.5.0
 	 */
-	public static function getContextMenu():Menu;
+	public static function getContextMenu():titanium.ui.Menu;
 
 	/**
 	 * Return the WebKit DOMWindow of the page loaded in this window if
@@ -111,10 +111,10 @@ extern class UserWindow {
 
 	/**
 	 * Return the window menu set on this UI.UserWindow if one is set, otherwise return null.
-	 * @return	Menu
+	 * @return	titanium.ui.Menu
 	 * @since	0.5.0
 	 */
-	public static function getMenu():Menu;
+	public static function getMenu():titanium.ui.Menu;
 
 	/**
 	 * Return this window's minimum height.
@@ -132,10 +132,10 @@ extern class UserWindow {
 
 	/**
 	 * Return this window's parent window or null if it is a top-level window.
-	 * @return	UserWindow
+	 * @return	titanium.ui.UserWindow
 	 * @since	0.3.0
 	 */
-	public static function getParent():UserWindow;
+	public static function getParent():titanium.ui.UserWindow;
 
 	/**
 	 * Return the title of this window.
@@ -402,7 +402,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public static function setContextMenu(menu:Menu):String;
+	public static function setContextMenu(menu:titanium.ui.Menu):String;
 
 	/**
 	 * Set a window to the edited (a dot in the close button) or unedited state. OS X only.
@@ -466,7 +466,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public static function setMenu(menu:Menu):String;
+	public static function setMenu(menu:titanium.ui.Menu):String;
 
 	/**
 	 * Sets a window's min height

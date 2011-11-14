@@ -46,24 +46,24 @@ extern class Process {
 
 	/**
 	 * Return the stderr pipe for this process.
-	 * @return	Pipe
+	 * @return	titanium.process.Pipe
 	 * @since	0.5.0
 	 */
-	public static function getStderr():Pipe;
+	public static function getStderr():titanium.process.Pipe;
 
 	/**
 	 * Return the stdin pipe for this process.
-	 * @return	Pipe
+	 * @return	titanium.process.Pipe
 	 * @since	0.5.0
 	 */
-	public static function getStdin():Pipe;
+	public static function getStdin():titanium.process.Pipe;
 
 	/**
 	 * Return the stdout pipe for this process.
-	 * @return	Pipe
+	 * @return	titanium.process.Pipe
 	 * @since	0.5.0
 	 */
-	public static function getStdout():Pipe;
+	public static function getStdout():titanium.process.Pipe;
 
 	/**
 	 * Return true if this process is running and false otherwise.

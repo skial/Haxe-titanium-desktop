@@ -31,7 +31,7 @@ extern class DB {
 	 * be valid SQLite-style SQL.
 	 * @param	query	The SQL query to execute on this Database.DB.
 	 * @param	...	(optional) A variable-length argument list of values to use with the given query
-	 * @return	ResultSet
+	 * @return	titanium.database.ResultSet
 	 * @since	0.4.0
 	 * @example	<pre><code>
 		    // This code should open a database called mydb and raise an alert.
@@ -49,7 +49,7 @@ extern class DB {
 		</code></pre>
 		
 	 */
-	public static function execute(query:String, ?arg:Dynamic):ResultSet;
+	public static function execute(query:String, ?arg:Dynamic):titanium.database.ResultSet;
 
 	/**
 	 * Get the full filesystem path to the database. If this database was

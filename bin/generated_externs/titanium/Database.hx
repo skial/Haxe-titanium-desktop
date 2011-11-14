@@ -13,7 +13,7 @@ extern class Database {
 	 * not available between security origins. A security origin is composed
 	 * of a URL scheme and hostname pair.
 	 * @param	name	Name of the database. The call will create the database if it does not exist.
-	 * @return	DB
+	 * @return	titanium.database.DB
 	 * @since	0.4.0
 	 * @example	<pre><code>
 		    var db = Titanium.Database.open("Users");
@@ -21,13 +21,13 @@ extern class Database {
 		</code></pre>
 		
 	 */
-	public static function open(name:String):DB;
+	public static function open(name:String):titanium.database.DB;
 
 	/**
 	 * Open a database, given a path to an sqlite file.
 	 * @param	path	Path to an SQLite file to store the database in. If the file does not exist
-	 * @return	DB
+	 * @return	titanium.database.DB
 	 * @since	0.8.0
 	 */
-	public static function openFile(path:String):DB;
+	public static function openFile(path:String):titanium.database.DB;
 }

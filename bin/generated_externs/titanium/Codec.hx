@@ -69,7 +69,7 @@ extern class Codec {
 		</code></pre>
 		
 	 */
-	public static function createZip(root:File, zipFile:File, onComplete:Dynamic):String;
+	public static function createZip(root:titanium.filesystem.File, zipFile:titanium.filesystem.File, onComplete:Dynamic):String;
 
 	/**
 	 * Decode a Base64-encoded String.
@@ -143,5 +143,5 @@ extern class Codec {
 		</code></pre>
 		
 	 */
-	public static function extractZip(zipFile:File, dest:File, onComplete:Dynamic):String;
+	public static function extractZip(zipFile:titanium.filesystem.File, dest:titanium.filesystem.File, onComplete:Dynamic):String;
 }

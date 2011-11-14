@@ -9,8 +9,8 @@ extern class Notification {
 
 	/**
 	 * Create a new Notification object.
-	 * @return	Notification
+	 * @return	titanium.ui.Notification
 	 * @since	0.4.0
 	 */
-	public static function createNotification():Notification;
+	public static function createNotification():titanium.ui.Notification;
 }

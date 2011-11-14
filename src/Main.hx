@@ -81,6 +81,7 @@ class Main {
 	public static var badUpperCase:Array<String> = [];
 	public static var keywords:Array<String> = [];
 	public static var currentImports:Hash<String>;
+	public static var externPatch:Array<String> = [];
 	
 	public static function main():Void {
 		
@@ -104,6 +105,7 @@ class Main {
 		
 		badUpperCase = cast NYAML.decode(File.getContent('./badUpperCaseWords.yml'))[0].bad;
 		keywords = cast NYAML.decode(File.getContent('./haxeKeywords.yml'))[0].keywords;
+		externPatch = cast NYAML.decode(File.getContent('./externPatch.yml'));
 		
 		new Main();
 	}
@@ -218,7 +220,7 @@ class Main {
 			}
 		}
 		if (type.indexOf('.') != -1) {
-			return this.parsePackage(type);
+			return this.parsePackage(type, false);
 		}
 		if (type.indexOf(',') != -1) {
 			return 'Dynamic';
@@ -226,7 +228,7 @@ class Main {
 		return type;
 	}
 	
-	public function parsePackage(path:String):String {
+	public function parsePackage(path:String, ?pop:Bool = true):String {
 		var ns:Array<String> = path.split('.');
 		var name:String = ns.pop();
 		for (i in 0...ns.length) {
@@ -243,7 +245,11 @@ class Main {
 		if (!currentImports.exists(val) && val.indexOf('|') == -1) {
 			currentImports.set(val, val);
 		}
-		return name;
+		if (pop) {
+			return name;
+		} else {
+			return val.startsWith('titanium') ? val : 'titanium.' + val;
+		}
 	}
 	
 	public function parseFunction(method:Func):Void {
@@ -338,6 +344,12 @@ class Main {
 		content += '/**\n' + cls.description + '\n */\n';
 		content += '@:native("' + cls.ns + '")\n';
 		content += 'extern class ' + cls.name + ' {\n';
+		
+		for (n in externPatch) {
+			if (Reflect.hasField(n, cls.name)) {
+				content += Reflect.field(n, cls.name) + '\n';
+			}
+		}
 		
 		for (p in cls.properties) {
 			content += this.generateHaxeProperty(p);
@@ -462,8 +474,7 @@ class Main {
 				}
 				output = output.replace('$r', this.parseReturnType(item));
 			}
-		}
-		else {
+		} else {
 			output += '\t' + val + ';';
 		}
 		

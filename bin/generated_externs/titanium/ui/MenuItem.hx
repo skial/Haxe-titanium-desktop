@@ -12,27 +12,27 @@ extern class MenuItem {
 	 * Add a check item to this menu item's submenu with the given attributes. If this menu item does not have a submenu, it will be created. This method is not available for separator items.
 	 * @param	label	The label for the new item
 	 * @param	listener	(optional) An event listener callback for the item
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addCheckItem(label:String, ?listener:Dynamic):MenuItem;
+	public static function addCheckItem(label:String, ?listener:Dynamic):titanium.ui.MenuItem;
 
 	/**
 	 * Add an item to this menu item's submenu with the given attributes. If this menu item does not have a submenu, it will be created. This method is not available for separator items.
 	 * @param	label	The label for the new item
 	 * @param	listener	(optional) An event listener callback for the item
 	 * @param	iconURL	The URL for this item's icon
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addItem(label:String, ?listener:Dynamic, iconURL:String):MenuItem;
+	public static function addItem(label:String, ?listener:Dynamic, iconURL:String):titanium.ui.MenuItem;
 
 	/**
 	 * Add a separator item to this menu item's submenu. If this menu item does not have a submenu, it will be created. This method is not available for separator items.
-	 * @return	MenuItem
+	 * @return	titanium.ui.MenuItem
 	 * @since	0.6.0
 	 */
-	public static function addSeparatorItem():MenuItem;
+	public static function addSeparatorItem():titanium.ui.MenuItem;
 
 	/**
 	 * Disable this item i.e. make it non-clickable. This method is not available for separator items.
@@ -80,10 +80,10 @@ extern class MenuItem {
 
 	/**
 	 * Get this item's submenu. This method is not available for separator items.
-	 * @return	Menu
+	 * @return	titanium.ui.Menu
 	 * @since	0.6.0
 	 */
-	public static function getSubmenu():Menu;
+	public static function getSubmenu():titanium.ui.Menu;
 
 	/**
 	 * Return true if this UI.MenuItem is a check menu item or false otherwise.
@@ -145,5 +145,5 @@ extern class MenuItem {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public static function setSubmenu(menu:Menu):String;
+	public static function setSubmenu(menu:titanium.ui.Menu):String;
 }

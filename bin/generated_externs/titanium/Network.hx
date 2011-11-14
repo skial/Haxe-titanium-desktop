@@ -30,48 +30,48 @@ extern class Network {
 
 	/**
 	 * Creates an HTTPClient object
-	 * @return	HTTPClient
+	 * @return	titanium.network.HTTPClient
 	 * @since	0.3.0
 	 */
-	public static function createHTTPClient():HTTPClient;
+	public static function createHTTPClient():titanium.network.HTTPClient;
 
 	/**
 	 * Creates a new HTTPCookie object
-	 * @return	HTTPCookie
+	 * @return	titanium.network.HTTPCookie
 	 * @since	0.7.0
 	 */
-	public static function createHTTPCookie():HTTPCookie;
+	public static function createHTTPCookie():titanium.network.HTTPCookie;
 
 	/**
 	 * Creates an HTTPServer object
-	 * @return	HTTPServer
+	 * @return	titanium.network.HTTPServer
 	 * @since	0.4.0
 	 */
-	public static function createHTTPServer():HTTPServer;
+	public static function createHTTPServer():titanium.network.HTTPServer;
 
 	/**
 	 * Creates an IPAddress object
 	 * @param	address	the IP address
-	 * @return	IPAddress
+	 * @return	titanium.network.IPAddress
 	 * @since	0.2.0
 	 */
-	public static function createIPAddress(address:String):IPAddress;
+	public static function createIPAddress(address:String):titanium.network.IPAddress;
 
 	/**
 	 * Creates an IRCClient object [DEPRECATED]
-	 * @return	IRCClient
+	 * @return	titanium.network.IRCClient
 	 * @since	0.2.0
 	 */
-	public static function createIRCClient():IRCClient;
+	public static function createIRCClient():titanium.network.IRCClient;
 
 	/**
 	 * Creates a TCPSocket object
 	 * @param	host	the hostname to connect to
 	 * @param	port	the port to use
-	 * @return	TCPSocket
+	 * @return	titanium.network.TCPSocket
 	 * @since	0.2.0
 	 */
-	public static function createTCPSocket(host:String, port:Float):TCPSocket;
+	public static function createTCPSocket(host:String, port:Float):titanium.network.TCPSocket;
 
 	/**
 	 * Decodes a URI component
@@ -106,18 +106,18 @@ extern class Network {
 	/**
 	 * Returns a Host object using an address
 	 * @param	address	the address
-	 * @return	Host
+	 * @return	titanium.network.Host
 	 * @since	0.2.0
 	 */
-	public static function getHostByAddress(address:String):Host;
+	public static function getHostByAddress(address:String):titanium.network.Host;
 
 	/**
 	 * Returns a Host object using a hostname
 	 * @param	name	the hostname
-	 * @return	Host
+	 * @return	titanium.network.Host
 	 * @since	0.2.0
 	 */
-	public static function getHostByName(name:String):Host;
+	public static function getHostByName(name:String):titanium.network.Host;
 
 	/**
 	 * Return the proxy override, if one is set.

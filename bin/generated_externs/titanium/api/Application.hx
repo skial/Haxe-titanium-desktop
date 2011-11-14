@@ -204,10 +204,10 @@ extern class Application {
 	 * Resolved components may either be installed or bundled components.
 	 * Note that currently bundled components returned from this method
 	 * do not have a version.
-	 * @return	Component
+	 * @return	titanium.api.Component
 	 * @since	0.4.0
 	 */
-	public static function getRuntime():Component;
+	public static function getRuntime():titanium.api.Component;
 
 	/**
 	 * Get this application's version.

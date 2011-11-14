@@ -36,7 +36,7 @@ extern class Filesystem {
 	 * in the original list of source arguments, the second will be the total
 	 * number of files in the list.
 	 * 
-	 * @return	AsyncCopy
+	 * @return	titanium.filesystem.AsyncCopy
 	 * @since	0.2.0
 	 * @example	<pre><code>
 		    var parent = Titanium.Filesystem.getApplicationDataDirectory();
@@ -60,62 +60,62 @@ extern class Filesystem {
 		</code></pre>
 		
 	 */
-	public static var asyncCopy:Array<File>->File->Dynamic->AsyncCopy;
+	public static var asyncCopy:Array<File>->titanium.filesystem.File->Dynamic->titanium.filesystem.AsyncCopy;
 
 	/**
 	 * Create a temporary directory. This directory is guaranteed to be
 	 * writable. If it still exists when the application exits, it
 	 * will be deleted.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function createTempDirectory():File;
+	public static function createTempDirectory():titanium.filesystem.File;
 
 	/**
 	 * Create an temporary file. This file is guaranteed to be
 	 * writable. If it still exists when the application exits, it
 	 * will be deleted.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function createTempFile():File;
+	public static function createTempFile():titanium.filesystem.File;
 
 	/**
 	 * Return the data directory of the application. The data directory is per-user
 	 * directory for storing application data. It is guaranteed to be writable and
 	 * stable between releases.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getApplicationDataDirectory():File;
+	public static function getApplicationDataDirectory():titanium.filesystem.File;
 
 	/**
 	 * Return the directory containing the application. The application directory
 	 * may contain the application contents directory (OS X) or be the application
 	 * contents directory (Windows and Linux). The application directory may not
 	 * be writable and applications should not attempt to write to it.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getApplicationDirectory():File;
+	public static function getApplicationDirectory():titanium.filesystem.File;
 
 	/**
 	 * Return the Desktop directory for the current user. OS X and Windows will
 	 * always have a valid Desktop directory. Some Linux systems may not have one,
 	 * in which case the home directory will be returned.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getDesktopDirectory():File;
+	public static function getDesktopDirectory():titanium.filesystem.File;
 
 	/**
 	 * Return the documents directory for the current user. OS X and Windows will
 	 * always have a valid Documents directory. Some Linux systems may not have one,
 	 * in which case the home directory will be returned.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getDocumentsDirectory():File;
+	public static function getDocumentsDirectory():titanium.filesystem.File;
 
 	/**
 	 * Create a Filesystem.File object given a variable-length argument list
@@ -123,7 +123,7 @@ extern class Filesystem {
 	 * to form one long path string.
 	 * @param	base	The base to this file. This may be a file or directory.
 	 * @param	...	(optional) A variable length argument list of Files or paths that are joined to the base in an platform-specific way.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 * @example	<pre><code>
 		    var sampleContents = "This is the contents of a sample file called sample.txt";
@@ -146,15 +146,15 @@ extern class Filesystem {
 		</code></pre>
 		
 	 */
-	public static function getFile(base:File, ?arg:File):File;
+	public static function getFile(base:titanium.filesystem.File, ?arg:titanium.filesystem.File):titanium.filesystem.File;
 
 	/**
 	 * Create a Filesystem.Filestream object given a Filesystem.File or a path. 
 	 * Filesystem.Filestream is the preferred way of writing to files.
-	 * @return	Filestream
+	 * @return	titanium.filesystem.Filestream
 	 * @since	0.8.0
 	 */
-	public static function getFileStream():Filestream;
+	public static function getFileStream():titanium.filesystem.Filestream;
 
 	/**
 	 * Return the line ending most commonly used by the current operating system.
@@ -169,20 +169,20 @@ extern class Filesystem {
 	 * Return the directory commonly used for storing applications on this
 	 * platform. On Linux systems, there can be many places for storing
 	 * executables, so it is not recommended using this value to locate them.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getProgramsDirectory():File;
+	public static function getProgramsDirectory():titanium.filesystem.File;
 
 	/**
 	 * Return the path to this application's resources directory. This diretory
 	 * is the 'Resources' subdirectory of the application contents directory.
 	 * The application directory may not be writable and applications should
 	 * not attempt to write to it.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getResourcesDirectory():File;
+	public static function getResourcesDirectory():titanium.filesystem.File;
 
 	/**
 	 * Return the system root directories. On Unix systems there is at
@@ -195,10 +195,10 @@ extern class Filesystem {
 
 	/**
 	 * Return the directory of the current Titanium runtime files.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getRuntimeHomeDirectory():File;
+	public static function getRuntimeHomeDirectory():titanium.filesystem.File;
 
 	/**
 	 * Return the path separator used by the operating system.
@@ -209,8 +209,8 @@ extern class Filesystem {
 
 	/**
 	 * Return the home directory of the current user.
-	 * @return	File
+	 * @return	titanium.filesystem.File
 	 * @since	0.8.0
 	 */
-	public static function getUserDirectory():File;
+	public static function getUserDirectory():titanium.filesystem.File;
 }
