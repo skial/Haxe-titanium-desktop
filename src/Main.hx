@@ -81,7 +81,8 @@ class Main {
 	public static var badUpperCase:Array<String> = [];
 	public static var keywords:Array<String> = [];
 	public static var currentImports:Hash<String>;
-	public static var externPatch:Array<String> = [];
+	public static var missingCode:Array<String> = [];
+	public static var excludePackage:Array<String> = [];
 	
 	public static function main():Void {
 		
@@ -102,10 +103,15 @@ class Main {
 		returnTypes.set('list', 'Dynamic');
 		/* titanium mentions byte which doesnt exists */
 		returnTypes.set('byte', 'Dynamic');
+		returnTypes.set('array', 'Array<Dynamic>');
+		returnTypes.set('integer', 'Int');
+		returnTypes.set('undefined', 'Void');
+		returnTypes.set('domwindow', 'js.Dom.Window');
 		
 		badUpperCase = cast NYAML.decode(File.getContent('./badUpperCaseWords.yml'))[0].bad;
 		keywords = cast NYAML.decode(File.getContent('./haxeKeywords.yml'))[0].keywords;
-		externPatch = cast NYAML.decode(File.getContent('./externPatch.yml'));
+		missingCode = cast NYAML.decode(File.getContent('./missingCode.yml'));
+		excludePackage = cast NYAML.decode(File.getContent('./excludePackage.yml'));
 		
 		new Main();
 	}
@@ -132,9 +138,9 @@ class Main {
 				this.parseFunction(untyped yaml);
 			case 'property':
 				this.parseProperty(untyped yaml);
-			case 'object':
-				this.parseObject(yaml);
-			case 'module':
+			/*case 'object':
+				this.parseObject(yaml);*/
+			case 'module', 'object':
 				this.parseModule(yaml);
 				this.parseObject(yaml);
 			default:
@@ -245,6 +251,25 @@ class Main {
 		if (!currentImports.exists(val) && val.indexOf('|') == -1) {
 			currentImports.set(val, val);
 		}
+		var t = (val.startsWith('titanium') ? val : 'titanium.' + val).toLowerCase();
+		var r = '';
+		for (n in excludePackage) {
+			if (Reflect.hasField(n, t)) {
+				if (Reflect.field(n, t) == 'remove') {
+					r = 'Dynamic';
+					if (currentImports.exists(val)) {
+						currentImports.remove(val);
+					}
+				} else {
+					r = Reflect.field(n, t);
+					if (currentImports.exists(val)) {
+						currentImports.remove(val);
+						currentImports.set(r, r);
+					}
+				}
+				return r;
+			}
+		}
 		if (pop) {
 			return name;
 		} else {
@@ -345,7 +370,7 @@ class Main {
 		content += '@:native("' + cls.ns + '")\n';
 		content += 'extern class ' + cls.name + ' {\n';
 		
-		for (n in externPatch) {
+		for (n in missingCode) {
 			if (Reflect.hasField(n, cls.name)) {
 				content += Reflect.field(n, cls.name) + '\n';
 			}

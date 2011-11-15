@@ -22,10 +22,10 @@ extern class HTTPCookie {
 
 	/**
 	 * Get the lifetime of the cookie, in seconds.
-	 * @return	Integer
+	 * @return	Int
 	 * @since	0.7.0
 	 */
-	public static function getMaxAge():Integer;
+	public static function getMaxAge():Int;
 
 	/**
 	 * Get the cookie name
@@ -50,10 +50,10 @@ extern class HTTPCookie {
 
 	/**
 	 * Identifies to which version of the state management specification the cookie conforms. 0 = netscape 1 = RFC2109
-	 * @return	Integer
+	 * @return	Int
 	 * @since	0.7.0
 	 */
-	public static function getVersion():Integer;
+	public static function getVersion():Int;
 
 	/**
 	 * Check if the http only flag is set on the cookie
@@ -99,7 +99,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public static function setMaxAge(lifetime:Integer):String;
+	public static function setMaxAge(lifetime:Int):String;
 
 	/**
 	 * Set the cookie name
@@ -139,7 +139,7 @@ extern class HTTPCookie {
 	 * @return	String
 	 * @since	0.7.0
 	 */
-	public static function setVersion(version:Integer):String;
+	public static function setVersion(version:Int):String;
 
 	/**
 	 * return a string representation of the cookie

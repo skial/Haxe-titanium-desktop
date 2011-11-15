@@ -1,5 +1,4 @@
 package titanium;
-import titanium.api.Environment;
 import titanium.api.Component;
 import titanium.api.Dependency;
 import titanium.api.Application;
@@ -260,10 +259,10 @@ extern class API {
 	/**
 	 * Create a Kroll list given an optional JavaScript array. This method is mainly used for testing.
 	 * @param	toWrap	(optional) An Array to wrap in a new KList.
-	 * @return	Array
+	 * @return	Array<Dynamic>
 	 * @since	0.5.0
 	 */
-	public static function createKList(?toWrap:Array):Array;
+	public static function createKList(?toWrap:Array<Dynamic>):Array<Dynamic>;
 
 	/**
 	 * Create a Kroll method given an existing JavaScript Funtion. This method is mainly used for testing.
@@ -396,7 +395,7 @@ extern class API {
 	/**
 	 * Get the system environment object, which can be queried and updated
 	 * just by accessing or setting its properties.
-	 * @return	titanium.api.Environment
+	 * @return	Dynamic
 	 * @since	0.5.0
 	 * @example	<pre><code>
 		    var environment = Titanium.API.getEnvironment();
@@ -407,7 +406,7 @@ extern class API {
 		</code></pre>
 		
 	 */
-	public static function getEnvironment():titanium.api.Environment;
+	public static function getEnvironment():Dynamic;
 
 	/**
 	 * Get a list of the currently installed Titanium components.

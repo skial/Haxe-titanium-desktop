@@ -68,10 +68,11 @@ extern class UserWindow {
 	 * one exists, otherwise return null. A DOMWindow object will not
 	 * be available until a UI.UserWindow's PAGE_INITIALIZED event has
 	 * fired.
-	 * @return	DOMWindow
+	 * @return	DOMWindow|null
 	 * @since	0.5.0
 	 */
-	public static function getDOMWindow():DOMWindow;
+	@:overload( function getDOMWindow():js.Dom.Window{})
+	public static function getDOMWindow():Void;
 
 	/**
 	 * Return this window's height in pixels.
@@ -495,10 +496,10 @@ extern class UserWindow {
 	/**
 	 * Set if plugins are enabled
 	 * @param	enabled	true if plugins should be enabled
-	 * @return	undefined
+	 * @return	Void
 	 * @since	1.1.0
 	 */
-	public static function setPluginsEnabled(enabled:Bool):undefined;
+	public static function setPluginsEnabled(enabled:Bool):Void;
 
 	/**
 	 * Sets whether a window could be resized or not
@@ -512,10 +513,10 @@ extern class UserWindow {
 	 * Sets a window's width and height.
 	 * @param	width	the width of the window
 	 * @param	height	the height of the window
-	 * @return	undefined
+	 * @return	Void
 	 * @since	1.3.0
 	 */
-	public static function setSize(width:Float, height:Float):undefined;
+	public static function setSize(width:Float, height:Float):Void;
 
 	/**
 	 * Sets the title of a window

@@ -61,7 +61,7 @@ extern class Filestream {
 	 * @return	Bytes
 	 * @since	0.2.0
 	 */
-	public static function read(size:Integer):Bytes;
+	public static function read(size:Int):Bytes;
 
 	/**
 	 * Reads one line from this Filesystem.Filestream. The stream must
@@ -106,11 +106,11 @@ extern class Filestream {
 		</code></pre>
 		
 	 */
-	public static function seek(offset:Integer, dir:Integer):Void;
+	public static function seek(offset:Int, dir:Int):Void;
 
 	/**
 	 * Returns current position in file relative to the beginning
-	 * @return	Integer
+	 * @return	Int
 	 * @since	1.1.0
 	 * @example	<pre><code>
 		    var file = Titanium.Filesystem.getFile(...);
@@ -120,7 +120,7 @@ extern class Filestream {
 		</code></pre>
 		
 	 */
-	public static function tell():Integer;
+	public static function tell():Int;
 
 	/**
 	 * Writes a line to this Filesystem.Filestream. Return true if this

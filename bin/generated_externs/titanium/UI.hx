@@ -2,10 +2,8 @@ package titanium;
 import titanium.ui.Dialog;
 import titanium.ui.Tray;
 import titanium.ui.UserWindow;
-import titanium.ui.CheckMenuItem;
 import titanium.ui.MenuItem;
 import titanium.ui.Menu;
-import titanium.ui.SeparatorMenuItem;
 /**
  * A module for controlling the user interface.
  * @since	0.2.0
@@ -39,10 +37,10 @@ extern class UI {
 	 * Create a new CheckMenuItem object.
 	 * @param	label	The label for this menu item
 	 * @param	eventListener	(optional) An event listener for this menu item
-	 * @return	titanium.ui.CheckMenuItem
+	 * @return	Dynamic
 	 * @since	0.6.0
 	 */
-	public static function createCheckMenuItem(label:String, ?eventListener:Dynamic):titanium.ui.CheckMenuItem;
+	public static function createCheckMenuItem(label:String, ?eventListener:Dynamic):Dynamic;
 
 	/**
 	 * Create a new menu
@@ -88,10 +86,10 @@ extern class UI {
 
 	/**
 	 * Create a new separator menu item.
-	 * @return	titanium.ui.SeparatorMenuItem
+	 * @return	Dynamic
 	 * @since	0.6.0
 	 */
-	public static function createSeperatorMenuItem():titanium.ui.SeparatorMenuItem;
+	public static function createSeperatorMenuItem():Dynamic;
 
 	/**
 	 * <p>

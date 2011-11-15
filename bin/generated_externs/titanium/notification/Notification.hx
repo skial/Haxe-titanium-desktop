@@ -43,7 +43,7 @@ extern class Notification {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public static function setTimeout(timeout:Integer):String;
+	public static function setTimeout(timeout:Int):String;
 
 	/**
 	 * Set the notification title
