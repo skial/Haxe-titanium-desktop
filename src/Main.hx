@@ -82,7 +82,7 @@ class Main {
 	public static var keywords:Array<String> = [];
 	public static var currentImports:Hash<String>;
 	public static var missingCode:Array<String> = [];
-	public static var excludePackage:Array<String> = [];
+	public static var offendingPackages:Array<String> = [];
 	
 	public static function main():Void {
 		
@@ -111,7 +111,7 @@ class Main {
 		badUpperCase = cast NYAML.decode(File.getContent('./badUpperCaseWords.yml'))[0].bad;
 		keywords = cast NYAML.decode(File.getContent('./haxeKeywords.yml'))[0].keywords;
 		missingCode = cast NYAML.decode(File.getContent('./missingCode.yml'));
-		excludePackage = cast NYAML.decode(File.getContent('./excludePackage.yml'));
+		offendingPackages = cast NYAML.decode(File.getContent('./offendingPackages.yml'));
 		
 		new Main();
 	}
@@ -253,7 +253,7 @@ class Main {
 		}
 		var t = (val.startsWith('titanium') ? val : 'titanium.' + val).toLowerCase();
 		var r = '';
-		for (n in excludePackage) {
+		for (n in offendingPackages) {
 			if (Reflect.hasField(n, t)) {
 				if (Reflect.field(n, t) == 'remove') {
 					r = 'Dynamic';
@@ -319,6 +319,18 @@ class Main {
 	public function parseObject(object:Base):Void {
 		var ns:Array<String> = object.namespace.split('.');
 		var name:String = ns.pop();
+		
+		var t = (!object.namespace.startsWith('titanium') ? object.namespace : 'titanium.' + object.namespace).toLowerCase();
+		for (n in offendingPackages) {
+			if (Reflect.hasField(n, t)) {
+				if (Reflect.field(n, t) != 'remove') {
+					ns = Reflect.field(n, t).split('.');
+					name = ns.pop();
+					break;
+				}
+			}
+		}
+		
 		var imports:Hash<String> = new Hash<String>();
 		
 		currentImports = imports;

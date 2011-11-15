@@ -1,5 +1,5 @@
 package titanium;
-import titanium.process.Process;
+import titanium.process.SubProcess;
 import titanium.process.Pipe;
 /**
  * A module for creating processes.
@@ -217,7 +217,7 @@ extern class Process {
 	 * @param	pipeIn	(optional) A Process.Pipe object which the new process should use for receiving input.
 	 * @param	pipeOut	(optional) A Process.Pipe object which the new process should use for sending output.
 	 * @param	pipeErr	(optional) A Process.Pipe object which the new process should use for sending error output.
-	 * @return	titanium.process.Process
+	 * @return	titanium.process.SubProcess
 	 * @since	0.5.0
 	 * @example	<pre><code>
 		    // Reading the output of a process using the read event.
@@ -235,7 +235,7 @@ extern class Process {
 		</code></pre>
 		
 	 */
-	public static function createProcess(args:Array<String>, ?envionment:Dynamic, ?pipeIn:titanium.process.Pipe, ?pipeOut:titanium.process.Pipe, ?pipeErr:titanium.process.Pipe):titanium.process.Process;
+	public static function createProcess(args:Array<String>, ?envionment:Dynamic, ?pipeIn:titanium.process.Pipe, ?pipeOut:titanium.process.Pipe, ?pipeErr:titanium.process.Pipe):titanium.process.SubProcess;
 
 	/**
 	 * This method is deprecated. See Process.Process.createProcess()

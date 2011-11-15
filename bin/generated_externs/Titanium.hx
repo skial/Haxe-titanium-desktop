@@ -13,22 +13,22 @@ pattern, but you may also use accessors for most operations For example:
  */
 @:native("Titanium")
 extern class Titanium {
-public static var API:titanium.API;
-public static var Analytics:titanium.Analytics;
-public static var App:titanium.App;
-public static var Codec:titanium.Codec;
-public static var Database:titanium.Database;
-public static var Filesystem:titanium.Filesystem;
-public static var JSON:titanium.JSON;
-public static var Media:titanium.Media;
-public static var Network:titanium.Network;
-public static var Notification:titanium.Notification;
-public static var Platform:titanium.Platform;
-public static var Process:titanium.Process;
-public static var UI:titanium.UI;
-public static var UpdateManager:titanium.UpdateManager;
-public static var Worker:titanium.Worker;
-public static var Bytes:titanium.Bytes;
+public static var API = titanium.API;
+public static var Analytics = titanium.Analytics;
+public static var App = titanium.APP;
+public static var Codec = titanium.Codec;
+public static var Database = titanium.Database;
+public static var Filesystem = titanium.Filesystem;
+public static var JSON = titanium.JSON;
+public static var Media = titanium.Media;
+public static var Network = titanium.Network;
+public static var Notification = titanium.Notification;
+public static var Platform = titanium.Platform;
+public static var Process = titanium.Process;
+public static var UI = titanium.UI;
+public static var UpdateManager = titanium.UpdateManager;
+public static var Worker = titanium.Worker;
+public static var Bytes = titanium.Bytes;
 
 
 	/**
