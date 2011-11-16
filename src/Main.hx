@@ -154,12 +154,19 @@ class Main {
 		
 		if (module.namespace.indexOf('.') == -1) {
 			
-			FileSys.createDirectory(OUTPUT + module.namespace.lcfirst());
-			folder = module.namespace;
+			folder = module.namespace.lcfirst();
+			FileSys.createDirectory(OUTPUT + folder);
+			FileSys.createDirectory(OUTPUT + folder + '/desktop');
 			
 		} else {
 			var ns:Array<String> = module.namespace.split('.');
 			var name:String = ns.pop();
+			
+			if (ns.first().toLowerCase() == 'titanium') {
+				ns.insert(1, 'desktop');
+			} else {
+				ns.unshift('desktop');
+			}
 			
 			for (i in 0...ns.length) {
 				for (n in badUpperCase) {
@@ -178,7 +185,6 @@ class Main {
 				}
 			}
 			folder = ns.join('/') + '/' + name.lcfirst();
-			
 			FileSys.createDirectory(OUTPUT + folder);
 		}
 		
@@ -236,6 +242,15 @@ class Main {
 	
 	public function parsePackage(path:String, ?pop:Bool = true):String {
 		var ns:Array<String> = path.split('.');
+		
+		if (ns.length != 0) {
+			if (ns.first().toLowerCase() == 'titanium') {
+				ns.insert(1, 'desktop');
+			} else {
+				ns.unshift('desktop');
+			}
+		}
+		
 		var name:String = ns.pop();
 		for (i in 0...ns.length) {
 			for (n in badUpperCase) {
@@ -249,7 +264,7 @@ class Main {
 		var val:String = ns.join('.') + '.' + name;
 		val = val.replace('>', '');
 		if (!currentImports.exists(val) && val.indexOf('|') == -1) {
-			currentImports.set(val, val);
+			currentImports.set(val, name);
 		}
 		var t = (val.startsWith('titanium') ? val : 'titanium.' + val).toLowerCase();
 		var r = '';
@@ -260,21 +275,22 @@ class Main {
 					if (currentImports.exists(val)) {
 						currentImports.remove(val);
 					}
+					return r;
 				} else {
 					r = Reflect.field(n, t);
 					if (currentImports.exists(val)) {
 						currentImports.remove(val);
 						currentImports.set(r, r);
 					}
+					return r.split('.').pop();
 				}
-				return r;
 			}
 		}
-		if (pop) {
+		//if (pop) {
 			return name;
-		} else {
+		/*} else {
 			return val.startsWith('titanium') ? val : 'titanium.' + val;
-		}
+		}*/
 	}
 	
 	public function parseFunction(method:Func):Void {
@@ -320,7 +336,16 @@ class Main {
 		var ns:Array<String> = object.namespace.split('.');
 		var name:String = ns.pop();
 		
-		var t = (!object.namespace.startsWith('titanium') ? object.namespace : 'titanium.' + object.namespace).toLowerCase();
+		if (ns.length != 0) {
+			if (ns.first().toLowerCase() == 'titanium') {
+				ns.insert(1, 'desktop');
+			} else {
+				ns.unshift('desktop');
+			}
+		}
+		
+		var s = ns.join('.') + '.' + name;
+		var t = (!s.startsWith('titanium') ? s : 'titanium.' + s).toLowerCase();
 		for (n in offendingPackages) {
 			if (Reflect.hasField(n, t)) {
 				if (Reflect.field(n, t) != 'remove') {
