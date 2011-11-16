@@ -1,0 +1,16 @@
+<project name="titanium_desktop" url="https://github.com/skial/haXe-titanium-desktop" license="GPL">
+    <user name="skial"/>
+    <tag v="js"/>
+    <tag v="javascript"/>
+    <tag v="html"/>
+    <tag v="html5"/>
+    <tag v="css"/>
+    <tag v="css3"/>
+    <tag v="titanium"/>
+    <tag v="desktop"/>
+    <tag v="appcelerator"/>
+    <tag v="crossplatform"/>
+    <tag v="extern"/>
+    <description>Haxe extern classes for http://www.appcelerator.com/ Titanium Desktop</description>
+    <version name="1.1">Inital release to haxelib</version>
+</project>

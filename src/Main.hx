@@ -105,6 +105,7 @@ class Main {
 		returnTypes.set('byte', 'Dynamic');
 		returnTypes.set('array', 'Array<Dynamic>');
 		returnTypes.set('integer', 'Int');
+		returnTypes.set('int', 'Int');
 		returnTypes.set('undefined', 'Void');
 		returnTypes.set('domwindow', 'js.Dom.Window');
 		
@@ -200,7 +201,7 @@ class Main {
 		if (type.indexOf('<') != -1) {
 			var returnArray:Array<String> = type.split('<');
 			var returnString:String = 'Array<';
-			var a:Int = 0;
+			var a:Int = returnArray.length-1;
 			for (r in 0...returnArray.length) {
 				if (r == 0) {
 					continue;
@@ -208,7 +209,6 @@ class Main {
 				
 				if (returnArray[r].indexOf('Array') != -1) {
 					returnString += 'Array<';
-					++a;
 					continue;
 				}
 				if (returnArray[r].indexOf('.') != -1) {
@@ -218,9 +218,10 @@ class Main {
 				returnString += this.parseReturnType(returnArray[r]);
 				
 			}
-			if (returnString.endsWith('>') == false) {
-				returnString += '>';
-			}
+			//if (returnString.endsWith('>') == false) {
+				returnString = returnString.replace('>', '');
+			//}
+			returnString += '>'.repeat(a);
 			return returnString;
 		}
 		if (type.indexOf('|') != -1) {
@@ -306,7 +307,7 @@ class Main {
 			if (parameters.length != 0) {
 				for (param in parameters) {
 					
-					var p:HXParams = { name:param[1] == '...' ? 'arg' : param[1], type:this.parseReturnType(param[0]), optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
+					var p:HXParams = { name:(param[1] == '...' ? 'arg' : (param[1].indexOf('|') != -1 ? param[1].split('|')[0] : param[1])), type:this.parseReturnType(param[0]), optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
 					func.params.push(p);
 					func.description += '\n * @param\t' + param[1] + (param[2] != null ? '\t' + param[2].replace('\n', '\n * ') : '');
 					
