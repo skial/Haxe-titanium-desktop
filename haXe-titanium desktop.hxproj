@@ -30,9 +30,7 @@
     <library name="nYAML" />
     <library name="mlib" />
     <library name="thx" />
-    <library name="ArrayTools" />
-    <library name="jQueryExtern" />
-    <library name="titanium_desktop" />
+    <library name="titaniumdesktop" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
