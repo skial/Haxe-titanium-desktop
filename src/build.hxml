@@ -1,0 +1,3 @@
+-main Foo
+-js ./Foo.js
+-lib titanium_desktop

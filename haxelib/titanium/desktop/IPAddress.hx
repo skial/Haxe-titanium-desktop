@@ -1,127 +1,21 @@
 package titanium.desktop;
-/**
- * An object representing an IP address.
- * @since	0.2.0
- */
 @:native("Titanium.Network.IPAddress")
 extern class IPAddress {
-
-	/**
-	 * Check whether an IPAddress object is a broadcast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isBroadcast():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a global multicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isGlobalMC():Bool;
-
-	/**
-	 * Check whether an IPAddress object is invalid.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isInvalid():Bool;
-
-	/**
-	 * Check whether an IPAddress object is an IPv4 address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isIPV4():Bool;
-
-	/**
-	 * Check whether an IPAddress object is an IPv6 address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isIPV6():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a link-local address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isLinkLocal():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a link-local multicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isLinkLocalMC():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a loopback address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isLoopback():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a multicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isMulticast():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a node-local multicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isNodeLocalMC():Bool;
-
-	/**
-	 * Check whether an IPAddress object is an organization local multicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isOrgLocalMC():Bool;
-
-	/**
-	 * Check whether an IPAddrss object is a site-local address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isSiteLocal():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a site-local multicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isSiteLocalMC():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a unicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isUnicast():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a well-known multicast address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isWellKnownMC():Bool;
-
-	/**
-	 * Check whether an IPAddress object is a wildcard address.
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isWildcard():Bool;
-
-	/**
-	 * Return a string representation of an IPAddress object.
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static function toString():String;
+	static function isBroadcast():Bool;
+	static function isGlobalMC():Bool;
+	static function isInvalid():Bool;
+	static function isIPV4():Bool;
+	static function isIPV6():Bool;
+	static function isLinkLocal():Bool;
+	static function isLinkLocalMC():Bool;
+	static function isLoopback():Bool;
+	static function isMulticast():Bool;
+	static function isNodeLocalMC():Bool;
+	static function isOrgLocalMC():Bool;
+	static function isSiteLocal():Bool;
+	static function isSiteLocalMC():Bool;
+	static function isUnicast():Bool;
+	static function isWellKnownMC():Bool;
+	static function isWildcard():Bool;
+	static function toString():String;
 }

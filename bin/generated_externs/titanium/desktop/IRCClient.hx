@@ -1,96 +1,15 @@
 package titanium.desktop;
-/**
- * An object representing an IRC client connection. [DEPRECATED]
- * @since	0.2.0
- */
 @:native("Titanium.Network.IRCClient")
 extern class IRCClient {
-
-	/**
-	 * The connected property of an IRCClient object
-	 * @since	0.2.0
-	 */
-	public static var connected:String;
-
-	/**
-	 * Connects an IRC to the host specified during creation of the IRCClient object
-	 * @param	hostname	the hostname
-	 * @param	port	the port
-	 * @param	nick	the users nickname
-	 * @param	name	the users full name
-	 * @param	user	the users login name
-	 * @param	pass	the users password
-	 * @param	callback	a callback function to recieve IRC events.
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static var connect:String->Float->String->String->String->String->Dynamic->String;
-
-	/**
-	 * Disconnects an IRC connection
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static function disconnect():String;
-
-	/**
-	 * Returns the nick name for the connection
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static function getNick():String;
-
-	/**
-	 * Returns a list of users for the channel
-	 * @return	Array<String>
-	 * @since	0.2.0
-	 */
-	public static function getUsers():Array<String>;
-
-	/**
-	 * Checks whether a user has OP status
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isOp():Bool;
-
-	/**
-	 * Checks whether a user has VOICE status
-	 * @return	Bool
-	 * @since	0.2.0
-	 */
-	public static function isVoice():Bool;
-
-	/**
-	 * Joins a channel
-	 * @param	channel	channel to join to
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static function join(channel:String):String;
-
-	/**
-	 * Sends data to the IRC connection
-	 * @param	channel	the channel to send the data to
-	 * @param	message	message to send
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static function send(channel:String, message:String):String;
-
-	/**
-	 * Sets the nick name for the connection
-	 * @param	nick	nickname to use
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static function setNick(nick:String):String;
-
-	/**
-	 * Leaves a channel
-	 * @param	channel	channel to leave
-	 * @return	String
-	 * @since	0.2.0
-	 */
-	public static function unjoin(channel:String):String;
+	static var connected:String;
+	static var connect:String->Float->String->String->String->String->Dynamic->String;
+	static function disconnect():String;
+	static function getNick():String;
+	static function getUsers():Array<String>;
+	static function isOp():Bool;
+	static function isVoice():Bool;
+	static function join(channel:String):String;
+	static function send(channel:String, message:String):String;
+	static function setNick(nick:String):String;
+	static function unjoin(channel:String):String;
 }
