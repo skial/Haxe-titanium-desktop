@@ -16,7 +16,6 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="bin\generated_externs" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -33,6 +32,7 @@
     <library name="thx" />
     <library name="ArrayTools" />
     <library name="jQueryExtern" />
+    <library name="titanium_desktop" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
