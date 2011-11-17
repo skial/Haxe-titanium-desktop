@@ -287,11 +287,11 @@ class Main {
 				}
 			}
 		}
-		//if (pop) {
+		if (pop) {
 			return name;
-		/*} else {
+		} else {
 			return val.startsWith('titanium') ? val : 'titanium.' + val;
-		}*/
+		}
 	}
 	
 	public function parseFunction(method:Func):Void {
@@ -301,7 +301,7 @@ class Main {
 		
 		currentImports = externs.get(ns.join('.')).imports;
 		
-		var func:HXFunction = { name:name, params:[], description:' * ' + method.description.replace('\n', '\n * '), returns:this.parseReturnType(method.returns), stat:false };
+		var func:HXFunction = { name:name, params:[], description:' * ' + method.description.replace('\n', '\n * '), returns:this.parseReturnType(method.returns), stat:ns.length >= 3 ? false : true };
 		
 		if (parameters != null) {
 			if (parameters.length != 0) {
@@ -327,7 +327,7 @@ class Main {
 		
 		currentImports = externs.get(ns.join('.')).imports;
 		
-		var prop:HXProperty = { description:' * ' + property.description + '\n * @since\t' + property.since + (property.examples != null ? '\n * @example\t' + property.examples : ''), name:name, type:this.parseReturnType(property.returns), stat:property.description.indexOf('constant') == -1 ? false : true };
+		var prop:HXProperty = { description:' * ' + property.description + '\n * @since\t' + property.since + (property.examples != null ? '\n * @example\t' + property.examples : ''), name:name, type:this.parseReturnType(property.returns), stat:property.description.indexOf('constant') == -1 ? (ns.length >= 3?true:false) : true };
 		
 		externs.get(ns.join('.')).properties.push(prop);
 		
@@ -401,10 +401,10 @@ class Main {
 		var pck:String = cls.pck.join('.');
 		
 		content += 'package ' + pck + ';\n';
-		/*for (i in cls.imports.keys()) {
+		for (i in cls.imports.keys()) {
 			content += 'import ' + (i.startsWith('titanium') ? i + ';\n' : 'titanium.' + i + ';\n');
-		}*/
-		//content += '/**\n' + cls.description + '\n */\n';
+		}
+		content += '/**\n' + cls.description + '\n */\n';
 		content += '@:native("' + cls.ns + '")\n';
 		content += 'extern class ' + cls.name + ' {\n';
 		
@@ -417,7 +417,6 @@ class Main {
 		for (p in cls.properties) {
 			content += this.generateHaxeProperty(p);
 		}
-		//content += '\tpublic function new():Void;\n';
 		for (f in cls.functions) {
 			content += this.generateHaxeFunction(f);
 		}
@@ -429,10 +428,8 @@ class Main {
 	}
 	
 	public function generateHaxeProperty(property:HXProperty):String {
-		//var content:String = '\n\t/**\n\t' + property.description.replace('\n', '\n\t') + '\n\t */\n';
-		var content:String = '';
-		//content += '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
-		content += '\tstatic ' + 'var ' + property.name + ':' + property.type + ';\n';
+		var content:String = '\n\t/**\n\t' + property.description.replace('\n', '\n\t') + '\n\t */\n';
+		content += '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
 		return content;
 	}
 	
@@ -470,8 +467,7 @@ class Main {
 		
 		if (alt == false) {
 			
-			//val = 'public ' + (method.stat ? 'static ' : '') + 'function ' + method.name + '(';
-			val = 'static ' + 'function ' + method.name + '(';
+			val = 'public ' + (method.stat?'static ' : '') + 'function ' + method.name + '(';
 			
 			for (p in 0...method.params.length) {
 				val += (val.endsWith('(') == false ? ', ' : '');
@@ -490,8 +486,7 @@ class Main {
 			
 		} else {
 			
-			//val = 'public '  + (method.stat ? 'static ' : '') + 'var ' + method.name + ':';
-			val = 'static ' + 'var ' + method.name + ':';
+			val = 'public ' + (method.stat?'static ' : '') + 'var ' + method.name + ':';
 			if (method.params.length == 0) {
 				val += 'Void';
 			} else {
@@ -515,13 +510,13 @@ class Main {
 			
 		}
 		
-		//output += '\n\t/**\n\t' + method.description.replace('\n', '\n\t') + '\n\t */\n';
+		output += '\n\t/**\n\t' + method.description.replace('\n', '\n\t') + '\n\t */\n';
 		
 		if (paramOverload == true) {
 			var sorted:Array<Array<String>> = this.processOverloadTypes(paramOverloadArray);
 			for (item in sorted) {
 				if (item != sorted.last()) {
-					output += '\t@:overload(' + val.replace('static ', '').replace(' ' + method.name, '') + '{})\n';
+					output += '\t@:overload(' + val.replace('public ', '').replace('static ', '').replace(' ' + method.name, '') + '{})\n';
 				} else {
 					output += '\t' + val + ';\n';
 				}
@@ -532,7 +527,7 @@ class Main {
 		} else if (methodOverload == true) { 
 			for (item in methodOverloadArray) {
 				if (item != methodOverloadArray.last()) {
-					output += '\t@:overload(' + val.replace('static ', '').replace(' ' + method.name, '') + '{})\n';
+					output += '\t@:overload(' + val.replace('public ', '').replace('static ', '').replace(' ' + method.name, '') + '{})\n';
 				} else {
 					output += '\t' + val + ';\n';
 				}

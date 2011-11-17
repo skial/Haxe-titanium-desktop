@@ -1,11 +1,16 @@
 package titanium.desktop;
-@:native("Titanium.Notification.Notification")
+import titanium.desktop.notification.Notification;
+/**
+ * A module for displaying desktop notifications.
+ * @since	0.4.0
+ */
+@:native("Titanium.Notification")
 extern class Notification {
-	static function hide():Bool;
-	static var setCallback:Dynamic->String;
-	static function setIcon(icon:String):String;
-	static function SetMessage(message:String):String;
-	static function setTimeout(timeout:Int):String;
-	static function setTitle(title:String):String;
-	static function show():Bool;
+
+	/**
+	 * Create a new Notification object.
+	 * @return	Notification
+	 * @since	0.4.0
+	 */
+	public static function createNotification():Notification;
 }

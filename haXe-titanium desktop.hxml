@@ -1,0 +1,7 @@
+-cp src
+-lib nYAML
+-lib mlib
+-lib thx
+-lib titaniumdesktop
+-neko bin/apidoc_builder.n
+-main Main
