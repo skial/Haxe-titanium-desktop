@@ -24,7 +24,7 @@ extern class IRCClient {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public var connect:String->Float->String->String->String->String->Dynamic->String;
+	public function connect(hostname:String, port:Float, nick:String, name:String, user:String, pass:String, _callback:Dynamic):String;
 
 	/**
 	 * Disconnects an IRC connection

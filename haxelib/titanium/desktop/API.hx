@@ -231,7 +231,7 @@ extern class API {
 		</code></pre>
 		
 	 */
-	public static var addEventListener:String->Dynamic->Float;
+	public static function addEventListener(eventName:String, _callback:Dynamic):Float;
 
 	/**
 	 * Create a Kroll Bytes object given a String. A Bytes object is a generic
@@ -508,7 +508,7 @@ extern class API {
 	 * @return	Void
 	 * @since	0.4.0
 	 */
-	public static var installDependencies:Array<Dependency>->Dynamic->Void;
+	public static function installDependencies(dependencies:Array<Dependency>, _callback:Dynamic):Void;
 
 	/**
 	 * Log a statement with a given severity level. The severity levels are

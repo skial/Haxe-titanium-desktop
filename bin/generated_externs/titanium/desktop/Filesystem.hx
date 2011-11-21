@@ -60,7 +60,10 @@ extern class Filesystem {
 		</code></pre>
 		
 	 */
-	public static var asyncCopy:Array<File>->titanium.desktop.filesystem.File->Dynamic->titanium.desktop.filesystem.AsyncCopy;
+	@:overload(function(paths:Array<String>, destination:titanium.desktop.filesystem.File, _callback:Dynamic):titanium.desktop.filesystem.AsyncCopy{})
+	@:overload(function(paths:titanium.desktop.filesystem.File, destination:String, _callback:Dynamic):titanium.desktop.filesystem.AsyncCopy{})
+	@:overload(function(paths:String, destination:String, _callback:Dynamic):titanium.desktop.filesystem.AsyncCopy{})
+	public static function asyncCopy(paths:Array<String>, destination:String, _callback:Dynamic):titanium.desktop.filesystem.AsyncCopy;
 
 	/**
 	 * Create a temporary directory. This directory is guaranteed to be
@@ -146,7 +149,9 @@ extern class Filesystem {
 		</code></pre>
 		
 	 */
-	public static function getFile(base:titanium.desktop.filesystem.File, ?arg:titanium.desktop.filesystem.File):titanium.desktop.filesystem.File;
+	@:overload(function(base:titanium.desktop.filesystem.File, ?arg:titanium.desktop.filesystem.File):titanium.desktop.filesystem.File{})
+	@:overload(function(base:String, ?arg:String):titanium.desktop.filesystem.File{})
+	public static function getFile(base:titanium.desktop.filesystem.File, ?arg:String):titanium.desktop.filesystem.File;
 
 	/**
 	 * Create a Filesystem.Filestream object given a Filesystem.File or a path. 

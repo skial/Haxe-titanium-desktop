@@ -57,5 +57,6 @@ extern class Tray {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function setMenu(menu:titanium.desktop.ui.Menu):String;
+	@:overload(function(menu:titanium.desktop.ui.Menu):String{})
+	public function setMenu(menu:Void):String;
 }

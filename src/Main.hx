@@ -246,9 +246,13 @@ class Main {
 		
 		if (ns.length != 0) {
 			if (ns.first().toLowerCase() == 'titanium') {
-				ns.insert(1, 'desktop');
+				if (ns.exists('desktop') == false) {
+					ns.insert(1, 'desktop');
+				}
 			} else {
-				ns.unshift('desktop');
+				if (ns.first().toLowerCase() != 'desktop') {
+					ns.unshift('desktop');
+				}
 			}
 		}
 		
@@ -307,7 +311,7 @@ class Main {
 			if (parameters.length != 0) {
 				for (param in parameters) {
 					
-					var p:HXParams = { name:(param[1] == '...' ? 'arg' : (param[1].indexOf('|') != -1 ? param[1].split('|')[0] : param[1])), type:this.parseReturnType(param[0]), optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
+					var p:HXParams = { name:(param[1] == '...' ? 'arg' : (param[1].indexOf('|') != -1 ? param[1].split('|')[0] : param[1])), type:param[0].indexOf('|') == -1 ? this.parseReturnType(param[0]) : param[0], optional:param.length > 2 ? param[2].indexOf('optional') != -1 ? true : false : false, defaultValue:'' };
 					func.params.push(p);
 					func.description += '\n * @param\t' + param[1] + (param[2] != null ? '\t' + param[2].replace('\n', '\n * ') : '');
 					
@@ -459,8 +463,9 @@ class Main {
 		for (p in method.params) {
 			for (n in keywords) {
 				if (p.name == n) {
-					alt = true;
-					break;
+					/*alt = true;
+					break;*/
+					p.name = '_' + p.name;
 				}
 			}
 		}
@@ -485,7 +490,7 @@ class Main {
 			}
 			
 		} else {
-			
+			/* this is being kept for now just incase another error pops up - but at the moment this code doesnt get used */
 			val = 'public ' + (method.stat?'static ' : '') + 'var ' + method.name + ':';
 			if (method.params.length == 0) {
 				val += 'Void';

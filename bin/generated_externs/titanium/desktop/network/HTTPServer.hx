@@ -25,7 +25,7 @@ extern class HTTPServer {
 		</code></pre>
 		
 	 */
-	public var bind:Float->String->Dynamic->String;
+	public function bind(port:Float, ?address:String, _callback:Dynamic):String;
 
 	/**
 	 * close this server

@@ -36,5 +36,5 @@ extern class UpdateManager {
 	 * @return	Float
 	 * @since	0.4.0
 	 */
-	public static var startMonitor:String->Dynamic->Float->Float;
+	public static function startMonitor(component:String, _callback:Dynamic, interval:Float):Float;
 }

@@ -44,7 +44,7 @@ extern class Sound {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
-	public var onComplete:Dynamic->Void;
+	public function onComplete(_callback:Dynamic):Void;
 
 	/**
 	 * Pause a currently playing sound.

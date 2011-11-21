@@ -16,6 +16,7 @@ extern class File {
 	 * @return	Void
 	 * @since	0.2.0
 	 */
+	@:overload(function(target:String):Void{})
 	public function copy(target:titanium.desktop.filesystem.File):Void;
 
 	/**
@@ -37,6 +38,7 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
+	@:overload(function(target:String):Bool{})
 	public function createShortcut(target:titanium.desktop.filesystem.File):Bool;
 
 	/**
@@ -164,6 +166,7 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
+	@:overload(function(target:String):String{})
 	public function move(target:titanium.desktop.filesystem.File):String;
 
 	/**
@@ -297,7 +300,8 @@ extern class File {
 	 * @return	Bool
 	 * @since	0.3.0
 	 */
-	public function unzip(destination:titanium.desktop.filesystem.File):Bool;
+	@:overload(function(destination:titanium.desktop.filesystem.File):Bool{})
+	public function unzip(destination:String):Bool;
 
 	/**
 	 * Write data to the file at the path specified by this Filesystem.File
@@ -307,5 +311,7 @@ extern class File {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public function write(data:Bytes):String;
+	@:overload(function(data:String):String{})
+	@:overload(function(data:Bytes):String{})
+	public function write(data:Float):String;
 }

@@ -226,7 +226,8 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function setContextMenu(menu:titanium.desktop.ui.Menu):String;
+	@:overload(function(menu:titanium.desktop.ui.Menu):String{})
+	public static function setContextMenu(menu:Void):String;
 
 	/**
 	 * Set the dock icon
@@ -258,7 +259,8 @@ extern class UI {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public static function setMenu(menu:titanium.desktop.ui.Menu):String;
+	@:overload(function(menu:titanium.desktop.ui.Menu):String{})
+	public static function setMenu(menu:Void):String;
 
 	/**
 	 * create a UI dialog

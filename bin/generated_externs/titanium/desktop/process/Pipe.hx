@@ -40,5 +40,6 @@ extern class Pipe {
 	 * @return	Float
 	 * @since	0.5.0
 	 */
-	public function write(data:Bytes):Float;
+	@:overload(function(data:Bytes):Float{})
+	public function write(data:String):Float;
 }

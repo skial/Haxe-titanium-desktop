@@ -332,7 +332,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public var openFileChooserDialog:Dynamic->Dynamic->String;
+	public function openFileChooserDialog(_callback:Dynamic, ?options:Dynamic):String;
 
 	/**
 	 * Displays the folder chooser dialog
@@ -341,7 +341,7 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.4.0
 	 */
-	public var openFolderChooserDialog:Dynamic->Dynamic->String;
+	public function openFolderChooserDialog(_callback:Dynamic, ?options:Dynamic):String;
 
 	/**
 	 * Displays the save as file dialog.
@@ -366,7 +366,7 @@ extern class UserWindow {
 		</pre></codee>
 		
 	 */
-	public var openSaveAsDialog:Dynamic->Dynamic->Void;
+	public function openSaveAsDialog(_callback:Dynamic, ?options:Dynamic):Void;
 
 	/**
 	 * Set this window's bounds object. A bounds object is a simple JavaScript object
@@ -403,7 +403,8 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public function setContextMenu(menu:titanium.desktop.ui.Menu):String;
+	@:overload(function(menu:titanium.desktop.ui.Menu):String{})
+	public function setContextMenu(menu:Void):String;
 
 	/**
 	 * Set a window to the edited (a dot in the close button) or unedited state. OS X only.
@@ -467,7 +468,8 @@ extern class UserWindow {
 	 * @return	String
 	 * @since	0.5.0
 	 */
-	public function setMenu(menu:titanium.desktop.ui.Menu):String;
+	@:overload(function(menu:titanium.desktop.ui.Menu):String{})
+	public function setMenu(menu:Void):String;
 
 	/**
 	 * Sets a window's min height

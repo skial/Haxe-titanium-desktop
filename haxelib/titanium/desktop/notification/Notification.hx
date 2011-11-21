@@ -19,7 +19,7 @@ extern class Notification {
 	 * @return	String
 	 * @since	0.9.0
 	 */
-	public var setCallback:Dynamic->String;
+	public function setCallback(_callback:Dynamic):String;
 
 	/**
 	 * Set the notification icon image.

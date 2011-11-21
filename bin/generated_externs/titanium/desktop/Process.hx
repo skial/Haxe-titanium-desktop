@@ -235,7 +235,8 @@ extern class Process {
 		</code></pre>
 		
 	 */
-	public static function createProcess(args:Array<String>, ?envionment:Dynamic, ?pipeIn:titanium.desktop.process.Pipe, ?pipeOut:titanium.desktop.process.Pipe, ?pipeErr:titanium.desktop.process.Pipe):titanium.desktop.process.Process;
+	@:overload(function(args:Array<String>, ?envionment:Dynamic, ?pipeIn:titanium.desktop.process.Pipe, ?pipeOut:titanium.desktop.process.Pipe, ?pipeErr:titanium.desktop.process.Pipe):titanium.desktop.process.Process{})
+	public static function createProcess(args:Dynamic, ?envionment:Dynamic, ?pipeIn:titanium.desktop.process.Pipe, ?pipeOut:titanium.desktop.process.Pipe, ?pipeErr:titanium.desktop.process.Pipe):titanium.desktop.process.Process;
 
 	/**
 	 * This method is deprecated. See Process.Process.createProcess()

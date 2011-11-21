@@ -129,7 +129,9 @@ extern class Filestream {
 	 * @return	Bool
 	 * @since	0.2.0
 	 */
-	public function write(data:Bytes):Bool;
+	@:overload(function(data:String):Bool{})
+	@:overload(function(data:Bytes):Bool{})
+	public function write(data:Float):Bool;
 
 	/**
 	 * Writes a line to this Filesystem.Filestream. The data will be followed
@@ -139,5 +141,7 @@ extern class Filestream {
 	 * @return	Bool
 	 * @since	0.4.0
 	 */
-	public function writeLine(data:Bytes):Bool;
+	@:overload(function(data:String):Bool{})
+	@:overload(function(data:Bytes):Bool{})
+	public function writeLine(data:Float):Bool;
 }

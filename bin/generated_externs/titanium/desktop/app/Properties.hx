@@ -18,7 +18,7 @@ extern class Properties {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public var getDouble:String->Float->Float;
+	public function getDouble(name:String, _default:Float):Float;
 
 	/**
 	 * Returns a property value as an integer.
@@ -30,7 +30,7 @@ extern class Properties {
 	 * @return	Float
 	 * @since	0.2.0
 	 */
-	public var getInt:String->Float->Float;
+	public function getInt(name:String, _default:Float):Float;
 
 	/**
 	 * Returns a property value as an Array.
@@ -42,7 +42,7 @@ extern class Properties {
 	 * @return	Dynamic
 	 * @since	0.2.0
 	 */
-	public var getList:Dynamic->Dynamic->Dynamic;
+	public function getList(name:Dynamic, _default:Dynamic):Dynamic;
 
 	/**
 	 * Returns a property value as a String.
@@ -54,7 +54,7 @@ extern class Properties {
 	 * @return	String
 	 * @since	0.2.0
 	 */
-	public var getString:String->String->String;
+	public function getString(name:String, _default:String):String;
 
 	/**
 	 * Query whether or not a given property exists in this Property object.

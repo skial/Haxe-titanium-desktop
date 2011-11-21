@@ -1,5 +1,4 @@
 package titanium.desktop;
-import titanium.desktop.filesystem.File;
 /**
  * A module for dealing with encoding and decoding.
  * @since	0.7.0
@@ -69,7 +68,9 @@ extern class Codec {
 		</code></pre>
 		
 	 */
-	public static function createZip(root:titanium.desktop.filesystem.File, zipFile:titanium.desktop.filesystem.File, onComplete:Dynamic):String;
+	@:overload(function(root:titanium.desktop.filesystem.File, zipFile:titanium.desktop.filesystem.File, onComplete:Dynamic):String{})
+	@:overload(function(root:String, zipFile:String, onComplete:Dynamic):String{})
+	public static function createZip(root:titanium.desktop.filesystem.File, zipFile:String, onComplete:Dynamic):String;
 
 	/**
 	 * Decode a Base64-encoded String.
@@ -106,6 +107,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
+	@:overload(function(hashType:Int, data:String):String{})
 	public static function digestToHex(hashType:Int, data:Bytes):String;
 
 	/**
@@ -115,6 +117,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
+	@:overload(function(data:String):String{})
 	public static function encodeBase64(data:Bytes):String;
 
 	/**
@@ -124,6 +127,7 @@ extern class Codec {
 	 * @return	String
 	 * @since	0.7.0
 	 */
+	@:overload(function(data:String):String{})
 	public static function encodeHexBinary(data:Bytes):String;
 
 	/**
@@ -143,5 +147,7 @@ extern class Codec {
 		</code></pre>
 		
 	 */
-	public static function extractZip(zipFile:titanium.desktop.filesystem.File, dest:titanium.desktop.filesystem.File, onComplete:Dynamic):String;
+	@:overload(function(zipFile:titanium.desktop.filesystem.File, dest:titanium.desktop.filesystem.File, onComplete:Dynamic):String{})
+	@:overload(function(zipFile:String, dest:String, onComplete:Dynamic):String{})
+	public static function extractZip(zipFile:titanium.desktop.filesystem.File, dest:String, onComplete:Dynamic):String;
 }

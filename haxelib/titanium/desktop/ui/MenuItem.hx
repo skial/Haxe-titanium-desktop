@@ -145,5 +145,6 @@ extern class MenuItem {
 	 * @return	String
 	 * @since	0.6.0
 	 */
-	public function setSubmenu(menu:titanium.desktop.ui.Menu):String;
+	@:overload(function(menu:titanium.desktop.ui.Menu):String{})
+	public function setSubmenu(menu:Void):String;
 }

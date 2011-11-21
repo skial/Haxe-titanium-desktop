@@ -1,4 +1,7 @@
 package titanium.desktop.worker;
+import titanium.desktop.filesystem.File;
+import titanium.desktop.process.Pipe;
+import titanium.desktop.ui.Menu;
 /**
  * An object representing a Titanium Worker.
  * @since	0.6.0
