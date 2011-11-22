@@ -10,19 +10,19 @@ extern class Filestream {
 	 * A constant representing append mode for file access.
 	 * @since	0.4.0
 	 */
-	public static var MODE_APPEND:Float;
+	public var MODE_APPEND:Float;
 
 	/**
 	 * A constant representing read mode for file access.
 	 * @since	0.4.0
 	 */
-	public static var MODE_READ:Float;
+	public var MODE_READ:Float;
 
 	/**
 	 * A constant representing write mode for file access.
 	 * @since	0.4.0
 	 */
-	public static var MODE_WRITE:String;
+	public var MODE_WRITE:String;
 
 	/**
 	 * Close this Filsystem.Filstream. Return true if the stream closed

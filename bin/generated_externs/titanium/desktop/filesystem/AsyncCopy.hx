@@ -10,5 +10,5 @@ extern class AsyncCopy {
 	 * True if this asynchronous copy operation is active, false otherwise.
 	 * @since	0.3.0
 	 */
-	public static var running:Bool;
+	public var running:Bool;
 }

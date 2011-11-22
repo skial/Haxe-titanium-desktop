@@ -12,127 +12,127 @@ extern class HTTPClient {
 	 * Whether an HTTPClient object is connected or not
 	 * @since	0.3.0
 	 */
-	public static var connected:String;
+	public var connected:String;
 
 	/**
 	 * Amount of data received from server so far. Updated on HTTP_DATA_RECEIVED event.
 	 * @since	0.7.0
 	 */
-	public static var dataReceived:String;
+	public var dataReceived:String;
 
 	/**
 	 * Amount of data sent to server so far. Updated on HTTP_DATA_SENT event.
 	 * @since	0.7.0
 	 */
-	public static var dataSent:String;
+	public var dataSent:String;
 
 	/**
 	 * The DONE readyState property
 	 * @since	0.3.0
 	 */
-	public static var DONE:String;
+	public var DONE:String;
 
 	/**
 	 * The HEADERS_RECEIVED readyState property
 	 * @since	0.3.0
 	 */
-	public static var HEADERS_RECEIVED:String;
+	public var HEADERS_RECEIVED:String;
 
 	/**
 	 * The LOADING readyState property
 	 * @since	0.3.0
 	 */
-	public static var LOADING:String;
+	public var LOADING:String;
 
 	/**
 	 * The handler function that will be fired as stream data is received from an HTTP request
 	 * @since	0.3.0
 	 */
-	public static var ondatastream:String;
+	public var ondatastream:String;
 
 	/**
 	 * The handler function that will be fired when request is completed
 	 * @since	0.7.0
 	 */
-	public static var onload:String;
+	public var onload:String;
 
 	/**
 	 * The handler function that will be fired when the readyState code of an HTTPClient object changes.
 	 * @since	0.3.0
 	 */
-	public static var onreadystatechange:String;
+	public var onreadystatechange:String;
 
 	/**
 	 * The handler function that will be fired as the stream data is sent.
 	 * @since	0.3.0
 	 */
-	public static var onsendstream:String;
+	public var onsendstream:String;
 
 	/**
 	 * The OPENED readyState property
 	 * @since	0.3.0
 	 */
-	public static var OPENED:String;
+	public var OPENED:String;
 
 	/**
 	 * The ready-state status for the connection
 	 * @since	0.3.0
 	 */
-	public static var readyState:String;
+	public var readyState:String;
 
 	/**
 	 * The response of an HTTP request as a Bytes. Currently this property is only valid after the request has been completed.
 	 * @since	0.8.0
 	 */
-	public static var responseData:String;
+	public var responseData:String;
 
 	/**
 	 * The response of an HTTP request as text
 	 * @since	0.3.0
 	 */
-	public static var responseText:String;
+	public var responseText:String;
 
 	/**
 	 * The response of an HTTP request as parsable XML
 	 * @since	0.3.0
 	 */
-	public static var responseXML:String;
+	public var responseXML:String;
 
 	/**
 	 * The response status code of an HTTP request
 	 * @since	0.3.0
 	 */
-	public static var status:String;
+	public var status:String;
 
 	/**
 	 * The response status text of an HTTP Request
 	 * @since	0.3.0
 	 */
-	public static var statusText:String;
+	public var statusText:String;
 
 	/**
 	 * True if HTTP request timed out
 	 * @since	0.7.0
 	 */
-	public static var timedOut:String;
+	public var timedOut:String;
 
 	/**
 	 * The UNSENT readyState property.
 	 * @since	0.3.0
 	 */
-	public static var UNSENT:String;
+	public var UNSENT:String;
 
 	/**
 	 * The request URL. This value will be updated on redirect events.
 	 * @since	0.7.0
 	 */
-	public static var url:String;
+	public var url:String;
 
 	/**
 	 * User agent string to use for requests. (Default: Titanium.userAgent)
 	 * @since	0.7.0
 	 */
-	public static var userAgent:String;
+	public var userAgent:String;
 
 	/**
 	 * Aborts an in progress connection

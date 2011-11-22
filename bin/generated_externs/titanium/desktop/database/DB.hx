@@ -11,13 +11,13 @@ extern class DB {
 	 * The row id of the last insert operation.
 	 * @since	0.4.0
 	 */
-	public static var lastInsertRowId:Float;
+	public var lastInsertRowId:Float;
 
 	/**
 	 * The number of rows affected by the last execute call.
 	 * @since	0.4.0
 	 */
-	public static var rowsAffected:Float;
+	public var rowsAffected:Float;
 
 	/**
 	 * Close an open Database.DB. If the database is not open, this method will do nothing.

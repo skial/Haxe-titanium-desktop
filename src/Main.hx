@@ -46,6 +46,7 @@ typedef HXClass = {
 	var properties:Array<HXProperty>;
 	var description:String;
 	var imports:Hash<String>;
+	var type:String;
 }
 
 typedef HXFunction = {
@@ -375,7 +376,7 @@ class Main {
 			ns[i] = ns[i].lcfirst();
 		}
 		
-		var cls:HXClass = { imports:imports, ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:' * ' + object.description + '\n * @since\t' + object.since + (object.examples != null ? '\n * @example\t' + object.examples : '') };
+		var cls:HXClass = { type:object.type, imports:imports, ns:object.namespace, pck:ns, name:name, functions:[], properties:[], description:' * ' + object.description + '\n * @since\t' + object.since + (object.examples != null ? '\n * @example\t' + object.examples : '') };
 		
 		externs.set(object.namespace, cls);
 		
@@ -419,10 +420,10 @@ class Main {
 		}
 		
 		for (p in cls.properties) {
-			content += this.generateHaxeProperty(p);
+			content += this.generateHaxeProperty(p, (cls.type == 'object' ? true : false));
 		}
 		for (f in cls.functions) {
-			content += this.generateHaxeFunction(f);
+			content += this.generateHaxeFunction(f, (cls.type == 'object' ? true : false));
 		}
 		content += '}';
 		
@@ -431,13 +432,13 @@ class Main {
 		file.close();
 	}
 	
-	public function generateHaxeProperty(property:HXProperty):String {
+	public function generateHaxeProperty(property:HXProperty, ?force:Bool = false):String {
 		var content:String = '\n\t/**\n\t' + property.description.replace('\n', '\n\t') + '\n\t */\n';
-		content += '\tpublic ' + (property.stat ? 'static ' : '') + 'var ' + property.name + ':' + property.type + ';\n';
+		content += '\tpublic ' + (force==false?(property.stat ? 'static ' : ''):'') + 'var ' + property.name + ':' + property.type + ';\n';
 		return content;
 	}
 	
-	public function generateHaxeFunction(method:HXFunction):String {
+	public function generateHaxeFunction(method:HXFunction, ?force:Bool = false):String {
 		var output:String = '';
 		var val:String = '';
 		var alt:Bool = false;
@@ -472,7 +473,7 @@ class Main {
 		
 		if (alt == false) {
 			
-			val = 'public ' + (method.stat?'static ' : '') + 'function ' + method.name + '(';
+			val = 'public ' + (force==false?(method.stat?'static ' : ''):'') + 'function ' + method.name + '(';
 			
 			for (p in 0...method.params.length) {
 				val += (val.endsWith('(') == false ? ', ' : '');
@@ -491,7 +492,7 @@ class Main {
 			
 		} else {
 			/* this is being kept for now just incase another error pops up - but at the moment this code doesnt get used */
-			val = 'public ' + (method.stat?'static ' : '') + 'var ' + method.name + ':';
+			val = 'public ' + (force==false?(method.stat?'static ' : ''):'') + 'var ' + method.name + ':';
 			if (method.params.length == 0) {
 				val += 'Void';
 			} else {

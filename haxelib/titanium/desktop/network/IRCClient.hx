@@ -10,7 +10,7 @@ extern class IRCClient {
 	 * The connected property of an IRCClient object
 	 * @since	0.2.0
 	 */
-	public static var connected:String;
+	public var connected:String;
 
 	/**
 	 * Connects an IRC to the host specified during creation of the IRCClient object

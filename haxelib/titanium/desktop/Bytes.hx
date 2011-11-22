@@ -18,7 +18,7 @@ extern class Bytes {
 	 * @return	Float
 	 * @since	0.7.0
 	 */
-	public static function byteAt(index:Float):Float;
+	public function byteAt(index:Float):Float;
 
 	/**
 	 * Return a character representing a byte at the given index in a Bytes.
@@ -26,7 +26,7 @@ extern class Bytes {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public static function charAt(index:Float):String;
+	public function charAt(index:Float):String;
 
 	/**
 	 * Concatenate multiple Bytes and Strings into one Bytes.
@@ -35,7 +35,7 @@ extern class Bytes {
 	 * @since	0.7.0
 	 */
 	@:overload(function(arg:Dynamic):Bytes{})
-	public static function concat(arg:String):Bytes;
+	public function concat(arg:String):Bytes;
 
 	/**
 	 * Return the index of a String within this Bytes. The String will first
@@ -44,7 +44,7 @@ extern class Bytes {
 	 * @return	Float
 	 * @since	0.3.0
 	 */
-	public static function indexOf(needle:String):Float;
+	public function indexOf(needle:String):Float;
 
 	/**
 	 * Return the last index of a String within this Bytes. The String will first
@@ -53,7 +53,7 @@ extern class Bytes {
 	 * @return	Float
 	 * @since	0.3.0
 	 */
-	public static function lastIndexOf(needle:String):Float;
+	public function lastIndexOf(needle:String):Float;
 
 	/**
 	 * Split a bytes as if it were a String given a delimiter. The Bytes object is
@@ -71,7 +71,7 @@ extern class Bytes {
 		</code></pre>
 		
 	 */
-	public static function split(delimiter:String, ?limit:Float):Array<String>;
+	public function split(delimiter:String, ?limit:Float):Array<String>;
 
 	/**
 	 * Return a substring of a Bytes given a start index and a length. This
@@ -95,7 +95,7 @@ extern class Bytes {
 		</code></pre>
 		
 	 */
-	public static function substr(startIndex:Float, ?length:Float):String;
+	public function substr(startIndex:Float, ?length:Float):String;
 
 	/**
 	 * Return a substring of a Bytes given a start index and end index. This
@@ -126,7 +126,7 @@ extern class Bytes {
 		</code></pre>
 		
 	 */
-	public static function substring(startIndex:Float, ?endIndex:Float):String;
+	public function substring(startIndex:Float, ?endIndex:Float):String;
 
 	/**
 	 * Convert characters in the Bytes to lower-case as if it it were a String.
@@ -135,7 +135,7 @@ extern class Bytes {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public static function toLowerCase():String;
+	public function toLowerCase():String;
 
 	/**
 	 * Return a string representation of a Byte object.
@@ -144,7 +144,7 @@ extern class Bytes {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public static function toString():String;
+	public function toString():String;
 
 	/**
 	 * Convert characters in the Bytes to upper-case as if it it were a String.
@@ -153,5 +153,5 @@ extern class Bytes {
 	 * @return	String
 	 * @since	0.3.0
 	 */
-	public static function toUpperCase():String;
+	public function toUpperCase():String;
 }

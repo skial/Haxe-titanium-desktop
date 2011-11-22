@@ -12,7 +12,7 @@ extern class UserWindow {
 	 * true if this window is a UI Dialog
 	 * @since	0.4.0
 	 */
-	public static var isDialog:Bool;
+	public var isDialog:Bool;
 
 	/**
 	 * Closes a window
