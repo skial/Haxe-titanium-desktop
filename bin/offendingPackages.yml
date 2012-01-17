@@ -1,5 +1,0 @@
----
-titanium.desktop.api.environment: remove
-titanium.desktop.ui.notification: titanium.desktop.notification.Notification
-titanium.desktop.ui.checkmenuitem: remove
-titanium.desktop.ui.separatormenuitem: remove

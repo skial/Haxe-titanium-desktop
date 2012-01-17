@@ -1,9 +1,0 @@
--cp src
--lib nYAML
--lib mlib
--lib thx
--lib titaniumdesktop
--lib Hocco
--neko bin/apidoc_builder.n
--D use_rtti_doc
--main Main

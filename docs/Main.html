@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Main.hx</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" media="all" href="hocco.css" />
+	<script src="jump_hocco.js?v=2012-01-17 12:43:00"></script>
+</head>
+<body>
+	<div id="container"><div id="background"></div>
+		<table cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th class="docs"><h1>Main.hx</h1></th>
+					<th class="code"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="section-0">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-0">&#182;</a></div>
+						<p>This can process all the yaml files from the Appcelerator Titanium Desktop documents folder, and generate clean extern classes for Haxe.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-1">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-1">&#182;</a></div>
+						<h2>The Beginning</h2>
+
+<p>Here we fill the return types hash with equal javascript return types. Then we decode four yaml files for later use.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">main</span><span class="p">()</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;any&#39;</span><span class="o">,</span> <span class="s1">&#39;Dynamic&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="o">,</span> <span class="s1">&#39;String&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="o">,</span> <span class="s1">&#39;Float&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="o">,</span> <span class="s1">&#39;Dynamic&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="o">,</span> <span class="s1">&#39;Dynamic&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;Object&#39;</span><span class="o">,</span> <span class="s1">&#39;Dynamic&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="o">,</span> <span class="s1">&#39;Dynamic&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="o">,</span> <span class="s1">&#39;Bool&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="o">,</span> <span class="s1">&#39;Bool&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;null&#39;</span><span class="o">,</span> <span class="s1">&#39;Null&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;void&#39;</span><span class="o">,</span> <span class="s1">&#39;Void&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">,</span> <span class="s1">&#39;Void&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;null&#39;</span><span class="o">,</span> <span class="s1">&#39;Void&#39;</span><span class="p">);</span>
+    <span class="cm">/* list is an assocative array */</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="o">,</span> <span class="s1">&#39;Dynamic&#39;</span><span class="p">);</span>
+    <span class="cm">/* titanium mentions byte which doesnt exists */</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;byte&#39;</span><span class="o">,</span> <span class="s1">&#39;Dynamic&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="o">,</span> <span class="s1">&#39;Array&lt;Dynamic&gt;&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;integer&#39;</span><span class="o">,</span> <span class="s1">&#39;Int&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="o">,</span> <span class="s1">&#39;Int&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;undefined&#39;</span><span class="o">,</span> <span class="s1">&#39;Void&#39;</span><span class="p">);</span>
+    <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">&#39;domwindow&#39;</span><span class="o">,</span> <span class="s1">&#39;js.Dom.Window&#39;</span><span class="p">);</span>
+    
+    <span class="nx">badUpperCase</span> <span class="o">=</span> <span class="nx">cast</span> <span class="nx">NYAML</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">File</span><span class="p">.</span><span class="nx">getContent</span><span class="p">(</span><span class="s1">&#39;./badUpperCaseWords.yml&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">].</span><span class="nx">bad</span><span class="o">;</span>
+    <span class="nx">keywords</span> <span class="o">=</span> <span class="nx">cast</span> <span class="nx">NYAML</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">File</span><span class="p">.</span><span class="nx">getContent</span><span class="p">(</span><span class="s1">&#39;./haxeKeywords.yml&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">].</span><span class="nx">keywords</span><span class="o">;</span>
+    <span class="nx">missingCode</span> <span class="o">=</span> <span class="nx">cast</span> <span class="nx">NYAML</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">File</span><span class="p">.</span><span class="nx">getContent</span><span class="p">(</span><span class="s1">&#39;./missingCode.yml&#39;</span><span class="p">));</span>
+    <span class="nx">offendingPackages</span> <span class="o">=</span> <span class="nx">cast</span> <span class="nx">NYAML</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">File</span><span class="p">.</span><span class="nx">getContent</span><span class="p">(</span><span class="s1">&#39;./offendingPackages.yml&#39;</span><span class="p">));</span>
+    
+    <span class="k">new</span> <span class="nx">Main</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-2">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-2">&#182;</a></div>
+						<p>Location to all Titanium yaml files.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">APIDOC</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;../apidoc/&#39;</span><span class="o">;</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-3">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-3">&#182;</a></div>
+						<p>Location to the root yaml file.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">TITANIUM</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">APIDOC</span> <span class="o">+</span> <span class="s1">&#39;Titanium.yml&#39;</span><span class="o">;</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-4">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-4">&#182;</a></div>
+						<p>Location to the output directory.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">OUTPUT</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;./generated_externs/&#39;</span><span class="o">;</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-5">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-5">&#182;</a></div>
+						<p>Hash object which contains matching javascript types.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">returnTypes</span><span class="o">:</span><span class="nx">Hash</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hash</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-6">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-6">&#182;</a></div>
+						<p>Hash object which contains all <code>HXClass</code> objects.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">externs</span><span class="o">:</span><span class="nx">Hash</span><span class="o">&lt;</span><span class="nx">HXClass</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hash</span><span class="o">&lt;</span><span class="nx">HXClass</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-7">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-7">&#182;</a></div>
+						<p>Contains bad words.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">badUpperCase</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-8">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-8">&#182;</a></div>
+						<p>Contains all Haxe keywords.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">keywords</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-9">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-9">&#182;</a></div>
+						<p>Hash object contains all imports needed by the current class being parsed.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">currentImports</span><span class="o">:</span><span class="nx">Hash</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;;</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-10">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-10">&#182;</a></div>
+						<p>Contains missing code, used to patch extern files.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">missingCode</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-11">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-11">&#182;</a></div>
+						<p>Contains all packages that either done exists or need patching.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="k">var</span> <span class="nx">offendingPackages</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-12">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-12">&#182;</a></div>
+						<p>Parse the base yaml file used for generating Appcelerator Titanium Desktop docs. Then start generating extern classes.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="k">new</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">parseYAML</span><span class="p">(</span><span class="nx">TITANIUM</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">generateOutput</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-13">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-13">&#182;</a></div>
+						<p>Once all yaml files have been parsed, we can generated the Haxe extern classes.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">generateOutput</span><span class="p">()</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">externs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">generateHaxeClass</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-14">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-14">&#182;</a></div>
+						<p>First we load the file via the passed path string. Then we decode the yaml file and get the result, which is then cleaned up.</p>
+
+<p>We then check the objects type and pass it to the correct function for parsing.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">parseYAML</span><span class="p">(</span><span class="nx">path</span><span class="o">:</span><span class="nb">String</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">file</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">neko</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">File</span><span class="p">.</span><span class="nx">getContent</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">yaml</span><span class="o">:</span><span class="nx">Base</span> <span class="o">=</span> <span class="nx">NYAML</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">file</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">sanitizeBase</span><span class="p">(</span><span class="nx">yaml</span><span class="p">);</span>
+    
+    <span class="k">switch</span><span class="p">(</span><span class="nx">yaml</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s1">&#39;function&#39;</span><span class="o">,</span> <span class="s1">&#39;method&#39;</span><span class="o">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">parseFunction</span><span class="p">(</span><span class="nx">untyped</span> <span class="nx">yaml</span><span class="p">);</span>
+        <span class="k">case</span> <span class="s1">&#39;property&#39;</span><span class="o">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">parseProperty</span><span class="p">(</span><span class="nx">untyped</span> <span class="nx">yaml</span><span class="p">);</span>
+        <span class="cm">/*case &#39;object&#39;:</span>
+<span class="cm">        this.parseObject(yaml);*/</span>
+        <span class="k">case</span> <span class="s1">&#39;module&#39;</span><span class="o">,</span> <span class="s1">&#39;object&#39;</span><span class="o">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">parseModule</span><span class="p">(</span><span class="nx">yaml</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">parseObject</span><span class="p">(</span><span class="nx">yaml</span><span class="p">);</span>
+        <span class="k">default</span><span class="o">:</span>
+        <span class="k">throw</span> <span class="s1">&#39;Ooooh! Looks like I found any unknown type - kung pow! : &#39;</span> <span class="o">+</span> <span class="nx">yaml</span><span class="p">.</span><span class="nx">type</span><span class="o">;</span>
+    <span class="p">}</span>
+    
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-15">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-15">&#182;</a></div>
+						<p>We check to see if the namespace is a package path or not. If not it's normally <code>Titanium.yml</code>, the first yaml file to be processed. All other yaml files are processed in the <code>else</code> statement.</p>
+
+<p>The modules namespace is split and checked to see if it starts with <code>titanium</code>. If <code>true</code> then insert <code>desktop</code> into the namespace, else remove <code>desktop</code> if it exists.</p>
+
+<p>Each part of the namespace is then checked against the <code>badUpperCaseWords.yml</code> file and corrected if it matches. Then the modules name is checked against the same list.</p>
+
+<p>Then the namespace is joined back together, and the corresponding directory is created.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">parseModule</span><span class="p">(</span><span class="nx">module</span><span class="o">:</span><span class="nx">Base</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">folder</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">module</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        
+        <span class="nx">folder</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">lcfirst</span><span class="p">();</span>
+        <span class="nx">FileSys</span><span class="p">.</span><span class="nx">createDirectory</span><span class="p">(</span><span class="nx">OUTPUT</span> <span class="o">+</span> <span class="nx">folder</span><span class="p">);</span>
+        <span class="nx">FileSys</span><span class="p">.</span><span class="nx">createDirectory</span><span class="p">(</span><span class="nx">OUTPUT</span> <span class="o">+</span> <span class="nx">folder</span> <span class="o">+</span> <span class="s1">&#39;/desktop&#39;</span><span class="p">);</span>
+        
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">ns</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">name</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">first</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;titanium&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ns</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span> <span class="s1">&#39;desktop&#39;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">ns</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="mi">0</span><span class="p">...</span><span class="nx">ns</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">badUpperCase</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+            <span class="k">continue</span><span class="o">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">lcfirst</span><span class="p">();</span>
+        <span class="p">}</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">badUpperCase</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">name</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">folder</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">.</span><span class="nx">lcfirst</span><span class="p">();</span>
+        <span class="nx">FileSys</span><span class="p">.</span><span class="nx">createDirectory</span><span class="p">(</span><span class="nx">OUTPUT</span> <span class="o">+</span> <span class="nx">folder</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-16">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-16">&#182;</a></div>
+						<p>We take the <code>methods</code> namespace, split it and grab the last field to get its name. We then grap any parameters the method might have.</p>
+
+<p>If any paramerters exist, they are parse and returned to the <code>HXFunction</code> object. When completed, <code>HXFunction</code> is added to the current class being processed.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">parseFunction</span><span class="p">(</span><span class="nx">method</span><span class="o">:</span><span class="nx">Func</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">ns</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">method</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">name</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">parameters</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="nx">method</span><span class="p">.</span><span class="nx">parameters</span><span class="o">;</span>
+    
+    <span class="nx">currentImports</span> <span class="o">=</span> <span class="nx">externs</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)).</span><span class="nx">imports</span><span class="o">;</span>
+    
+    <span class="k">var</span> <span class="nx">func</span><span class="o">:</span><span class="nx">HXFunction</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span><span class="nx">name</span><span class="o">,</span> <span class="nx">params</span><span class="o">:</span><span class="p">[]</span><span class="o">,</span> <span class="nx">description</span><span class="o">:</span><span class="s1">&#39; * &#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="o">,</span> <span class="s1">&#39;\n * &#39;</span><span class="p">)</span><span class="o">,</span> <span class="nx">returns</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">returns</span><span class="p">)</span><span class="o">,</span> <span class="nx">stat</span><span class="o">:</span><span class="nx">ns</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span> <span class="p">};</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">parameters</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">param</span> <span class="k">in</span> <span class="nx">parameters</span><span class="p">)</span> <span class="p">{</span>
+            
+            <span class="k">var</span> <span class="nx">p</span><span class="o">:</span><span class="nx">HXParams</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span><span class="p">(</span><span class="nx">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;...&#39;</span> <span class="o">?</span> <span class="s1">&#39;arg&#39;</span> <span class="o">:</span> <span class="p">(</span><span class="nx">param</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="nx">param</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="nx">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">,</span> <span class="nx">type</span><span class="o">:</span><span class="nx">param</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">param</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">:</span> <span class="nx">param</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">,</span> <span class="nx">optional</span><span class="o">:</span><span class="nx">param</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">?</span> <span class="nx">param</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;optional&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">false</span><span class="o">,</span> <span class="nx">defaultValue</span><span class="o">:</span><span class="s1">&#39;&#39;</span> <span class="p">};</span>
+            <span class="nx">func</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+            <span class="nx">func</span><span class="p">.</span><span class="nx">description</span> <span class="o">+=</span> <span class="s1">&#39;\n * @param\t&#39;</span> <span class="o">+</span> <span class="nx">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="nx">param</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;\t&#39;</span> <span class="o">+</span> <span class="nx">param</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="o">,</span> <span class="s1">&#39;\n * &#39;</span><span class="p">)</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+            
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">func</span><span class="p">.</span><span class="nx">description</span> <span class="o">+=</span> <span class="s1">&#39;\n * @return\t&#39;</span> <span class="o">+</span> <span class="nx">func</span><span class="p">.</span><span class="nx">returns</span> <span class="o">+</span> <span class="s1">&#39;\n * @since\t&#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">since</span> <span class="o">+</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">examples</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;\n * @example\t&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="k">try</span> <span class="p">{</span> <span class="nx">untyped</span> <span class="nx">cast</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">code</span><span class="o">,</span> <span class="nb">String</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="o">,</span> <span class="s1">&#39;\n\t&#39;</span><span class="p">);</span> <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="o">:</span><span class="nx">Dynamic</span><span class="p">)</span> <span class="p">{</span> <span class="nx">method</span><span class="p">.</span><span class="nx">examples</span><span class="o">;</span> <span class="p">})</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+    
+    <span class="nx">externs</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)).</span><span class="nx">functions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">func</span><span class="p">);</span>
+    
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-17">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-17">&#182;</a></div>
+						<p>We take <code>property</code>, split its namespace, grab the last field to get its name, parse <code>property</code> into <code>HXProperty</code> and add it to the current class being processed.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">parseProperty</span><span class="p">(</span><span class="nx">property</span><span class="o">:</span><span class="nx">Property</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">ns</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">property</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">name</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    
+    <span class="nx">currentImports</span> <span class="o">=</span> <span class="nx">externs</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)).</span><span class="nx">imports</span><span class="o">;</span>
+    
+    <span class="k">var</span> <span class="nx">prop</span><span class="o">:</span><span class="nx">HXProperty</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">description</span><span class="o">:</span><span class="s1">&#39; * &#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s1">&#39;\n * @since\t&#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">since</span> <span class="o">+</span> <span class="p">(</span><span class="nx">property</span><span class="p">.</span><span class="nx">examples</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;\n * @example\t&#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">examples</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">,</span> <span class="nx">name</span><span class="o">:</span><span class="nx">name</span><span class="o">,</span> <span class="nx">type</span><span class="o">:</span><span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">property</span><span class="p">.</span><span class="nx">returns</span><span class="p">)</span><span class="o">,</span> <span class="nx">stat</span><span class="o">:</span><span class="nx">property</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="o">?</span><span class="kc">true</span><span class="o">:</span><span class="kc">false</span><span class="p">)</span> <span class="o">:</span> <span class="kc">true</span> <span class="p">};</span>
+    
+    <span class="nx">externs</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)).</span><span class="nx">properties</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">prop</span><span class="p">);</span>
+    
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-18">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-18">&#182;</a></div>
+						<p>We take the <code>object</code>, split its namespace, then grab its name from the last field.</p>
+
+<p>Its namespace is then checked to see if <code>desktop</code> exists. The namespace is then recreated, and checked against the <code>offendingPackages.yml</code> file.</p>
+
+<p>Once that is complete, we create a hash which will contain all this classes imports. It is then assigned to the global <code>currentImports</code> object, for use in other methods.</p>
+
+<p>Then the namespace is checked against the <code>badUpperCasewords.yml</code> file, and corrected if it matches. Then a <code>HXClass</code> object is created. Its then added to the externs object.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">parseObject</span><span class="p">(</span><span class="nx">object</span><span class="o">:</span><span class="nx">Base</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">ns</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">name</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">first</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;titanium&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ns</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span> <span class="s1">&#39;desktop&#39;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">ns</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="o">!</span><span class="nx">s</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">&#39;titanium&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="nx">s</span> <span class="o">:</span> <span class="s1">&#39;titanium.&#39;</span> <span class="o">+</span> <span class="nx">s</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">offendingPackages</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Reflect</span><span class="p">.</span><span class="nx">hasField</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">t</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Reflect</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;remove&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ns</span> <span class="o">=</span> <span class="nx">Reflect</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">t</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+            <span class="nx">name</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">var</span> <span class="nx">imports</span><span class="o">:</span><span class="nx">Hash</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hash</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">();</span>
+    
+    <span class="nx">currentImports</span> <span class="o">=</span> <span class="nx">imports</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="mi">0</span><span class="p">...</span><span class="nx">ns</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">badUpperCase</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+            <span class="k">continue</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">lcfirst</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="k">var</span> <span class="nx">cls</span><span class="o">:</span><span class="nx">HXClass</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span><span class="nx">object</span><span class="p">.</span><span class="nx">type</span><span class="o">,</span> <span class="nx">imports</span><span class="o">:</span><span class="nx">imports</span><span class="o">,</span> <span class="nx">ns</span><span class="o">:</span><span class="nx">object</span><span class="p">.</span><span class="kd">namespace</span><span class="o">,</span> <span class="nx">pck</span><span class="o">:</span><span class="nx">ns</span><span class="o">,</span> <span class="nx">name</span><span class="o">:</span><span class="nx">name</span><span class="o">,</span> <span class="nx">functions</span><span class="o">:</span><span class="p">[]</span><span class="o">,</span> <span class="nx">properties</span><span class="o">:</span><span class="p">[]</span><span class="o">,</span> <span class="nx">description</span><span class="o">:</span><span class="s1">&#39; * &#39;</span> <span class="o">+</span> <span class="nx">object</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s1">&#39;\n * @since\t&#39;</span> <span class="o">+</span> <span class="nx">object</span><span class="p">.</span><span class="nx">since</span> <span class="o">+</span> <span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="nx">examples</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;\n * @example\t&#39;</span> <span class="o">+</span> <span class="nx">object</span><span class="p">.</span><span class="nx">examples</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">};</span>
+    
+    <span class="nx">externs</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="kd">namespace</span><span class="o">,</span> <span class="nx">cls</span><span class="p">);</span>
+    
+    <span class="nx">ns</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+    
+    <span class="k">var</span> <span class="nx">folder</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="nx">name</span> <span class="o">:</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">FileSys</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">APIDOC</span> <span class="o">+</span> <span class="nx">folder</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">FileSys</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">(</span><span class="nx">APIDOC</span> <span class="o">+</span> <span class="nx">folder</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">contents</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">FileSys</span><span class="p">.</span><span class="nx">readDirectory</span><span class="p">(</span><span class="nx">APIDOC</span> <span class="o">+</span> <span class="nx">folder</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">item</span> <span class="k">in</span> <span class="nx">contents</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">FileSys</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">(</span><span class="nx">APIDOC</span> <span class="o">+</span> <span class="nx">folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">item</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">parseYAML</span><span class="p">(</span><span class="nx">APIDOC</span> <span class="o">+</span> <span class="nx">folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">item</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-19">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-19">&#182;</a></div>
+						<h2>Parse Helpers</h2>
+
+<p>We just clean up some of the user made errors found in the parsed yaml.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">sanitizeBase</span><span class="p">(</span><span class="nx">base</span><span class="o">:</span><span class="nx">Base</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="nx">base</span><span class="p">.</span><span class="kd">namespace</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="kd">namespace</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+    <span class="nx">base</span><span class="p">.</span><span class="nx">since</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">since</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;unknown&#39;</span> <span class="o">:</span> <span class="nx">base</span><span class="p">.</span><span class="nx">since</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+    <span class="nx">base</span><span class="p">.</span><span class="nx">description</span> <span class="o">=</span> <span class="nx">base</span><span class="p">.</span><span class="nx">description</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;&#39;</span> <span class="o">:</span> <span class="nx">base</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-20">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-20">&#182;</a></div>
+						<p>We take the passed <code>type</code> and figure out its return type.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">type</span><span class="o">:</span><span class="nb">String</span><span class="p">)</span><span class="o">:</span><span class="nb">String</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Void&#39;</span><span class="o">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returnTypes</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()))</span> <span class="p">{</span> 
+        <span class="k">return</span> <span class="nx">returnTypes</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">returnArray</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">type</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">returnString</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;Array&lt;&#39;</span><span class="o">;</span>
+        <span class="k">var</span> <span class="nx">a</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="nx">returnArray</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">r</span> <span class="k">in</span> <span class="mi">0</span><span class="p">...</span><span class="nx">returnArray</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="o">;</span>
+        <span class="p">}</span> 
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">returnArray</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;Array&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">returnString</span> <span class="o">+=</span> <span class="s1">&#39;Array&lt;&#39;</span><span class="o">;</span>
+            <span class="k">continue</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">returnArray</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">returnString</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parsePackage</span><span class="p">(</span><span class="nx">returnArray</span><span class="p">[</span><span class="nx">r</span><span class="p">]);</span>
+            <span class="k">continue</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="nx">returnString</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">returnArray</span><span class="p">[</span><span class="nx">r</span><span class="p">]);</span>
+        
+        <span class="p">}</span>
+        <span class="c1">//if (returnString.endsWith(&#39;&gt;&#39;) == false) {</span>
+        <span class="nx">returnString</span> <span class="o">=</span> <span class="nx">returnString</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+        <span class="c1">//}</span>
+        <span class="nx">returnString</span> <span class="o">+=</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">returnString</span><span class="o">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">options</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">type</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">o</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">returnTypes</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">o</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">parsePackage</span><span class="p">(</span><span class="nx">type</span><span class="o">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Dynamic&#39;</span><span class="o">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">type</span><span class="o">;</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-21">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-21">&#182;</a></div>
+						<p>We parse the passed <code>path</code> string to create a return type, pointing to another extern Titanium file. First we split the path and check to see if <code>desktop</code> exists or not.</p>
+
+<p>We then run the name against the <code>badUpperCaseWords.yml</code> file. The path is then joined back together. We replace any left over <code>&gt;</code> symbols.</p>
+
+<p>Then the new path is checked against the current list of imports to see if it exists. If not, then its added to the list.</p>
+
+<p>Then we check it against a list created from the <code>offendingPackages.yml</code> file. This is a list of packages and class that either dont exist, or are typed wrongly in the Titanium yaml files.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">parsePackage</span><span class="p">(</span><span class="nx">path</span><span class="o">:</span><span class="nb">String</span><span class="o">,</span> <span class="o">?</span><span class="nx">pop</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span><span class="o">:</span><span class="nb">String</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">ns</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">first</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;titanium&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ns</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span> <span class="s1">&#39;desktop&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">first</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desktop&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ns</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">var</span> <span class="nx">name</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="mi">0</span><span class="p">...</span><span class="nx">ns</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">badUpperCase</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+            <span class="k">continue</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">lcfirst</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">val</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="o">;</span>
+    <span class="nx">val</span> <span class="o">=</span> <span class="nx">val</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">currentImports</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">val</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">currentImports</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">val</span><span class="o">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">&#39;titanium&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="nx">val</span> <span class="o">:</span> <span class="s1">&#39;titanium.&#39;</span> <span class="o">+</span> <span class="nx">val</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">offendingPackages</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Reflect</span><span class="p">.</span><span class="nx">hasField</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">t</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Reflect</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;remove&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">r</span> <span class="o">=</span> <span class="s1">&#39;Dynamic&#39;</span><span class="o">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">currentImports</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">val</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">currentImports</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">r</span><span class="o">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">r</span> <span class="o">=</span> <span class="nx">Reflect</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">t</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">currentImports</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">val</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">currentImports</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+            <span class="nx">currentImports</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">r</span><span class="o">,</span> <span class="nx">r</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">).</span><span class="nx">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">pop</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">name</span><span class="o">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">val</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">&#39;titanium&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="nx">val</span> <span class="o">:</span> <span class="s1">&#39;titanium.&#39;</span> <span class="o">+</span> <span class="nx">val</span><span class="o">;</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-22">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-22">&#182;</a></div>
+						<h2>Generating Extern Classes</h2>
+
+<p>Here we generate the extern class for use in Haxe projects. First we create the package, then list all the imports needed, then create the class definition.</p>
+
+<p>Once that is done, we loop through each property and method, generating the correct output. Once everything is done, we put the <code>content</code> into a newly created file.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">generateHaxeClass</span><span class="p">(</span><span class="nx">cls</span><span class="o">:</span><span class="nx">HXClass</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">content</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    
+    <span class="k">var</span> <span class="nx">pck</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">pck</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+    
+    <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;package &#39;</span> <span class="o">+</span> <span class="nx">pck</span> <span class="o">+</span> <span class="s1">&#39;;\n&#39;</span><span class="o">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">imports</span><span class="p">.</span><span class="nx">keys</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;import &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">i</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">&#39;titanium&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39;;\n&#39;</span> <span class="o">:</span> <span class="s1">&#39;titanium.&#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39;;\n&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;/**\n&#39;</span> <span class="o">+</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s1">&#39;\n */\n&#39;</span><span class="o">;</span>
+    <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;@:native(&quot;&#39;</span> <span class="o">+</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">ns</span> <span class="o">+</span> <span class="s1">&#39;&quot;)\n&#39;</span><span class="o">;</span>
+    <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;extern class &#39;</span> <span class="o">+</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39; {\n&#39;</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">missingCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Reflect</span><span class="p">.</span><span class="nx">hasField</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">content</span> <span class="o">+=</span> <span class="nx">Reflect</span><span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="nx">n</span><span class="o">,</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;\n&#39;</span><span class="o">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="nx">p</span> <span class="k">in</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">properties</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">content</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="nx">generateHaxeProperty</span><span class="p">(</span><span class="nx">p</span><span class="o">,</span> <span class="p">(</span><span class="nx">cls</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="kc">false</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">f</span> <span class="k">in</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">functions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">content</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="nx">generateHaxeFunction</span><span class="p">(</span><span class="nx">f</span><span class="o">,</span> <span class="p">(</span><span class="nx">cls</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="kc">false</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span><span class="o">;</span>
+    
+    <span class="k">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">File</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">OUTPUT</span> <span class="o">+</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">pck</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;.hx&#39;</span><span class="o">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="nx">file</span><span class="p">.</span><span class="nx">writeString</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+    <span class="nx">file</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-23">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-23">&#182;</a></div>
+						<p>Here we generate a proptery for the current extern class being created.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">generateHaxeProperty</span><span class="p">(</span><span class="nx">property</span><span class="o">:</span><span class="nx">HXProperty</span><span class="o">,</span> <span class="o">?</span><span class="nx">force</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span><span class="o">:</span><span class="nb">String</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">content</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;\n\t/**\n\t&#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="o">,</span> <span class="s1">&#39;\n\t&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;\n\t */\n&#39;</span><span class="o">;</span>
+    <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;\tpublic &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">force</span><span class="o">==</span><span class="kc">false</span><span class="o">?</span><span class="p">(</span><span class="nx">property</span><span class="p">.</span><span class="nx">stat</span> <span class="o">?</span> <span class="s1">&#39;static &#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;var &#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">type</span> <span class="o">+</span> <span class="s1">&#39;;\n&#39;</span><span class="o">;</span>
+    <span class="k">return</span> <span class="nx">content</span><span class="o">;</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-24">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-24">&#182;</a></div>
+						<p>Here we generate a methods parameter, making it optional if it needs to be.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">generateHaxeParameter</span><span class="p">(</span><span class="nx">param</span><span class="o">:</span><span class="nx">HXParams</span><span class="p">)</span><span class="o">:</span><span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">param</span><span class="p">.</span><span class="nx">optional</span> <span class="o">==</span> <span class="kc">true</span> <span class="o">?</span> <span class="s1">&#39;?&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">param</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nx">param</span><span class="p">.</span><span class="nx">type</span><span class="o">;</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-25">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-25">&#182;</a></div>
+						<p>Here we generate a method for the current extern class being created. We also do some last minuite checking and parsing to get the output correct.</p>
+
+<p>We check each methods parameters to see if it contains a <code>|</code> symbol. If it does, then we generate an <code>@:overload</code> statement. 
+We also check the methods parameters name against the <code>haxeKeywords.yml</code> file and add an underscore to its name so it doesnt create any conflicts.</p>
+
+<p>Alot of the code below is repeat to make sure it generates the <code>@:overload</code> statements correctly.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">generateHaxeFunction</span><span class="p">(</span><span class="nx">method</span><span class="o">:</span><span class="nx">HXFunction</span><span class="o">,</span> <span class="o">?</span><span class="nx">force</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span><span class="o">:</span><span class="nb">String</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">output</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">val</span><span class="o">:</span><span class="nb">String</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">alt</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">methodOverload</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">methodOverloadArray</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">var</span> <span class="nx">paramOverload</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">paramOverloadArray</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">returns</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">methodOverload</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="nx">methodOverloadArray</span> <span class="o">=</span> <span class="nx">method</span><span class="p">.</span><span class="nx">returns</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="nx">p</span> <span class="k">in</span> <span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">paramOverload</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="nx">paramOverloadArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">paramOverloadArray</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="nx">p</span><span class="p">.</span><span class="nx">type</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="nx">p</span> <span class="k">in</span> <span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">n</span> <span class="k">in</span> <span class="nx">keywords</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="cm">/*alt = true;</span>
+<span class="cm">            break;*/</span>
+            <span class="nx">p</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">alt</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+        
+        <span class="nx">val</span> <span class="o">=</span> <span class="s1">&#39;public &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">force</span><span class="o">==</span><span class="kc">false</span><span class="o">?</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">stat</span><span class="o">?</span><span class="s1">&#39;static &#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;function &#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span><span class="o">;</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="nx">p</span> <span class="k">in</span> <span class="mi">0</span><span class="p">...</span><span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">val</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">false</span> <span class="o">?</span> <span class="s1">&#39;, &#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">paramOverload</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">val</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">[</span><span class="nx">p</span><span class="p">].</span><span class="nx">optional</span> <span class="o">==</span> <span class="kc">true</span> <span class="o">?</span> <span class="s1">&#39;?&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">[</span><span class="nx">p</span><span class="p">].</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nx">p</span><span class="o">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">val</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">[</span><span class="nx">p</span><span class="p">].</span><span class="nx">optional</span> <span class="o">==</span> <span class="kc">true</span> <span class="o">?</span> <span class="s1">&#39;?&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">[</span><span class="nx">p</span><span class="p">].</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">[</span><span class="nx">p</span><span class="p">].</span><span class="nx">type</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">methodOverload</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">val</span> <span class="o">+=</span> <span class="s1">&#39;):$r&#39;</span><span class="o">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">val</span> <span class="o">+=</span> <span class="s1">&#39;):&#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">returns</span><span class="o">;</span>
+        <span class="p">}</span>
+        
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="cm">/* this is being kept for now just incase another error pops up - but at the moment this code doesnt get used */</span>
+        <span class="nx">val</span> <span class="o">=</span> <span class="s1">&#39;public &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">force</span><span class="o">==</span><span class="kc">false</span><span class="o">?</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">stat</span><span class="o">?</span><span class="s1">&#39;static &#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;var &#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span><span class="o">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">val</span> <span class="o">+=</span> <span class="s1">&#39;Void&#39;</span><span class="o">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">p</span> <span class="k">in</span> <span class="mi">0</span><span class="p">...</span><span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            
+            <span class="nx">val</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">false</span> <span class="o">?</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">paramOverload</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">val</span> <span class="o">+=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nx">p</span><span class="o">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">val</span> <span class="o">+=</span> <span class="nx">method</span><span class="p">.</span><span class="nx">params</span><span class="p">[</span><span class="nx">p</span><span class="p">].</span><span class="nx">type</span><span class="o">;</span>
+            <span class="p">}</span>
+            
+        <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">methodOverload</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">val</span> <span class="o">+=</span> <span class="s1">&#39;-&gt;$r&#39;</span><span class="o">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">val</span> <span class="o">+=</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">returns</span><span class="o">;</span>
+        <span class="p">}</span>
+        
+    <span class="p">}</span>
+    
+    <span class="nx">output</span> <span class="o">+=</span> <span class="s1">&#39;\n\t/**\n\t&#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="o">,</span> <span class="s1">&#39;\n\t&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;\n\t */\n&#39;</span><span class="o">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">paramOverload</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">sorted</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">processOverloadTypes</span><span class="p">(</span><span class="nx">paramOverloadArray</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">item</span> <span class="k">in</span> <span class="nx">sorted</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">item</span> <span class="o">!=</span> <span class="nx">sorted</span><span class="p">.</span><span class="nx">last</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nx">output</span> <span class="o">+=</span> <span class="s1">&#39;\t@:overload(&#39;</span> <span class="o">+</span> <span class="nx">val</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;public &#39;</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;static &#39;</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">name</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;{})\n&#39;</span><span class="o">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">output</span> <span class="o">+=</span> <span class="s1">&#39;\t&#39;</span> <span class="o">+</span> <span class="nx">val</span> <span class="o">+</span> <span class="s1">&#39;;\n&#39;</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="mi">0</span><span class="p">...</span><span class="nx">item</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">output</span> <span class="o">=</span> <span class="nx">output</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nx">i</span><span class="o">,</span> <span class="nx">item</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">methodOverload</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="k">for</span> <span class="p">(</span><span class="nx">item</span> <span class="k">in</span> <span class="nx">methodOverloadArray</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">item</span> <span class="o">!=</span> <span class="nx">methodOverloadArray</span><span class="p">.</span><span class="nx">last</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nx">output</span> <span class="o">+=</span> <span class="s1">&#39;\t@:overload(&#39;</span> <span class="o">+</span> <span class="nx">val</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;public &#39;</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;static &#39;</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nx">method</span><span class="p">.</span><span class="nx">name</span><span class="o">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;{})\n&#39;</span><span class="o">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">output</span> <span class="o">+=</span> <span class="s1">&#39;\t&#39;</span> <span class="o">+</span> <span class="nx">val</span> <span class="o">+</span> <span class="s1">&#39;;\n&#39;</span><span class="o">;</span>
+        <span class="p">}</span>
+        <span class="nx">output</span> <span class="o">=</span> <span class="nx">output</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;$r&#39;</span><span class="o">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">item</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">output</span> <span class="o">+=</span> <span class="s1">&#39;\t&#39;</span> <span class="o">+</span> <span class="nx">val</span> <span class="o">+</span> <span class="s1">&#39;;&#39;</span><span class="o">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">output</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">output</span> <span class="o">+=</span> <span class="s1">&#39;\n&#39;</span><span class="o">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="nx">output</span><span class="o">;</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-26">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-26">&#182;</a></div>
+						<h2>@:Overload Helpers</h2>
+
+<p>Here we try to generate all possible <code>@:overload</code> outcomes possible.</p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">processOverloadTypes</span><span class="p">(</span><span class="nx">array</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">copy</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">copy</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">length</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">copy</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">i</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">length</span> <span class="o">=</span> <span class="nx">i</span><span class="p">.</span><span class="nx">length</span><span class="o">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">result</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">generateOverloadTypes</span><span class="p">(</span><span class="nx">result</span><span class="o">,</span> <span class="nx">copy</span><span class="o">,</span> <span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="nx">count</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="o">;</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-27">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-27">&#182;</a></div>
+						<p></p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">generateOverloadTypes</span><span class="p">(</span><span class="nx">parent</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;,</span> <span class="nx">array</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;,</span> <span class="nx">length</span><span class="o">:</span><span class="nx">Int</span><span class="o">,</span> <span class="nx">count</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">current</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">i</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="nx">count</span><span class="o">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">a</span> <span class="k">in</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">current</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">count</span><span class="p">]</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">last</span><span class="p">())</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">count</span><span class="p">]));</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">check</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">v</span> <span class="k">in</span> <span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="nx">current</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">check</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">check</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">parent</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">i</span><span class="o">++;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">generateOverloadTypes</span><span class="p">(</span><span class="nx">parent</span><span class="o">,</span> <span class="nx">array</span><span class="o">,</span> <span class="nx">length</span><span class="o">,</span> <span class="nx">i</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">==</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">generateStaggeredOverloadTypes</span><span class="p">(</span><span class="nx">parent</span><span class="o">,</span> <span class="nx">array</span><span class="o">,</span> <span class="nx">length</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+				<tr id="section-28">
+					<td class="docs">
+						<div class="pilwrap"><a class="pilcrow" href="#section-28">&#182;</a></div>
+						<p></p>
+
+					</td>
+					<td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">generateStaggeredOverloadTypes</span><span class="p">(</span><span class="nx">parent</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;,</span> <span class="nx">array</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;,</span> <span class="nx">length</span><span class="o">:</span><span class="nx">Int</span><span class="o">,</span> <span class="nx">count</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="nx">stagger</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="kc">Void</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">current</span><span class="o">:</span><span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">i</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="nx">count</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">s</span><span class="o">:</span><span class="nx">Int</span> <span class="o">=</span> <span class="nx">stagger</span><span class="o">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">a</span> <span class="k">in</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">current</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">s</span><span class="p">]</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">last</span><span class="p">())</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">parseReturnType</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">s</span><span class="p">]));</span>
+        <span class="nx">s</span><span class="o">++;</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">check</span><span class="o">:</span><span class="nx">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">v</span> <span class="k">in</span> <span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="nx">current</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">check</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">check</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">parent</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">i</span><span class="o">++;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">generateStaggeredOverloadTypes</span><span class="p">(</span><span class="nx">parent</span><span class="o">,</span> <span class="nx">array</span><span class="o">,</span> <span class="nx">length</span><span class="o">,</span> <span class="nx">i</span><span class="o">,</span> <span class="nx">stagger</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		(function() {
+			if (jump_names.length > 1) {
+				var jt = document.createElement('div'), jw = document.createElement('div'), jp = document.createElement('div');
+				
+				jt.setAttribute('id', 'jump_to');
+				jt.appendChild(document.createTextNode('Jump To ...'));
+				
+				jw.setAttribute('id', 'jump_wrapper');
+				jp.setAttribute('id', 'jump_page');
+				
+				jt.appendChild(jw);
+				jw.appendChild(jp);
+				
+				var __name__ = '', link;
+				
+				for (var i = 0, l = jump_names.length; i < l; i++) {
+					__name__ = jump_names[i];
+					link = document.createElement('a');
+					link.href = __name__ + '.html';
+					link.appendChild(document.createTextNode(__name__ + '.hx'));
+					link.className = 'source';
+					jp.appendChild(link);
+				}
+				
+				document.body.appendChild(jt);
+			}
+		})();
+	</script>
+</body>
+</html>
