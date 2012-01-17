@@ -31,3 +31,9 @@ http://api.appcelerator.net/p/pages/app_page?token=s4tHPK35
 http://www.appcelerator.com/  
 http://github.com/appcelerator/titanium_desktop  
 http://developer.appcelerator.com/apidoc/desktop/latest/Titanium-module  
+
+---
+
+## Titanium Yaml->Hx Generator ##
+
+You can [read the documentation](http://skial.github.com/haXe-titanium-desktop/docs/Main.html) on how the parser works. The code is a mess.
