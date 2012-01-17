@@ -19,7 +19,7 @@
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="" />
+    <option directives="use_rtti_doc" />
     <option flashStrict="False" />
     <option mainClass="Main" />
     <option enabledebug="False" />
@@ -31,6 +31,7 @@
     <library name="mlib" />
     <library name="thx" />
     <library name="titaniumdesktop" />
+    <library name="Hocco" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
